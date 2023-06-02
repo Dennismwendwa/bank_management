@@ -29,5 +29,6 @@ jobs:
         cd ..
     - name: Run Tests
       run: |
+        cd savingrecord
         python manage.py test
         
