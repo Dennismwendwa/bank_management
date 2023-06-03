@@ -1,7 +1,4 @@
-{% extends "accounts/layout.html" %}
-{% load static %}
-
-{% block login %}
+{% extends "accounts/layout.html" %} {% load static %} {% block login %}
 
 <section class="vh-100">
   <div class="container py-5 h-100">
@@ -57,7 +54,9 @@
                 Remember me
               </label>
             </div>
-            <a href="#!">Forgot password?</a>
+            <a href="{% url 'forgot_password' %}"
+              ><strong>Forgot password?</strong></a
+            >
           </div>
 
           <!-- Submit button -->

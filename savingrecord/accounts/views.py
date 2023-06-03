@@ -73,18 +73,37 @@ def forgot_password(request):
 	if request.method == "POST":
 		form = EmailForm(request.POST)
 		if form.is_valid():
+			email = form.cleaned_data["email"]
+			print(email)
 			form.send_password_reset_email()
 			return render(request, "accounts/password_reset_done.html")
 	else:
 		form = EmailForm()
 
-	return render(request, "accounts/forget_password.html", {"form": form})
+	return render(request, "accounts/forgot_password.html", {"form": form})
 
 
 class PasswordResetCornfirmViewCustom(PasswordResetConfirmView):
-	form_class = SetPasswordForm
+	#form_class = SetPasswordForm
 	template_name = "accounts/password_reset_confirm.html"
-	post_reset_login = True
+
+	def form_valid(self, form):
+		user = form.user
+
+		new_password = form.cleaned_data["password1"]
+		new_password2 = form.cleaned_data["password2"]
+
+		if new_password != new_password2:
+			messages.info(request, "Password not matching")
+			return redirect("password_reset_confirm")
+		user.set_password(new_password)
+		user.save()
+		
+		return redirect("accounts/password_reset_done.html")
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context["custom_data"] = "Custom data"
+		return context
 
 
 
