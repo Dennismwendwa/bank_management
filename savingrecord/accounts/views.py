@@ -14,7 +14,7 @@ def register(request):
 		password1  = request.POST["password1"]
 		password2  = request.POST["password2"]
 
-		print(first_name)
+		
 		if password1 == password2 and len(password1) > 7:
 			if User.objects.filter(username=username).exists():
 				messages.info(request, "Username Taken")
@@ -45,7 +45,7 @@ def login(request):
 		username = request.POST["username"]
 		password = request.POST["password"]
 
-		print(username)
+		
 
 		user = auth.authenticate(username=username, password=password)
 
@@ -57,3 +57,7 @@ def login(request):
 			return redirect("login")
 
 	return render(request, "accounts/login.html", {})
+
+def forget_password(request):
+
+	return render(request, "accounts/forget_password.html", {})
