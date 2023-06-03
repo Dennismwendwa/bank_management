@@ -336,7 +336,10 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="{% url 'logout' %}"
+                >
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Sign Out</span>
                 </a>
@@ -630,9 +633,10 @@
         <!-- End Login Page Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-error-404.html">
-            <i class="bi bi-dash-circle"></i>
-            <span>Error 404</span>
+          <a class="nav-link collapsed" href="{% url 'logout' %}">
+            <!--<i class="bi bi-dash-circle"></i>-->
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Logout</span>
           </a>
         </li>
         <!-- End Error 404 Page Nav -->

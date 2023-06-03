@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from .forms import EmailForm
+
+from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.views import PasswordResetConfirmView
 
 # Create your views here.
 
@@ -28,7 +33,7 @@ def register(request):
 				     last_name=last_name, username=username, 
 			email=email, password=password1)
 					user.save()
-				return redirect("/")
+				return redirect("savings")
 		elif len(password1) < 8:
 			messages.info(request, "The Password Must be 8 or more charactors!")
 			return redirect("register")
@@ -51,13 +56,61 @@ def login(request):
 
 		if user is not None:
 			auth.login(request, user)
-			return redirect("/")
+			return redirect("savings")
 		else:
 			messages.info(request, "Invalid credentials")
 			return redirect("login")
 
 	return render(request, "accounts/login.html", {})
 
-def forget_password(request):
+def logout(request):
+	auth.logout(request)
+	return redirect("login")
 
-	return render(request, "accounts/forget_password.html", {})
+
+def forgot_password(request):
+
+	if request.method == "POST":
+		form = EmailForm(request.POST)
+		if form.is_valid():
+			form.send_password_reset_email()
+			return render(request, "accounts/password_reset_done.html")
+	else:
+		form = EmailForm()
+
+	return render(request, "accounts/forget_password.html", {"form": form})
+
+
+class PasswordResetCornfirmViewCustom(PasswordResetConfirmView):
+	form_class = SetPasswordForm
+	template_name = "accounts/password_reset_confirm.html"
+	post_reset_login = True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
