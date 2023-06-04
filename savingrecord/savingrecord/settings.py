@@ -148,27 +148,3 @@ EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
