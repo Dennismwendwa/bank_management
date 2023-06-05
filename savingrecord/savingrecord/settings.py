@@ -12,6 +12,8 @@ load_dotenv(dotenv_path)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "crispy_forms", #for crispy tags
+    'crispy_bootstrap4', #for crispy forms
 ]
 
 MIDDLEWARE = [
@@ -67,6 +71,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+	    "builtins":[
+		    "crispy_forms.templatetags.crispy_forms_tags",
+	    ],
         },
     },
 ]
