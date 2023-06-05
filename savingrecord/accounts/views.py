@@ -3,11 +3,21 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .forms import EmailForm
 
-from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.urls import reverse
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth.views import PasswordResetConfirmView
+from django.http import HttpResponseRedirect
+from django.conf import settings
+
 
 # Create your views here.
+def home(request):
+
+	return render(request, "savings/indexx.html", {})
 
 def register(request):
 
@@ -74,7 +84,6 @@ def forgot_password(request):
 		form = EmailForm(request.POST)
 		if form.is_valid():
 			email = form.cleaned_data["email"]
-			print(email)
 			form.send_password_reset_email()
 			return render(request, "accounts/password_reset_done.html")
 	else:
@@ -82,54 +91,48 @@ def forgot_password(request):
 
 	return render(request, "accounts/forgot_password.html", {"form": form})
 
+class CustomPasswordResetView(PasswordResetView):
+	email_template_name = "email_templates/password_reset_email.html"
 
-class PasswordResetCornfirmViewCustom(PasswordResetConfirmView):
-	#form_class = SetPasswordForm
+	def send_mail(self, subject_template_name, email_template_name,
+			context, from_email, to_email, html_email_template_name=None):
+		subject = render_to_string(subject_template_name, context)
+
+
+		#remove any line breaks from the subject
+		subject = "".join(subject.splitlines())
+		body = render_to_string(email_template_name, context)
+		print(from_email)
+		print(to_email)
+
+		send_mail(print(subject), subject, body, from_email, [to_email], html_message=body)
+
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 	template_name = "accounts/password_reset_confirm.html"
 
 	def form_valid(self, form):
-		user = form.user
+		uidb64 = self.kwargs["uidb64"]
+		token  = self.kwargs["token"]
 
-		new_password = form.cleaned_data["password1"]
-		new_password2 = form.cleaned_data["password2"]
+		try:
+			uid = force_str(urlsafe_base64_decode(uidb64))
+			user = UserModel._default_manager.get(pk=uid)
+		except (TypeError, ValueError, OverflowError, UserModel.DoesNotExist):
+			user = None
 
-		if new_password != new_password2:
-			messages.info(request, "Password not matching")
-			return redirect("password_reset_confirm")
-		user.set_password(new_password)
-		user.save()
-		
-		return redirect("accounts/password_reset_done.html")
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context["custom_data"] = "Custom data"
-		return context
+		if user is not None and default_token_generator.check_tokrn(user, token):
+			newpassword = form.cleaned_data["newpassword1"]
+			user.set_password(newpassword)
+			user.save()
 
+			return HttpResponseRedirect(reverse("password_reset_complete"))
 
-
+		return self.render_to_response(self.get_context_data(form=form))
 
 
 
+def userprofile(request):
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	return render(request, "accounts/user_profile.html", {})

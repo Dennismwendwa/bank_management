@@ -30,6 +30,7 @@ SITE_ID = 1
 
 INSTALLED_APPS = [
     "savings",
+    "accounts.apps.AccountsConfig",
     'django.contrib.admin',
     'django.contrib.sites', #for password reset
     'django.contrib.auth',
