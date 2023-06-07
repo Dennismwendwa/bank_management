@@ -22,7 +22,7 @@ class Profile(models.Model):
 	def __str__(self):
 		return f"{self.user.username} Profile"
 	
-	def save(self):
+	def save(self, *args, **kwargs):
 		#removing old pics after profile updates pics with new
 		try:
 			old_profile = Profile.objects.get(pk=self.pk)
@@ -34,7 +34,7 @@ class Profile(models.Model):
 			if os.path.exists(old_image_path):
 				os.remove(old_image_path)
 
-		super().save()
+		super().save(*args, **kwargs)
 
 		#resizing images if bigger than 300 by 300
 		img = Image.open(self.image.path)
