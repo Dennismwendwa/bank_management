@@ -5,4 +5,5 @@ class BankAccountForm(forms.ModelForm):
 	class Meta:
 
 		model = Account
-		fields = ["account_name", "account_type", "opening_date", "first_name", "last_name"]
+		fields = ["account_name", "account_balance", "account_type", 
+	    "opening_date", "first_name", "last_name"]
