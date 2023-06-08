@@ -165,23 +165,9 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 def password_confirm_request(request):
 
 	return render(request, "accounts/password_reset_done.html")
-
-
-
 
 
 

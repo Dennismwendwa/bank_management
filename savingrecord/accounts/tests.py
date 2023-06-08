@@ -73,9 +73,6 @@ class AccountViewsTestCase(TestCase):
         self.assertFalse(User.objects.filter(username="milly1").exists())
 
 
-
-
-class AccountViewsTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(username="milly", password="frontend")
