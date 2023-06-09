@@ -358,7 +358,7 @@
     <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{% url 'savings' %}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
@@ -372,7 +372,7 @@
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-menu-button-wide"></i><span>Components</span
+            <i class="bi bi-menu-button-wide"></i><span>Account Operations</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -380,73 +380,32 @@
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
+           
             <li>
-              <a href="components-alerts.html">
-                <i class="bi bi-circle"></i><span>Alerts</span>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Deposit</span>
               </a>
             </li>
             <li>
-              <a href="components-accordion.html">
-                <i class="bi bi-circle"></i><span>Accordion</span>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Withdraw</span>
               </a>
             </li>
             <li>
-              <a href="components-badges.html">
-                <i class="bi bi-circle"></i><span>Badges</span>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Transfer</span>
               </a>
             </li>
+           
+          
             <li>
-              <a href="components-breadcrumbs.html">
-                <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Statements</span>
               </a>
             </li>
+           
             <li>
-              <a href="components-buttons.html">
-                <i class="bi bi-circle"></i><span>Buttons</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-cards.html">
-                <i class="bi bi-circle"></i><span>Cards</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-carousel.html">
-                <i class="bi bi-circle"></i><span>Carousel</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-list-group.html">
-                <i class="bi bi-circle"></i><span>List group</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-modal.html">
-                <i class="bi bi-circle"></i><span>Modal</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-tabs.html">
-                <i class="bi bi-circle"></i><span>Tabs</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-pagination.html">
-                <i class="bi bi-circle"></i><span>Pagination</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-progress.html">
-                <i class="bi bi-circle"></i><span>Progress</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-spinners.html">
-                <i class="bi bi-circle"></i><span>Spinners</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-tooltips.html">
+              <a href="">
                 <i class="bi bi-circle"></i><span>Tooltips</span>
               </a>
             </li>
@@ -461,7 +420,7 @@
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-journal-text"></i><span>Forms</span
+            <i class="bi bi-journal-text"></i><span>Create Account</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -470,25 +429,21 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="forms-elements.html">
-                <i class="bi bi-circle"></i><span>Form Elements</span>
+              <a href="{% url 'bank_account' %}">
+                <i class="bi bi-circle"></i><span>simba Account</span>
               </a>
             </li>
             <li>
-              <a href="forms-layouts.html">
-                <i class="bi bi-circle"></i><span>Form Layouts</span>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Saving Account</span>
               </a>
             </li>
             <li>
-              <a href="forms-editors.html">
-                <i class="bi bi-circle"></i><span>Form Editors</span>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Target Saving Account</span>
               </a>
             </li>
-            <li>
-              <a href="forms-validation.html">
-                <i class="bi bi-circle"></i><span>Form Validation</span>
-              </a>
-            </li>
+          
           </ul>
         </li>
         <!-- End Forms Nav -->
@@ -509,12 +464,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="tables-general.html">
+              <a href="">
                 <i class="bi bi-circle"></i><span>General Tables</span>
               </a>
             </li>
             <li>
-              <a href="tables-data.html">
+              <a href="">
                 <i class="bi bi-circle"></i><span>Data Tables</span>
               </a>
             </li>
@@ -522,7 +477,7 @@
         </li>
         <!-- End Tables Nav -->
 
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a
             class="nav-link collapsed"
             data-bs-target="#charts-nav"
@@ -542,20 +497,11 @@
                 <i class="bi bi-circle"></i><span>Chart.js</span>
               </a>
             </li>
-            <li>
-              <a href="charts-apexcharts.html">
-                <i class="bi bi-circle"></i><span>ApexCharts</span>
-              </a>
-            </li>
-            <li>
-              <a href="charts-echarts.html">
-                <i class="bi bi-circle"></i><span>ECharts</span>
-              </a>
-            </li>
+          
           </ul>
-        </li>
+        </li>-->
         <!-- End Charts Nav -->
-
+        <!--
         <li class="nav-item">
           <a
             class="nav-link collapsed"
@@ -576,18 +522,9 @@
                 <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
               </a>
             </li>
-            <li>
-              <a href="icons-remix.html">
-                <i class="bi bi-circle"></i><span>Remix Icons</span>
-              </a>
-            </li>
-            <li>
-              <a href="icons-boxicons.html">
-                <i class="bi bi-circle"></i><span>Boxicons</span>
-              </a>
-            </li>
+       
           </ul>
-        </li>
+        </li>-->
         <!-- End Icons Nav -->
 
         <li class="nav-heading">Pages</li>
@@ -657,7 +594,7 @@
         <h1>Dashboard</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'savings' %}">Home</a></li>
             <li class="breadcrumb-item active">Dashboard</li>
           </ol>
         </nav>
@@ -683,14 +620,14 @@
                         <h6>Filter</h6>
                       </li>
 
-                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">Not Today</a></li>
                       <li><a class="dropdown-item" href="#">This Month</a></li>
                       <li><a class="dropdown-item" href="#">This Year</a></li>
                     </ul>
                   </div>
 
                   <div class="card-body">
-                    <h5 class="card-title">Sales <span>| Today</span></h5>
+                    <h5 class="card-title">Not Today2 <span>| Today</span></h5>
 
                     <div class="d-flex align-items-center">
                       <div
@@ -750,7 +687,7 @@
                 </div>
               </div>
               <!-- End Revenue Card -->
-
+              
               <!-- Customers Card -->
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">
@@ -771,9 +708,11 @@
                     </ul>
                   </div>
 
+
+
                   <div class="card-body">
                     <h5 class="card-title">
-                      Customers <span>| This Year</span>
+                      {{acc_detail.account_balance}} | <span>{{acc_detail.account_number}}</span>
                     </h5>
 
                     <div class="d-flex align-items-center">
@@ -783,7 +722,7 @@
                         <i class="bi bi-people"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>1244</h6>
+                        <h6>6000</h6>
                         <span class="text-danger small pt-1 fw-bold">12%</span>
                         <span class="text-muted small pt-2 ps-1">decrease</span>
                       </div>
@@ -791,6 +730,9 @@
                   </div>
                 </div>
               </div>
+              {% for obj in account_number %}
+                {{obj}}
+              {% endfor %}
               <!-- End Customers Card -->
 
               <!-- Reports -->
@@ -995,6 +937,7 @@
                 </div>
               </div>
               <!-- End Recent Sales -->
+              
 
               <!-- Top Selling -->
               <div class="col-12">
