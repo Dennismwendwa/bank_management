@@ -382,12 +382,12 @@
           >
            
             <li>
-              <a href="">
+              <a href="{% url 'deposit' %}">
                 <i class="bi bi-circle"></i><span>Deposit</span>
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="{% url 'withraw' %}">
                 <i class="bi bi-circle"></i><span>Withdraw</span>
               </a>
             </li>
@@ -691,48 +691,33 @@
               <!-- Customers Card -->
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
+                
 
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-
-
+                  {% for account in acc_detail %}
                   <div class="card-body">
                     <h5 class="card-title">
-                      {{acc_detail.account_balance}} | <span>{{acc_detail.account_number}}</span>
+                      {{account.account_name}} | <span>{{account.account_number}}</span>
                     </h5>
 
                     <div class="d-flex align-items-center">
                       <div
                         class="card-icon rounded-circle d-flex align-items-center justify-content-center"
                       >
-                        <i class="bi bi-people"></i>
+                        <i class="bi bi-currency-dollar"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>6000</h6>
+                        <h6>{{account.account_balance}}</h6>
                         <span class="text-danger small pt-1 fw-bold">12%</span>
                         <span class="text-muted small pt-2 ps-1">decrease</span>
                       </div>
                     </div>
                   </div>
+                  {% endfor %}
                 </div>
               </div>
-              {% for obj in account_number %}
-                {{obj}}
-              {% endfor %}
+              
+                
+              
               <!-- End Customers Card -->
 
               <!-- Reports -->
