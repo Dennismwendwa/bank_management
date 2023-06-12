@@ -5,16 +5,17 @@ from django .contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .classes import make_deposit, make_withdraw, make_transfer, BankAccount
-from .models import Account, accounts_number
+from .models import Account, accounts_number, Saving_record
 from django.contrib import messages
-from datetime import datetime
+from django.utils import timezone
+from .forms import Saving_RecordForm
 
 @login_required
 def savings(request):
 
 	user = User.objects.get(username=request.user.username)
 
-	acc_detail = Account.objects.filter(user=user)[:6]
+	acc_detail = Account.objects.filter(user=user)[:13]
 
 	return render(request, "savings/index.html", {
 		"user": user,
@@ -34,24 +35,24 @@ def bank_account(request):
 	count = acc_detail.count() #= 0 
 	
 	if request.method == "POST":
-		if count < 7:
+		if count < 12:
 			
-			current_datetime = datetime.now()
-			formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+			current_datetime = timezone.now()
+#formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
 			account_balance = int(request.POST["account_balance"])
 			account_type = request.POST["account_type"]
 			first_name = request.POST["first_name"]
 			last_name  = request.POST["last_name"]
 
-			acc_num = accounts_number(user.id)
-			acc_nam = f"{user.first_name} {user.last_name}"
+			account_number = accounts_number(user.id)
+			account_name = f"{user.first_name} {user.last_name}"
 
 			account = Account.objects.create(
-					account_number = acc_num,
+					account_number = account_number,
 					
-					account_name = acc_nam,
+					account_name = account_name,
 					account_balance = account_balance,
-					opening_date = formatted_datetime,
+					opening_date = current_datetime,
 					account_type=account_type,
 					first_name = first_name,
 					last_name = last_name,
@@ -59,14 +60,15 @@ def bank_account(request):
 
 				)
 			obj = BankAccount()
-			results = obj.create_account(acc_num, acc_nam, account_balance, account_type)  # Call the create_account() method on the instance
-			#obj = BankAccount.create_account(acc_num, acc_nam, account_balance, account_type)
+			## Call the create_acco
+			result = obj.create_account(account_number, account_name, account_balance, account_type)
 
 		else:
 			messages.error(request, "You can Only have a maximum of Three(3) accounts")
 			return redirect("bank_account")
 		
-		messages.success(request, "We have received your request. Account will be created within 24hrs. Thanks.")
+		messages.success(request, """We have received your request.\
+				Account will be created within 24hrs. Thanks.""")
 		return redirect("bank_account")
 	
 	return render(request, "savings/bank_account.html", {})
@@ -145,7 +147,8 @@ def transfar_view(request):
 		elif status == "lessamount":
 			account_t = Account.objects.get(account_number=transfer_from)
 			balance_amount = account_t.account_balance
-			messages.error(request,  f"Insufficient funds, Your Balance is {balance_amount}")
+			messages.error(request,  f"""Insufficient funds, Your Balance is\
+					{balance_amount}""")
 			return redirect("transfer")
 
 		elif status == "failed":
@@ -155,7 +158,41 @@ def transfar_view(request):
 	return render(request, "savings/transfer.html", {})
 
 
+def savings_record(request):
+	
+	user = request.user
+	record_data = Saving_record.objects.filter(user=user).order_by('-date_saved')
+	total = 0
+	for items in record_data:
+		total += int(items.amount)
 
+	if request.method == "POST":
+
+		form = Saving_RecordForm(request.POST)
+		if form.is_valid():
+			amount = form.cleaned_data["amount"]
+			date_saved = form.cleaned_data["date_saved"]
+			account_number = form.cleaned_data["account_number"]
+
+			record = Saving_record.objects.create(user=user, amount=amount, 
+					date_saved=date_saved,
+				account_number=account_number)
+#			record = form.save(commit=False)
+#record.user = request.user
+#			record.save()
+		messages.success(request, "Record successfully saved")
+		return redirect("savings_record")
+	else:
+		form = Saving_RecordForm()
+
+
+
+
+	return render(request, "savings/savings_record.html", {
+			"form": form,
+			"record_data": record_data,
+			"total": total,
+			})
 
 
 

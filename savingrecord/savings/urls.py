@@ -8,4 +8,5 @@ urlpatterns = [
     path("withraw", views.withdraw_view, name="withraw"),
     path("deposit", views.deposit_view, name="deposit"),
     path("transfer", views.transfar_view, name="transfer"),
+    path("savings-record", views.savings_record, name="savings_record"),
 ]
