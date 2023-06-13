@@ -35,6 +35,22 @@ class Saving_record(models.Model):
 		return f"{self.user.first_name} - {self.account_number}"
 
 
+class Target_saving_record(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	saving_for = models.CharField(max_length=100)
+	target_amount = models.CharField(max_length=100)
+	amount_saved = models.CharField(max_length=100, default=0)
+	balence_amount = models.CharField(max_length=100, default=0)
+	progress = models.CharField(max_length=100, default=0)
+	saving_par_time = models.CharField(max_length=100)
+	start_date = models.DateTimeField()
+	end_date = models.DateTimeField()
+
+	def __str__(self):
+		return f"""{self.user.first_name} {self.user.last_name}\
+			- {self.target_amount} - {self.progress} - {self.saving_for}"""
+
+
 
 
 
@@ -47,7 +63,6 @@ def accounts_number(user_id):
 	
 	string_part = "ACC"
 
-#uuid_part = str(uuid.uuid4()).replace("-", "")[:8]
 	randd = random.randint(1, 10)
 	
 	uuid_part = str(uuid.uuid4().hex[:8])
@@ -57,18 +72,7 @@ def accounts_number(user_id):
 
 
 	bank_account_number = string_part + uuid_part + user_num
-    
-
-#random_letters = "".join(random.choices(string.ascii_uppercase, k=4))
 
 	return bank_account_number.upper()
-
-
-
-
-
-
-
-
 
 

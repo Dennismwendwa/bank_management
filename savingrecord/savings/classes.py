@@ -1,4 +1,4 @@
-from .models import Account
+from .models import Account, Target_saving_record
 import uuid
 from decimal import Decimal
 from django .contrib.auth.models import User
@@ -59,22 +59,16 @@ class BankAccount:
 				current_acc.account_balance += amount
 				current_acc.transaction_history.append({'transaction_id': transaction_id, 
 					'type': 'deposit', 'amount': amount})
-				print(f"transaction_id: {transaction_id}, type: 'deposit', 'amount': {amount}")
 
 			case "withdraw":
 				current_acc.account_balance -= amount
 				current_acc.transaction_history.append({'transaction_id': transaction_id,
 					'type': 'withdraw', 'amount': amount})
-				print(f"transaction_id: {transaction_id}, type: 'deposit', 'amount': {amount}")
 
 			case "transfer":
 				current_acc.account_balance -= amount
 				current_acc.transaction_history.append({'transaction_id': transaction_id,
 					'type': 'withdraw', 'amount': amount})
-				print(f"transaction_id: {transaction_id}, type: 'deposit', 'amount': {amount}")
-
-		print("Account updated successfully")
-
 
 
 	def print_transaction_history(self):
@@ -146,4 +140,71 @@ def make_transfer(amount, transfer_from_acc, transfer_to_acc):
 def helper_status(amount, account_no, transaction_type):
 	obj = BankAccount()
 	obj.update_status(amount, account_no, transaction_type)
+
+
+
+
+
+
+class Target_account_st:
+	def __init__(self, account_name, amount_save):
+		self.account_name = account_name
+		self.amount_save = amount_save
+
+	@classmethod
+	def record_keeper(cls, account_name, amount_save):
+		return cls(account_name, amount_save)
+
+	def stats(self, account_name, amount_save):
+		return f"{self.account_name} {self.amount_save}"
+
+
+def calculate_balance(user, amount, project_name):
+
+	try:
+		projects = Target_saving_record.objects.filter(user=user)
+		pro_name = projects.filter(saving_for=project_name).first()
+
+		if pro_name is None:
+			return "no-account"
+
+
+	except Target_saving_record.DoesNotExist:
+		return "failed"
+
+	else:
+		pro_name.amount_saved = int(pro_name.amount_saved) + amount
+		pro_name.balence_amount = int(pro_name.target_amount) - int(pro_name.amount_saved)
+		pro_name.progress  = (int(pro_name.amount_saved) / int(pro_name.target_amount)) * 100
+		pro_name.save()
+		instance = Target_account_st.record_keeper(project_name, amount)
+		return "seccuss"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -75,7 +75,7 @@
           </div>
         </form>
         <br /><br />
-        {% if record_data %}
+        {% if page_obj %}
         <table class="table">
           <thead>
             <tr>
@@ -86,7 +86,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for obj in record_data %}
+            {% for obj in page_obj %}
 
             <tr>
               <th scope="row"></th>
@@ -95,10 +95,11 @@
               <td>{{obj.amount}}</td>
             </tr>
             {% endfor %}
+
             <tr>
               <th scope="row"></th>
               <td></td>
-              <td><strong>Total Savings</strong></td>
+              <td><strong>Grand Total Savings</strong></td>
               <td><strong>{{total}}</strong></td>
             </tr>
           </tbody>
@@ -107,6 +108,23 @@
         <h4>There are no any records you have saved.</h4>
         {% endif %}
         <!-- End Custom Styled Validation with Tooltips -->
+      </div>
+      <div class="container_pagi">
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+          <button type="button" class="btn btn-info">
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </button>
+          {% endif %}
+          <button type="button" class="btn btn-primary pagi_btn">
+            <span class="current-page">{{ page_obj.number}}</span>
+          </button>
+          {% if page_obj.has_next %}
+          <button type="button" class="btn btn-info pagi_btn">
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+          </button>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
