@@ -5,7 +5,8 @@ from django .contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .classes import make_deposit, make_withdraw, make_transfer, calculate_balance, BankAccount
-from .models import Account, accounts_number, Saving_record, Target_saving_record
+from .classes import get_transaction_history, get_account_details
+from .models import Account, accounts_number, Saving_record, Target_saving_record, Statements
 from django.contrib import messages
 from django.utils import timezone
 from .forms import Saving_RecordForm, Target_SavingForm
@@ -16,11 +17,14 @@ def savings(request):
 
 	user = User.objects.get(username=request.user.username)
 
-	acc_detail = Account.objects.filter(user=user)[:13]
+	acc_detail = get_account_details(user)
+
+	statemest = get_transaction_history(user)
 
 	return render(request, "savings/index.html", {
 		"user": user,
 		"acc_detail": acc_detail,
+		"statemest": statemest,
 		})
 
 def bank_account(request):
@@ -39,7 +43,6 @@ def bank_account(request):
 		if count < 12:
 			
 			current_datetime = timezone.now()
-#formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
 			account_balance = int(request.POST["account_balance"])
 			account_type = request.POST["account_type"]
 			first_name = request.POST["first_name"]
@@ -49,8 +52,7 @@ def bank_account(request):
 			account_name = f"{user.first_name} {user.last_name}"
 
 			account = Account.objects.create(
-					account_number = account_number,
-					
+					account_number = account_number,		
 					account_name = account_name,
 					account_balance = account_balance,
 					opening_date = current_datetime,
@@ -60,6 +62,7 @@ def bank_account(request):
 					user = user
 
 				)
+
 			obj = BankAccount()
 			## Call the create_acco
 			result = obj.create_account(account_number, account_name,

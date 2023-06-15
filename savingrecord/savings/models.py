@@ -51,12 +51,17 @@ class Target_saving_record(models.Model):
 			- {self.target_amount} - {self.progress} - {self.saving_for}"""
 
 
+class Statements(models.Model):
+	account_number = models.ForeignKey(Account, on_delete=models.CASCADE)
+	transaction_type = models.CharField(max_length=100)
+	amount = models.DecimalField(max_digits=12, decimal_places=4)
+	transaction_date = models.DateTimeField()
 
 
-
-
-
-
+	def __str__ (self):
+		return f"""{self.account_number.account_number}- {self.transaction_type} - 
+		{self.amount} - {self.transaction_date} """
+    
 
 def accounts_number(user_id):
 

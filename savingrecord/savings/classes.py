@@ -1,4 +1,4 @@
-from .models import Account, Target_saving_record
+from .models import Account, Target_saving_record, Statements
 import uuid
 from decimal import Decimal
 from django .contrib.auth.models import User
@@ -18,35 +18,18 @@ class BankAccount:
 				opening_date = timezone.now(),
 				)
 		self.accounts.append(account)
-		print()
-		print("list start")
-		print(account.account_number)
-		print(account.account_name)
-		print(account.account_balance)
-		print(account.account_type)
-		print("list end")
-		for acc in self.accounts:
-			print(acc)
-		print("Account created successfully")
-		print()
 		return account
 	
 	def update_status(self, amount, account_no, transaction_type):
 		current_acc = None
 		for acc in self.accounts:
-			print()
-			print()
-			print(acc)
+			
 			if acc.account_number == account_no:
 				current_acc = acc
 				break
 			
 			if current_acc is None:
 				print("Account to updated status not found")
-		print()
-		print(self.accounts)
-		print(f"Amount: {amount} Account no: {account_no} tran type: {transaction_type}")
-		print()
 
 		if current_acc is None:
 			print("Account to update status not found")
@@ -76,7 +59,8 @@ class BankAccount:
 
 
 def make_deposit(request, amount, account_no):
-
+	
+	transaction_date = timezone.now()
 	transaction_type = "deposit"
 	try:
 		
@@ -87,6 +71,7 @@ def make_deposit(request, amount, account_no):
 			account.account_balance += Decimal(amount)
 			account.save()
 			helper_status(amount, account_no, transaction_type)
+			register_history(account_no, amount, transaction_type, transaction_date)
 			return "success"
 		else:
 			return "failid"
@@ -95,7 +80,8 @@ def make_deposit(request, amount, account_no):
 		return "failed"
 	
 def make_withdraw(request, amount, account_no):
-
+	
+	transaction_date = timezone.now()
 	transaction_type = "withdraw"
 	try:
 		accounts = Account.objects.filter(user=request.user)
@@ -106,6 +92,7 @@ def make_withdraw(request, amount, account_no):
 				account.account_balance -= Decimal(amount)
 				account.save()
 				helper_status(amount, account_no, transaction_type)
+				register_history(account_no, amount, transaction_type, transaction_date)
 				
 				return "success"
 			else:
@@ -117,7 +104,8 @@ def make_withdraw(request, amount, account_no):
 		return "failed"
 
 def make_transfer(amount, transfer_from_acc, transfer_to_acc):
-
+	
+	current_datetime = timezone.now()
 	transaction_type = "transfer"
 	try:
 		transfer_from = Account.objects.get(account_number=transfer_from_acc)
@@ -130,6 +118,7 @@ def make_transfer(amount, transfer_from_acc, transfer_to_acc):
 			transfer_from.save()
 			transfer_to.save()
 			helper_status(amount, transfer_from_acc, transaction_type)
+			register_history(transfer_from_acc, amount, transaction_type, current_datetime)
 			return "success"
 		else:
 			return "lessamount"
@@ -140,10 +129,6 @@ def make_transfer(amount, transfer_from_acc, transfer_to_acc):
 def helper_status(amount, account_no, transaction_type):
 	obj = BankAccount()
 	obj.update_status(amount, account_no, transaction_type)
-
-
-
-
 
 
 class Target_account_st:
@@ -182,29 +167,37 @@ def calculate_balance(user, amount, project_name):
 
 
 
+def register_history(account_number, amount, transaction_type, transaction_date):
+	try:
+		account = Account.objects.get(account_number=account_number)
+
+	except Account.DoesNotExist:
+		return "failed"
+
+	else:
+		trans_register = Statements(
+			account_number = account,
+			transaction_type = transaction_type,
+			transaction_date = transaction_date,
+			amount = amount
+		)
+		trans_register.save()
+
+		account.last_transaction_date = trans_register.transaction_date
+		account.save()
 
 
+def get_transaction_history(user):
+	
+	accounts = user.account_set.all() #Account.objects.filter(user=user)
+
+	transactions = Statements.objects.filter(account_number__in=accounts)
+
+	return transactions
 
 
+def get_account_details(user):
+	
+	details = Account.objects.filter(user=user)[:3]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	return details

@@ -587,7 +587,7 @@
         <!-- End Blank Page Nav -->
       </ul>
     </aside>
-    <!-- End Sidebar-->
+    <!-- End Sidebar-->   
 
     <main id="main" class="main">
       <div class="pagetitle">
@@ -609,25 +609,10 @@
               <!-- Sales Card -->
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Not Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
+                 
 
                   <div class="card-body">
-                    <h5 class="card-title">Not Today2 <span>| Today</span></h5>
+                    <h5 class="card-title">Staments <span></span></h5>
 
                     <div class="d-flex align-items-center">
                       <div
@@ -646,29 +631,14 @@
               </div>
               <!-- End Sales Card -->
 
-              <!-- Revenue Card -->
+              <!-- Top cards -->
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card revenue-card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
+                 
 
                   <div class="card-body">
                     <h5 class="card-title">
-                      Revenue <span>| This Month</span>
+                      Balance <span></span>
                     </h5>
 
                     <div class="d-flex align-items-center">
@@ -706,7 +676,7 @@
                         <i class="bi bi-currency-dollar"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>{{account.account_balance}}</h6>
+                        <h6>{{account.account_balance|floatformat:2}}</h6>
                         <span class="text-danger small pt-1 fw-bold">12%</span>
                         <span class="text-muted small pt-2 ps-1">decrease</span>
                       </div>
@@ -723,25 +693,10 @@
               <!-- Reports -->
               <div class="col-12">
                 <div class="card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
+                 
 
                   <div class="card-body">
-                    <h5 class="card-title">Reports <span>/Today</span></h5>
+                    <h5 class="card-title">Transactions <span></span></h5>
 
                     <!-- Line Chart -->
                     <div id="reportsChart"></div>
@@ -753,15 +708,15 @@
                           {
                             series: [
                               {
-                                name: "Sales",
+                                name: "Withdraw",
                                 data: [31, 40, 28, 51, 42, 82, 56],
                               },
                               {
-                                name: "Revenue",
+                                name: "Deposit",
                                 data: [11, 32, 45, 32, 34, 52, 41],
                               },
                               {
-                                name: "Customers",
+                                name: "Transfer",
                                 data: [15, 11, 32, 18, 9, 24, 11],
                               },
                             ],
@@ -822,101 +777,46 @@
               <!-- Recent Sales -->
               <div class="col-12">
                 <div class="card recent-sales overflow-auto">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
+                 
 
                   <div class="card-body">
                     <h5 class="card-title">
-                      Recent Sales <span>| Today</span>
+                      All transactions <span></span>
                     </h5>
 
                     <table class="table table-borderless datatable">
+                      
                       <thead>
                         <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Customer</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Status</th>
+                          <th scope="col">$</th>
+                          <th scope="col">Transaction Date</th>
+                          <th scope="col">Account number</th>
+                          <th scope="col">Transaction_type</th>
+                          <th scope="col">Amount</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {% for obj in statemest %}
+
                         <tr>
-                          <th scope="row"><a href="#">#2457</a></th>
-                          <td>Brandon Jacob</td>
+                          <th scope="row"><a href="#">1</a></th>
+                          <td>{{obj.transaction_date}}</td>
                           <td>
-                            <a href="#" class="text-primary"
-                              >At praesentium minu</a
+                            <p class="text-primary"
+                              >{{obj.account_number}}</p
                             >
                           </td>
-                          <td>$64</td>
+                          <td>{{obj.amount}}</td>
                           <td>
-                            <span class="badge bg-success">Approved</span>
+                            <span class="badge bg-success">{{obj.transaction_type}}</span>
                           </td>
                         </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2147</a></th>
-                          <td>Bridie Kessler</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >Blanditiis dolor omnis similique</a
-                            >
-                          </td>
-                          <td>$47</td>
-                          <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2049</a></th>
-                          <td>Ashleigh Langosh</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >At recusandae consectetur</a
-                            >
-                          </td>
-                          <td>$147</td>
-                          <td>
-                            <span class="badge bg-success">Approved</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2644</a></th>
-                          <td>Angus Grady</td>
-                          <td>
-                            <a href="#" class="text-primar"
-                              >Ut voluptatem id earum et</a
-                            >
-                          </td>
-                          <td>$67</td>
-                          <td><span class="badge bg-danger">Rejected</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2644</a></th>
-                          <td>Raheem Lehner</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >Sunt similique distinctio</a
-                            >
-                          </td>
-                          <td>$165</td>
-                          <td>
-                            <span class="badge bg-success">Approved</span>
-                          </td>
-                        </tr>
+                        {% endfor %}
+
+                       
+                        
                       </tbody>
+                   
                     </table>
                   </div>
                 </div>
@@ -924,136 +824,7 @@
               <!-- End Recent Sales -->
               
 
-              <!-- Top Selling -->
-              <div class="col-12">
-                <div class="card top-selling overflow-auto">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body pb-0">
-                    <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                    <table class="table table-borderless">
-                      <thead>
-                        <tr>
-                          <th scope="col">Preview</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Sold</th>
-                          <th scope="col">Revenue</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-1.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Ut inventore ipsa voluptas nulla</a
-                            >
-                          </td>
-                          <td>$64</td>
-                          <td class="fw-bold">124</td>
-                          <td>$5,828</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-2.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Exercitationem similique doloremque</a
-                            >
-                          </td>
-                          <td>$46</td>
-                          <td class="fw-bold">98</td>
-                          <td>$4,508</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-3.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Doloribus nisi exercitationem</a
-                            >
-                          </td>
-                          <td>$59</td>
-                          <td class="fw-bold">74</td>
-                          <td>$4,366</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-4.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Officiis quaerat sint rerum error</a
-                            >
-                          </td>
-                          <td>$32</td>
-                          <td class="fw-bold">63</td>
-                          <td>$2,016</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-5.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Sit unde debitis delectus repellendus</a
-                            >
-                          </td>
-                          <td>$79</td>
-                          <td class="fw-bold">41</td>
-                          <td>$3,239</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- End Top Selling -->
+              
             </div>
           </div>
           <!-- End Left side columns -->
@@ -1062,90 +833,44 @@
           <div class="col-lg-4">
             <!-- Recent Activity -->
             <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
+             
 
               <div class="card-body">
                 <h5 class="card-title">
-                  Recent Activity HERE BRO<span>| Today</span>
+                  Recent Activity<span></span>
                 </h5>
 
                 <div class="activity">
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">32 min</div>
+                  {% for obj in statemest %}
+                  <div class="activity-item spacing_cap d-flex mb-3">
+                    <div class="activite-label">{{obj.transaction_date|date:'Y-m-d'}}</div>
+                      {% if obj.transaction_type == "deposit"%}
                     <i
                       class="bi bi-circle-fill activity-badge text-success align-self-start"
                     ></i>
+                    {% elif obj.transaction_type == "withdraw"%}
+                    <i
+                    class="bi bi-circle-fill activity-badge text-danger align-self-start"
+                  ></i>
+                  {% else %}
+                  <i
+                  class="bi bi-circle-fill activity-badge text-warning align-self-start"
+                ></i>
+                  {% endif %}
+
                     <div class="activity-content">
-                      Quia quae rerum
+                      {{obj.account_number|stringformat:"s"|slice:"12:22" }}...
+                     
                       <a href="#" class="fw-bold text-dark"
-                        >explicabo officiis</a
+                        > {{obj.transaction_type}}</a
                       >
-                      beatae
+                      {{obj.amount|floatformat:2 }}
                     </div>
                   </div>
+                  {% endfor %}
                   <!-- End activity item-->
 
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">56 min</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-danger align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 hrs</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-primary align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">1 day</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-info align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Tempore autem saepe
-                      <a href="#" class="fw-bold text-dark"
-                        >occaecati voluptatem</a
-                      >
-                      tempore
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 days</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-warning align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
+                  <!--
                   <div class="activity-item d-flex">
                     <div class="activite-label">4 weeks</div>
                     <i
@@ -1154,122 +879,21 @@
                     <div class="activity-content">
                       Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
                     </div>
-                  </div>
+                  </div>-->
                   <!-- End activity item-->
+
                 </div>
               </div>
             </div>
             <!-- End Recent Activity -->
 
-            <!-- Budget Report -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
 
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
+            <!-- Transactions summary -->
+            <div class="card">
+             
 
               <div class="card-body pb-0">
-                <h5 class="card-title">
-                  Budget Report <span>| This Month</span>
-                </h5>
-
-                <div
-                  id="budgetChart"
-                  style="min-height: 400px"
-                  class="echart"
-                ></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    var budgetChart = echarts
-                      .init(document.querySelector("#budgetChart"))
-                      .setOption({
-                        legend: {
-                          data: ["Allocated Budget", "Actual Spending"],
-                        },
-                        radar: {
-                          // shape: 'circle',
-                          indicator: [
-                            {
-                              name: "Sales",
-                              max: 6500,
-                            },
-                            {
-                              name: "Administration",
-                              max: 16000,
-                            },
-                            {
-                              name: "Information Technology",
-                              max: 30000,
-                            },
-                            {
-                              name: "Customer Support",
-                              max: 38000,
-                            },
-                            {
-                              name: "Development",
-                              max: 52000,
-                            },
-                            {
-                              name: "Marketing",
-                              max: 25000,
-                            },
-                          ],
-                        },
-                        series: [
-                          {
-                            name: "Budget vs spending",
-                            type: "radar",
-                            data: [
-                              {
-                                value: [4200, 3000, 20000, 35000, 50000, 18000],
-                                name: "Allocated Budget",
-                              },
-                              {
-                                value: [
-                                  5000, 14000, 28000, 26000, 42000, 21000,
-                                ],
-                                name: "Actual Spending",
-                              },
-                            ],
-                          },
-                        ],
-                      });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- End Budget Report -->
-
-            <!-- Website Traffic -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
-              <div class="card-body pb-0">
-                <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+                <h5 class="card-title">Transactions summary <span></span></h5>
 
                 <div
                   id="trafficChart"
@@ -1291,7 +915,7 @@
                         },
                         series: [
                           {
-                            name: "Access From",
+                            name: "summary form",
                             type: "pie",
                             radius: ["40%", "70%"],
                             avoidLabelOverlap: false,
@@ -1311,24 +935,24 @@
                             },
                             data: [
                               {
-                                value: 1048,
-                                name: "Search Engine",
+                                value: 650,
+                                name: "Deposit",
                               },
                               {
                                 value: 735,
-                                name: "Direct",
+                                name: "Withdraw",
                               },
                               {
                                 value: 580,
-                                name: "Email",
+                                name: "Transfar",
                               },
                               {
                                 value: 484,
-                                name: "Union Ads",
+                                name: "Family",
                               },
                               {
                                 value: 300,
-                                name: "Video Ads",
+                                name: "Others",
                               },
                             ],
                           },
@@ -1341,7 +965,7 @@
             <!-- End Website Traffic -->
 
             <!-- News & Updates Traffic -->
-            <div class="card">
+           <!-- <div class="card">
               <div class="filter">
                 <a class="icon" href="#" data-bs-toggle="dropdown"
                   ><i class="bi bi-three-dots"></i
