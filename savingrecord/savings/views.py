@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from django.urls import path
 from django .contrib.auth.models import User
@@ -12,6 +11,8 @@ from django.utils import timezone
 from .forms import Saving_RecordForm, Target_SavingForm
 from django.core.paginator import Paginator
 
+from packs.quotes import money_quotes
+
 @login_required
 def savings(request):
 
@@ -20,11 +21,13 @@ def savings(request):
 	acc_detail = get_account_details(user)
 
 	statemest = get_transaction_history(user)
+	quote = money_quotes()
 
 	return render(request, "savings/index.html", {
 		"user": user,
 		"acc_detail": acc_detail,
 		"statemest": statemest,
+        "quote": quote,
 		})
 
 def bank_account(request):
