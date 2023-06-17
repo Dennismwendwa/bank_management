@@ -126,7 +126,8 @@ User = get_user_model()
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 	template_name = "accounts/password_reset_confirm.html"
-#success_url = reverse_lazy("accounts:login")
+
+#   success_url = reverse_lazy("accounts:login")
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
@@ -168,7 +169,6 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 def password_confirm_request(request):
 
 	return render(request, "accounts/password_reset_done.html")
-
 
 
 @login_required
