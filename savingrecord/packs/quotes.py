@@ -49,8 +49,7 @@ def money_quotes():
             return quote
 
         case "12":
-            quote = """It’s not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for.
-– Robert Kiyosaki"""
+            quote = """It’s not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for. – Robert Kiyosaki"""
             return quote
 
 
