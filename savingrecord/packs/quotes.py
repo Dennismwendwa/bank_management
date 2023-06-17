@@ -2,7 +2,8 @@ import random
 
 
 def money_quotes():
-    result = str(random.randint(1, 30))
+    result = str(random.randint(1, 50))
+    print(result)
 
     match result:
         case "1":
@@ -111,4 +112,84 @@ def money_quotes():
             return quote
         case "30":
             quote = """"Money is the barometer of a society's virtue." ~ Ayn Rand"""
+            return quote
+
+        case "31":
+            quote = """"A billion here, a billion there, and pretty soon you're talking about real money." ~ Everett Dirksen"""
+            return quote
+
+        case "32":
+            quote = """"Shortly after I met my mentor he asked me, ‘Mr. Rohn, how much money have you saved and invested over the last six years?’ And I said, ‘None.’ He then asked, ‘Who sold you on that plan?’" ~ Jim Rohn"""
+            return quote
+
+        case "33":
+            quote = """"I save money when I'm working so that I never have to take a role simply to pay the bills." ~ Gary Sinise"""
+            return quote
+
+        case "34":
+            quote = """"The reason that so many of us cannot save money is because of our friends. They're always buying something we can't afford." ~ Sam Ewing"""
+            return quote
+
+        case "35":
+            quote = """"Dogs have no money. Isn't that amazing? They're broke their entire lives. But they get through. You know why dogs have no money? .. No Pockets." ~ Jerry Seinfeld"""
+
+        case "36":
+            quote = """"Money is a strange business. People who haven't got it aim it strongly. People who have are full of troubles." ~ Ayrton Senna"""
+            return quote
+
+        case "37":
+            quote = """"Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver." ~ Ayn Rand"""
+            return quote
+
+        case "38":
+            quote = """"Before you speak, listen. Before you write, think. Before you spend, earn. Before you invest, investigate. Before you criticize, wait. Before you pray, forgive. Before you quit, try. Before you retire, save. Before you die, give." ~ William Arthur Ward"""
+            return quote
+
+        case "39":
+            quote = """"Marriage orients men and women toward the future, asking them not just to commit to each
+other but to plan, to earn, to save, and to devote themselves to advancing their children's prospects." ~ Daniel Patrick Moynihan"""
+            return quote
+
+        case "40":
+            quote = """"If you cannot save money, the seeds of greatness are not in you." ~ W. Clement Stone"""
+            return quote
+
+        case "41":
+            quote = """"Prosperity is the fruit of labor. It begins with saving money." ~ Abraham Lincoln"""
+            return quote
+
+        case "42":
+            quote = """"Identical twins. I'm glad they're identical 'cause you save money on photographs. That's what I like. Yeah. Here's my little boy. I got another one just like it." ~ Ray Romano"""
+            return quote
+
+        case "43":
+            quote = """"You have to go broke three times to learn how to make a living." ~ Casey Stengel"""
+            return quote
+
+        case "44":
+            quote = """"Put not your trust in money, but put your money in trust." ~ Oliver Wendell Holmes Sr. """
+            return quote
+
+        case "45":
+            quote = """"If women didn't exist, all the money in the world would have no meaning." ~ Aristotle Onassis"""
+            return quote
+
+        case "46":
+            quote = """"It's curious that only in Washington can you spend $2 billion and claim that you're saving money." ~ Rand Paul"""
+            return quote
+
+        case "47":
+            quote = """He who will not economize will have to agonize. – Confucius"""
+            return quote
+
+        case "48":
+            quote = """Small amounts saved daily add up to huge investments in the end. ― Margo Vader"""
+            return quote
+
+        case "49":
+            quote = """The bitterness of poor quality remains long after the sweetness of low price is forgotten. – Benjamin Franklin"""
+            return quote
+
+        case "50":
+            quote = """Once you really accept that spending money doesn’t equal happiness, you have half the battle won. – Ernest Callenbach"""
             return quote
