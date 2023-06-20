@@ -1,0 +1,133 @@
+{% extends "savings/forms_layout.html" %}
+{% load static %}
+
+{% block saving_account %}
+
+
+<div class="pagetitle">
+  <h1>Transfer</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'savings' %}">Home</a></li>
+      <li class="breadcrumb-item">Forms</li>
+      <li class="breadcrumb-item active">Account</li>
+    </ol>
+  </nav>
+</div>
+<!-- End Page Title -->
+<section class="section">
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Saving Deposit form</h5>
+          <p>
+          </p>
+           {% for message in messages %}
+           <h4>{{message}}</h4>
+           {% endfor %}
+          <!-- Custom Styled Validation with Tooltips -->
+          <form action="{% url 'saving_deposit' %}" method="POST" class="row g-3 needs-validation" novalidate>
+              {% csrf_token %}
+            
+            </div>
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip02" class="form-label"
+                >Account Number</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip02"
+                name="account_number"
+                required
+              />
+              <div class="valid-tooltip">Looks good!</div>
+            </div>
+            <br><br>
+            
+             <div class="col-md-4 position-relative">
+              <label for="validationTooltip01" class="form-label"
+                >Deposit Amount</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip01"
+                name="deposit"
+                required
+              />
+              <div class="valid-tooltip">Looks good!</div>
+            </div>
+        
+            <br>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Deposit Amount</button>
+            </div>
+          </form>
+          <!-- End Custom Styled Validation with Tooltips -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Saving Account form</h5>
+        <p>
+        </p>
+         {% for message in messages %}
+         <h4>{{message}}</h4>
+         {% endfor %}
+        <!-- Custom Styled Validation with Tooltips -->
+        <form action="{% url 'saving_account' %}" method="POST" class="row g-3 needs-validation" novalidate>
+            {% csrf_token %}
+          
+          </div>
+          <div class="col-md-6 position-relative">
+            <label for="validationTooltip02" class="form-label"
+              >Account Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="validationTooltip02"
+              name="account_name"
+              required
+            />
+            <div class="valid-tooltip">Looks good!</div>
+          </div>
+          <br><br>
+          
+           <div class="col-md-4 position-relative">
+            <label for="validationTooltip01" class="form-label"
+              >Deposit Amount</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="validationTooltip01"
+              name="deposit"
+              required
+            />
+            <div class="valid-tooltip">Looks good!</div>
+          </div>
+          <br>
+          <div class="col-12">
+            {% if count_acc < 3 %}
+            <button class="btn btn-primary" type="submit">Open Account</button>
+            {% else %}
+            <button class="btn btn-primary" type="submit" disabled>Open Account</button>
+            {% endif %}
+        
+          </div>
+        </form>
+        <!-- End Custom Styled Validation with Tooltips -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

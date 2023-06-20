@@ -4,8 +4,10 @@ from django .contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .classes import make_deposit, make_withdraw, make_transfer, calculate_balance, BankAccount
-from .classes import get_transaction_history, get_account_details
+from .classes import get_transaction_history, get_account_details, saving_deposit
+from .classes import get_transaction_percentage
 from .models import Account, accounts_number, Saving_record, Target_saving_record, Statements
+from .models import Saving_account, Saving_account_statements
 from django.contrib import messages
 from django.utils import timezone
 from .forms import Saving_RecordForm, Target_SavingForm
@@ -17,17 +19,25 @@ from packs.quotes import money_quotes
 def savings(request):
 
 	user = User.objects.get(username=request.user.username)
-
 	acc_detail = get_account_details(user)
-
 	statemest = get_transaction_history(user)
 	quote = money_quotes()
+	acc_saving = Saving_account.objects.filter(user=user)
+	percent_acc, percent_withdral, percent_deposit, percent_transfer = get_transaction_percentage(user)
+	if quote is None:
+		print("Qoute is None")
 
 	return render(request, "savings/index.html", {
 		"user": user,
 		"acc_detail": acc_detail,
 		"statemest": statemest,
         "quote": quote,
+		"acc_saving": acc_saving,
+
+		"percent_acc": percent_acc,
+		"percent_withdral": percent_withdral,
+		"percent_deposit": percent_deposit,
+		"percent_transfer": percent_transfer,
 		})
 
 def bank_account(request):
@@ -43,7 +53,7 @@ def bank_account(request):
 	count = acc_detail.count() #= 0 
 	
 	if request.method == "POST":
-		if count < 12:
+		if count < 3:
 			
 			current_datetime = timezone.now()
 			account_balance = int(request.POST["account_balance"])
@@ -80,6 +90,57 @@ def bank_account(request):
 		return redirect("bank_account")
 	
 	return render(request, "savings/bank_account.html", {})
+
+def saving_account(request):
+	
+	user = User.objects.get(username=request.user.username)
+	acc_saving = Saving_account.objects.filter(user=user)
+	count_acc = acc_saving.count()
+
+	if request.method == "POST":
+		
+		deposit = int(request.POST["deposit"])
+		account_name = request.POST["account_name"]
+
+		account_number = accounts_number(user.id)
+		current_datetime = timezone.now()
+
+		saving = Saving_account.objects.create(
+			user = user,
+			account_name = account_name,
+			account_number = account_number,
+			deposit = deposit,
+			account_balance = deposit,
+			account_type = "Saving",
+			opening_date = current_datetime
+		)
+		messages.success(request, "Your saving Acount was created success")
+		return redirect("saving_account")
+	
+	return render(request, "savings/saving_account.html", {
+	"acc_saving": acc_saving,
+	"count_acc": count_acc,
+	})
+
+def deposit_saving_account(request):
+	
+	if request.method == "POST":
+		account_number = request.POST["account_number"]
+		deposit = int(request.POST["deposit"])
+
+		print(account_number)
+		print(deposit)
+
+		status = saving_deposit(request, deposit, account_number)
+		if status == "success":
+			messages.success(request, f"Your deposit of {deposit}")
+			return redirect("savings")
+
+		elif status == "failid":
+			messages.error(request, "something went wrong try again.")
+			return redirect("saving_deposit")
+
+	return render(request, "savings/saving_account.html", {})
 
 def accounts_operations(request):
 
@@ -277,14 +338,5 @@ def dairly_deposit(request):
 			"target_item": target_item,
 	
 			})
-
-
-
-
-
-
-
-
-
 
 

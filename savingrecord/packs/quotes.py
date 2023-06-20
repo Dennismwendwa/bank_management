@@ -3,7 +3,6 @@ import random
 
 def money_quotes():
     result = str(random.randint(1, 50))
-    print(result)
 
     match result:
         case "1":

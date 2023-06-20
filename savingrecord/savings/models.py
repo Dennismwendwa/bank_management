@@ -18,11 +18,31 @@ class Account(models.Model):
 	last_transaction_date = models.DateTimeField(null=True)
 	first_name = models.CharField(max_length=100, default="Savingsf")
 	last_name  = models.CharField(max_length=100, default="Savingsl")
-
+	total_withdraw = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+	total_deposit = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+	total_transfar = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+	total_trans_amount = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 
 
 	def __str__ (self):
 		return f"{self.account_name} - {self.account_number} - {self.account_status}"
+
+	#resetting transactions to zero every month end
+	@classmethod
+	def reset_transaction_fields(cls):
+		today = datetime.date.today()
+		first_day_of_month = datetime.date(today.year, today.month, 1)
+		last_reset_time = first_day_of_month
+
+		current_time = datetime.date.today()
+		elapsed_time = current_time - last_reset_time
+		if elapsed_time.days >= 30:
+			cls.objects.update(
+				total_withdraw = 0,
+				total_deposit = 0,
+				total_transfar = 0,
+				total_trans_amount = 0
+			) #Account.reset_transaction_fields()
 
 
 class Saving_record(models.Model):
@@ -81,3 +101,27 @@ def accounts_number(user_id):
 	return bank_account_number.upper()
 
 
+class Saving_account(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	account_name = models.CharField(max_length=50, default="saving")
+	account_number = models.CharField(max_length=50, unique=True)
+	deposit = models.DecimalField(max_digits=12, decimal_places=4)
+	account_balance = models.DecimalField(max_digits=12, decimal_places=4)
+	last_transaction_date = models.DateTimeField(null=True)
+	account_type = models.CharField(max_length=100)
+	transaction_count = models.CharField(max_length=100, default=0)
+	opening_date = models.DateTimeField()
+
+	def __str__(self):
+		return f"{self.account_number} - {self.account_balance}"
+
+
+class Saving_account_statements(models.Model):
+	account_number = models.ForeignKey(Saving_account, on_delete=models.CASCADE)
+	transaction_type = models.CharField(max_length=100)
+	amount = models.DecimalField(max_digits=12, decimal_places=4)
+	transaction_date = models.DateTimeField()
+
+	def __str__(self):
+		return f"""{self.account_number.account_number} - 
+		{self.transaction_date} - {self.transaction_type}"""

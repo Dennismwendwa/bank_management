@@ -10,5 +10,7 @@ urlpatterns = [
     path("transfer", views.transfar_view, name="transfer"),
     path("savings-record", views.savings_record, name="savings_record"),
     path("target-saving", views.target_saving, name="target_saving"),
-    path("daily-saving", views. dairly_deposit, name="dairly_deposit"),
+    path("daily-saving", views.dairly_deposit, name="dairly_deposit"),
+	path("saving-account", views.saving_account, name="saving_account"),
+	path("saving-deposit", views.deposit_saving_account, name="saving_deposit"),
 ]

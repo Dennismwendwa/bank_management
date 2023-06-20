@@ -434,7 +434,7 @@
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="{% url "saving_account" %}">
                 <i class="bi bi-circle"></i><span>Saving Account</span>
               </a>
             </li>
@@ -602,7 +602,10 @@
       <!-- End Page Title -->
       <section>
         <div class="card-body">
+          {% if quote %}
           <h4>{{quote}}</h4>
+          {% else %}
+          {% endif %}
         </div>
       </section>
 
@@ -617,8 +620,11 @@
                  
 
                   <div class="card-body">
-                    <h5 class="card-title">Staments <span></span></h5>
+                    <h5 class="card-title">Saving Accounts <span></span></h5>
+                    
 
+                    {% for saving in acc_saving %}
+                    <h5 class="card-title">{{saving.account_number}} <span></span></h5>
                     <div class="d-flex align-items-center">
                       <div
                         class="card-icon rounded-circle d-flex align-items-center justify-content-center"
@@ -626,11 +632,13 @@
                         <i class="bi bi-cart"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
+                        <h6>{{saving.account_balance|floatformat:2}}</h6>
                         <span class="text-success small pt-1 fw-bold">12%</span>
                         <span class="text-muted small pt-2 ps-1">increase</span>
                       </div>
                     </div>
+                    {% endfor %}
+
                   </div>
                 </div>
               </div>
@@ -666,10 +674,13 @@
               <!-- Customers Card -->
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">
-                
+                  <h5 class="card-title">
+                    Simba Account <span></span>
+                  </h5>
 
                   {% for account in acc_detail %}
                   <div class="card-body">
+                    
                     <h5 class="card-title">
                       {{account.account_name}} | <span>{{account.account_number}}</span>
                     </h5>
@@ -680,11 +691,24 @@
                       >
                         <i class="bi bi-currency-dollar"></i>
                       </div>
+                      
                       <div class="ps-3">
                         <h6>{{account.account_balance|floatformat:2}}</h6>
-                        <span class="text-danger small pt-1 fw-bold">12%</span>
-                        <span class="text-muted small pt-2 ps-1">decrease</span>
+                        {% if account.account_number == percent_acc %}
+                        {% if percent_withdral > percent_deposit and percent_withdral > percent_transfer%}
+                        <span class="text-danger small pt-1 fw-bold">{{percent_withdral}}%</span>
+                        <span class="text-muted small pt-2 ps-1">withdraw</span>
+                        {% elif  percent_deposit > percent_withdral and percent_deposit > percent_transfer %}
+                        <span class="text-danger small pt-1 fw-bold">{{percent_deposit}}%</span>
+                        <span class="text-muted small pt-2 ps-1">deposit</span>
+                        {% else %}
+                        <span class="text-danger small pt-1 fw-bold">{{percent_transfer}}%</span>
+                        <span class="text-muted small pt-2 ps-1">transfer</span>
+                        {% endif %}
+                        {% else %}
+                        {% endif%}
                       </div>
+                     
                     </div>
                   </div>
                   {% endfor %}
