@@ -254,15 +254,39 @@ def get_account_details(user):
 	return details
 
 def get_transaction_percentage(user):
-	
-	accounts = Account.objects.filter(user=user)
-	account = accounts.filter().first()
-	
-	percent_withdral = round((account.total_withdraw / 
-	account.total_trans_amount) * 100, 1)
-	percent_deposit = round((account.total_deposit /
-	account.total_trans_amount) * 100, 1)
-	percent_transfer = round((account.total_transfar / 
-	account.total_trans_amount) * 100, 1)
+	try:	
+		accounts = Account.objects.filter(user=user)
+		account = accounts.filter().first()
 
-	return account.account_number, percent_withdral, percent_deposit, percent_transfer
+	except Account.DoesNotExist:
+		print("no account found")
+		account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
+		return account, percent_withdral, percent_deposit, percent_transfer
+	else:
+		if account:
+			print()
+			print("Inside if now and account is there")
+			print(account)
+			print()
+			percent_withdral = round((account.total_withdraw / 
+			account.total_trans_amount) * 100, 1)
+			percent_deposit = round((account.total_deposit /
+			account.total_trans_amount) * 100, 1)
+			percent_transfer = round((account.total_transfar / 
+			account.total_trans_amount) * 100, 1)
+			return account.account_number, percent_withdral, percent_deposit, percent_transfer
+		else:
+			print()
+			print("Running else block")
+			print(account)
+			account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
+			return account, percent_withdral, percent_deposit, percent_transfer
+
+
+
+
+
+
+
+
+

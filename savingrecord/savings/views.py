@@ -41,26 +41,21 @@ def savings(request):
 		})
 
 def bank_account(request):
-
 	def get_user():
 		user = User.objects.get(username=request.user.username)
 		return user
 
 	user =  get_user()    # User.objects.get(username=request.user.username)
-
 	acc_detail = Account.objects.filter(user=user)
-
 	count = acc_detail.count() #= 0 
 	
 	if request.method == "POST":
 		if count < 3:
-			
 			current_datetime = timezone.now()
 			account_balance = int(request.POST["account_balance"])
 			account_type = request.POST["account_type"]
 			first_name = request.POST["first_name"]
 			last_name  = request.POST["last_name"]
-
 			account_number = accounts_number(user.id)
 			account_name = f"{user.first_name} {user.last_name}"
 
@@ -75,7 +70,6 @@ def bank_account(request):
 					user = user
 
 				)
-
 			obj = BankAccount()
 			## Call the create_acco
 			result = obj.create_account(account_number, account_name,

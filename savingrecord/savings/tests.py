@@ -20,45 +20,14 @@ class BankAccountViewTest(TestCase):
             'last_name': 'User'
         })
 
-        # Assert that the response has a success status code (e.g., 200, 302)
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse('bank_account'))
-        self.assertContains(response, 'Bank account created successfully')
-
-
-
-    def test_failed_withdrawal_account_not_exist(self):
-        response = self.client.post(self.with{
-                'withdraw': '500',
-                'account_no': '987654321',  # Non-existent account number
-                'account_name': 'Test Account'
-                }, follow = True)
-
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse('withraw'))
-        self.assertContains(response, 'Account Does Not exist. Try again')
-
-
-
-    def test_successful_withdrawal(self):
-
-        self.client.login(username='testuser', password='testpassword')
-
-        response = {
-                'withdraw': '1500',
-                'account_no': '123456789',# non-existent account number
-                'account_name': 'Test Account'
-                }
-
-        self.assertEqual(response.status_code, 302)  # Check if redirected
-        self.assertEqual(response.url, reverse('withraw'))
-        self.assertContains(response, 'You have withdrawn 500')
-
-        updated_account = Account.objects.get(account_number='123456789')
-        self.assertEqual(updated_account.account_balance, 500)
-
-
-
-
-
+        self.assertEqual(response.status_code, 302)  # Expecting a redirect
+        self.assertRedirects(response, reverse('bank_account'))
+        response = self.client.get(reverse('bank_account'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Account.objects.count(), 1)
+        account = Account.objects.first()
+        self.assertEqual(account.account_balance, 1000)
+        self.assertEqual(account.account_type, 'Savings')
+        self.assertEqual(account.first_name, 'Test')
+        self.assertEqual(account.last_name, 'User')
 
