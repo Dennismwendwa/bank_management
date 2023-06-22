@@ -1,6 +1,8 @@
 from .models import Account, Target_saving_record, Statements, Saving_account
 from .models import Saving_account_statements
 import uuid
+import decimal, calendar
+from datetime import datetime
 from decimal import Decimal
 from django .contrib.auth.models import User
 from django.utils import timezone
@@ -247,9 +249,16 @@ def get_transaction_history(user):
 
 	return transactions
 
+def get_saving_record_history(user):
+
+	accounts = user.saving_account_set.all()
+	saving_record = Saving_account_statements.objects.filter(account_number__in=accounts)
+
+	return saving_record
+
 def get_account_details(user):
 	
-	details = Account.objects.filter(user=user)[:3]
+	details = Account.objects.filter(user=user)
 
 	return details
 
@@ -264,23 +273,69 @@ def get_transaction_percentage(user):
 		return account, percent_withdral, percent_deposit, percent_transfer
 	else:
 		if account:
-			print()
-			print("Inside if now and account is there")
-			print(account)
-			print()
-			percent_withdral = round((account.total_withdraw / 
-			account.total_trans_amount) * 100, 1)
-			percent_deposit = round((account.total_deposit /
-			account.total_trans_amount) * 100, 1)
-			percent_transfer = round((account.total_transfar / 
-			account.total_trans_amount) * 100, 1)
+			try:
+				percent_withdral = round((account.total_withdraw / account.total_trans_amount) * 100, 1)
+				print()
+				print("ALL went well")
+			except decimal.InvalidOperation as e:
+				percent_withdral = 0
+
+			try:
+				percent_deposit = round((account.total_deposit / account.total_trans_amount) * 100, 1)
+				print()
+				print("All went well")
+			except decimal.InvalidOperation as e:
+				percent_deposit = 0
+
+			try:
+				percent_transfer = round((account.total_transfar / account.total_trans_amount) * 100, 1)
+				print()
+				print("All went well")
+			except decimal.InvalidOperation as e:
+				percent_transfer = 0
+		
+				#account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
 			return account.account_number, percent_withdral, percent_deposit, percent_transfer
 		else:
-			print()
 			print("Running else block")
-			print(account)
 			account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
 			return account, percent_withdral, percent_deposit, percent_transfer
+
+
+def get_calender():
+
+	current_date = datetime.now()
+
+	current_year = current_date.year
+	month = current_date.month
+	day = current_date.day
+
+	month_name = calendar.month_name[month]
+	cal = calendar.monthcalendar(current_year, month)
+
+	return month_name, current_year, cal, day
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

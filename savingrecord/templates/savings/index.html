@@ -648,7 +648,6 @@
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card revenue-card">
                  
-
                   <div class="card-body">
                     <h5 class="card-title">
                       Balance <span></span>
@@ -667,6 +666,7 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
               <!-- End Revenue Card -->
@@ -675,7 +675,7 @@
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">
                   <h5 class="card-title">
-                    Simba Account <span></span>
+                    Simba Accounts <span></span>
                   </h5>
 
                   {% for account in acc_detail %}
@@ -693,6 +693,7 @@
                       </div>
                       
                       <div class="ps-3">
+                        <span>Balance</span>
                         <h6>{{account.account_balance|floatformat:2}}</h6>
                         {% if account.account_number == percent_acc %}
                         {% if percent_withdral > percent_deposit and percent_withdral > percent_transfer%}
@@ -714,8 +715,6 @@
                   {% endfor %}
                 </div>
               </div>
-              
-                
               
               <!-- End Customers Card -->
 
@@ -835,15 +834,13 @@
                               >{{obj.account_number}}</p
                             >
                           </td>
-                          <td>{{obj.amount}}</td>
+                          <td>{{obj.transaction_type}}</td>
                           <td>
-                            <span class="badge bg-success">{{obj.transaction_type}}</span>
+                            <span class="badge bg-success">{{obj.amount}}</span>
                           </td>
                         </tr>
                         {% endfor %}
 
-                       
-                        
                       </tbody>
                    
                     </table>
@@ -964,25 +961,18 @@
                             },
                             data: [
                               {
-                                value: 650,
+                                value: {{percent_deposit}},
                                 name: "Deposit",
                               },
                               {
-                                value: 735,
+                                value: {{percent_withdral}},
                                 name: "Withdraw",
                               },
                               {
-                                value: 580,
+                                value: {{percent_transfer}},
                                 name: "Transfar",
                               },
-                              {
-                                value: 484,
-                                name: "Family",
-                              },
-                              {
-                                value: 300,
-                                name: "Others",
-                              },
+                             
                             ],
                           },
                         ],

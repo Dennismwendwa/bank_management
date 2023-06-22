@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 from .classes import make_deposit, make_withdraw, make_transfer, calculate_balance, BankAccount
 from .classes import get_transaction_history, get_account_details, saving_deposit
-from .classes import get_transaction_percentage
+from .classes import get_transaction_percentage, get_saving_record_history
+from .classes import get_calender
 from .models import Account, accounts_number, Saving_record, Target_saving_record, Statements
 from .models import Saving_account, Saving_account_statements
 from django.contrib import messages
@@ -90,6 +91,8 @@ def saving_account(request):
 	user = User.objects.get(username=request.user.username)
 	acc_saving = Saving_account.objects.filter(user=user)
 	count_acc = acc_saving.count()
+	saving_hist = get_saving_record_history(user)
+	print(saving_hist)
 
 	if request.method == "POST":
 		
@@ -267,7 +270,8 @@ def target_saving(request):
 	
 	user = request.user
 	target_item = Target_saving_record.objects.filter(user=user)
-	
+	month_name, year, calendar, current_day = get_calender()
+
 	if request.method == "POST":
 		form = Target_SavingForm(request.POST)
 		if form.is_valid():
@@ -293,11 +297,14 @@ def target_saving(request):
 	else:
 		form = Target_SavingForm()
 
-
-
 	return render(request, "savings/target_saving.html", {
 			"form": form,
 			"target_item": target_item,
+
+			"month_name": month_name,
+			"year": year,
+			"calendar": calendar,
+			"current_day": current_day,
 			})
 
 
