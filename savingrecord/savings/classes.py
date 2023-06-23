@@ -244,8 +244,8 @@ def register_history(account_number, amount, transaction_type, transaction_date,
 
 
 def get_transaction_history(user):
-	accounts = user.account_set.all() #Account.objects.filter(user=user)
-	transactions = Statements.objects.filter(account_number__in=accounts)
+	accounts = user.account_set.all()#Account.objects.filter(user=user)
+	transactions = Statements.objects.filter(account_number__in=accounts).order_by("-transaction_date")
 
 	return transactions
 
@@ -278,6 +278,7 @@ def get_transaction_percentage(user):
 				print()
 				print("ALL went well")
 			except decimal.InvalidOperation as e:
+				print("wittdraw exception")
 				percent_withdral = 0
 
 			try:
@@ -285,6 +286,7 @@ def get_transaction_percentage(user):
 				print()
 				print("All went well")
 			except decimal.InvalidOperation as e:
+				print("deposit exception")
 				percent_deposit = 0
 
 			try:
@@ -292,6 +294,7 @@ def get_transaction_percentage(user):
 				print()
 				print("All went well")
 			except decimal.InvalidOperation as e:
+				print("transfer exception")
 				percent_transfer = 0
 		
 				#account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0

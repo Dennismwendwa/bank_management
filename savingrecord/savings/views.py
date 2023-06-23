@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.utils import timezone
 from .forms import Saving_RecordForm, Target_SavingForm
 from django.core.paginator import Paginator
-
+import datetime
 from packs.quotes import money_quotes
 
 @login_required
@@ -24,6 +24,17 @@ def savings(request):
 	statemest = get_transaction_history(user)
 	quote = money_quotes()
 	acc_saving = Saving_account.objects.filter(user=user)
+	month_name, year, calendar, current_day = get_calender()
+
+	today = datetime.date.today()
+	current_year = today.year
+	current_month = today.month
+
+	prev_year = current_year - 1 if current_month == 1 else current_year
+	prev_month = current_month - 1 if current_month > 1 else 12
+	next_year = current_year + 1 if current_month == 12 else current_year
+	next_month = current_month + 1 if current_month < 12 else 1
+
 	percent_acc, percent_withdral, percent_deposit, percent_transfer = get_transaction_percentage(user)
 	if quote is None:
 		print("Qoute is None")
@@ -39,6 +50,16 @@ def savings(request):
 		"percent_withdral": percent_withdral,
 		"percent_deposit": percent_deposit,
 		"percent_transfer": percent_transfer,
+
+		"month_name": month_name,
+		"year": year,
+		"calendar": calendar,
+		"current_day": current_day,
+
+		"prev_year": prev_year,
+		"prev_month": prev_month,
+		"next_year": next_year,
+		"next_month": next_month,
 		})
 
 def bank_account(request):
@@ -339,5 +360,23 @@ def dairly_deposit(request):
 			"target_item": target_item,
 	
 			})
+
+def calender_view(request):
+
+	month_name, year, calendar, current_day = get_calender()
+
+	
+	return render(request, "savings/calender.html", {
+	"month_name": month_name,
+	"year": year,
+	"calendar": calendar,
+	"current_day": current_day,
+	})
+
+
+
+
+
+
 
 
