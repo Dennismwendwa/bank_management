@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .forms import EmailForm, UserUpdateForm, ProfileUpdateForm
+from .forms import ContactForm
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
@@ -20,9 +21,22 @@ from django.contrib.sites.models import Site
 from django.contrib.auth import get_user_model
 
 
-def home(request):
+def contact_us(request):
 
-	return render(request, "savings/indexx.html", {})
+	if request.method == "POST":
+		form = ContactForm(request.POST)
+		if forms.is_valid():
+			name = form.cleaned_data['name']
+			email = form.cleaned_data["email"]
+			subject = form.cleaned_data["subject"]
+			message = form.cleaned_data["message"]
+
+			email_message = f"Name: {name}\nEmail: {email}\nSubject: {subject}\n\n{message}"
+	else:
+		form = ContactForm()
+		
+
+	return render(request, "accounts/pages-contact.html", {})
 
 def register(request):
 
