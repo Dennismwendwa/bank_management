@@ -22,18 +22,10 @@ def savings(request):
 	user = User.objects.get(username=request.user.username)
 	acc_detail = get_account_details(user)
 	statemest = get_transaction_history(user)
+	statement2 = get_transaction_history(user)[:10]
 	quote = money_quotes()
 	acc_saving = Saving_account.objects.filter(user=user)
 	month_name, year, calendar, current_day = get_calender()
-
-	today = datetime.date.today()
-	current_year = today.year
-	current_month = today.month
-
-	prev_year = current_year - 1 if current_month == 1 else current_year
-	prev_month = current_month - 1 if current_month > 1 else 12
-	next_year = current_year + 1 if current_month == 12 else current_year
-	next_month = current_month + 1 if current_month < 12 else 1
 
 	percent_acc, percent_withdral, percent_deposit, percent_transfer = get_transaction_percentage(user)
 	if quote is None:
@@ -43,6 +35,7 @@ def savings(request):
 		"user": user,
 		"acc_detail": acc_detail,
 		"statemest": statemest,
+		"statement2": statement2,
         "quote": quote,
 		"acc_saving": acc_saving,
 
@@ -55,11 +48,6 @@ def savings(request):
 		"year": year,
 		"calendar": calendar,
 		"current_day": current_day,
-
-		"prev_year": prev_year,
-		"prev_month": prev_month,
-		"next_year": next_year,
-		"next_month": next_month,
 		})
 
 def bank_account(request):
@@ -158,6 +146,10 @@ def deposit_saving_account(request):
 			messages.error(request, "something went wrong try again.")
 			return redirect("saving_deposit")
 
+		elif status == "negative":
+			messages.error(request, "Amount can not be zero or less than zero.")
+			return redirect("saving_deposit")
+
 	return render(request, "savings/saving_account.html", {})
 
 def accounts_operations(request):
@@ -190,8 +182,15 @@ def withdraw_view(request):
 		
 		elif status == "wrong_acc":
 			messages.error(request, "You have enterd wrong Account number. try again!")
+			return redirect("withraw")
 
+		elif status == "wrong_type":
+			messages.error(request, "Enter amount in numbers. e.g 1000, 2000, 1234.")
+			return redirect("withraw")
 
+		elif status == "negative":
+			messages.error(request, "Amount can not be zero or less than zero.")
+			return redirect("withraw")
 
 	return render(request, "savings/withdraw.html", {})
 
@@ -210,6 +209,14 @@ def deposit_view(request):
 			
 		elif status == "failid":
 			messages.error(request, "Account Does Not exist. Try again")
+			return redirect("deposit")
+
+		elif status == "wrong_type":
+			messages.error(request, "Enter amount in numbers. e.g 1000, 1233,")
+			return redirect("deposit")
+
+		elif status == "negative":
+			messages.error(request, "Amount can not be zero or less than zero.")
 			return redirect("deposit")
 
 
@@ -241,6 +248,14 @@ def transfar_view(request):
 
 		elif status == "failed":
 			messages.error(request, "Account Does Not exist. Try again")
+			return redirect("transfer")
+
+		elif status == "wrong_type":
+			messages.error(request, "Enter amount in numbers. e.g 1000, 2000, 1234.")
+			return redirect("transfer")
+
+		elif status == "negative":
+			messages.error(request, "Amount can not be less than zero.")
 			return redirect("transfer")
 
 	return render(request, "savings/transfer.html", {})

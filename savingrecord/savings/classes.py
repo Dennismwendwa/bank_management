@@ -22,6 +22,12 @@ class BankAccount:
 				)
 		self.accounts.append(account)
 		return account
+
+	def print_acc():
+		for acc in accounts:
+			print()
+			print(acc)
+			print()
 	
 	def update_status(self, amount, account_no, transaction_type):
 		current_acc = None
@@ -60,6 +66,12 @@ class BankAccount:
 	def print_transaction_history(self):
 		transaction = self.transaction_history
 
+def not_negative(amount):
+	
+	if int(amount) > 0:
+		return amount
+	else:
+		return "negative"
 
 def make_deposit(request, amount, account_no):
 	
@@ -72,9 +84,18 @@ def make_deposit(request, amount, account_no):
 		account = accounts.filter(account_number=account_no).first()
 		
 		if account:
-			account.account_balance += Decimal(amount)
-			account.total_deposit += Decimal(amount)
-			account.total_trans_amount += Decimal(amount)
+			try:
+				account.account_balance += Decimal(amount)
+				amount = Decimal(amount)
+			except decimal.InvalidOperation:
+				return "wrong_type"
+
+			status = not_negative(amount)
+			if status == "negative":
+				return "negative"
+
+			account.total_deposit += amount
+			account.total_trans_amount += amount
 			account.save()
 			helper_status(amount, account_no, transaction_type)
 			register_history(account_no, amount, transaction_type, transaction_date, account_type)
@@ -91,18 +112,26 @@ def make_withdraw(request, amount, account_no):
 	transaction_type = "withdraw"
 	account_type = "Simba"
 	try:
+		amount = Decimal(amount)
+	except decimal.InvalidOperation:
+		return "wrong_type"
+
+	status = not_negative(amount)
+	if status == "negative":
+		return "negative"
+
+	try:
 		accounts = Account.objects.filter(user=request.user)
 		account = accounts.filter(account_number=account_no).first()
-
+	
 		if account:
-			if Decimal(amount) < account.account_balance:
+			if amount < account.account_balance:
 				account.account_balance -= Decimal(amount)
 				account.total_withdraw += Decimal(amount)
 				account.total_trans_amount += Decimal(amount)
 				account.save()
 				helper_status(amount, account_no, transaction_type)
 				register_history(account_no, amount, transaction_type, transaction_date, account_type)
-				
 				return "success"
 			else:
 				return "lessamount"
@@ -113,15 +142,23 @@ def make_withdraw(request, amount, account_no):
 		return "failed"
 
 def make_transfer(amount, transfer_from_acc, transfer_to_acc):
-	
+
 	current_datetime = timezone.now()
 	transaction_type = "transfer"
 	account_type = "Simba"
 	try:
+		amount = Decimal(amount)
+	except decimal.InvalidOperation:
+		return "wrong_type"
+
+	status = not_negative(amount)
+	if status == "negative":
+		return "negative"
+
+	try:
 		transfer_from = Account.objects.get(account_number=transfer_from_acc)
 		transfer_to = Account.objects.get(account_number=transfer_to_acc)
 	
-		amount = Decimal(amount)
 		if amount < transfer_from.account_balance:
 			transfer_from.account_balance -= amount
 			transfer_from.total_transfar += amount
@@ -268,39 +305,27 @@ def get_transaction_percentage(user):
 		account = accounts.filter().first()
 
 	except Account.DoesNotExist:
-		print("no account found")
 		account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
 		return account, percent_withdral, percent_deposit, percent_transfer
 	else:
 		if account:
 			try:
 				percent_withdral = round((account.total_withdraw / account.total_trans_amount) * 100, 1)
-				print()
-				print("ALL went well")
 			except decimal.InvalidOperation as e:
-				print("wittdraw exception")
 				percent_withdral = 0
 
 			try:
 				percent_deposit = round((account.total_deposit / account.total_trans_amount) * 100, 1)
-				print()
-				print("All went well")
 			except decimal.InvalidOperation as e:
-				print("deposit exception")
 				percent_deposit = 0
 
 			try:
 				percent_transfer = round((account.total_transfar / account.total_trans_amount) * 100, 1)
-				print()
-				print("All went well")
 			except decimal.InvalidOperation as e:
-				print("transfer exception")
 				percent_transfer = 0
 		
-				#account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
 			return account.account_number, percent_withdral, percent_deposit, percent_transfer
 		else:
-			print("Running else block")
 			account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
 			return account, percent_withdral, percent_deposit, percent_transfer
 
@@ -317,34 +342,4 @@ def get_calender():
 	cal = calendar.monthcalendar(current_year, month)
 
 	return month_name, current_year, cal, day
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
