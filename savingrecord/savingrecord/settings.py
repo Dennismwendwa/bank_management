@@ -18,8 +18,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi'
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi'
+#SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
