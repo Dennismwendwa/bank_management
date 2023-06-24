@@ -312,7 +312,7 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
+                  href=""
                 >
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
@@ -325,7 +325,7 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
-                  href="pages-faq.html"
+                  href="{% url 'contact_us' %}"
                 >
                   <i class="bi bi-question-circle"></i>
                   <span>Need Help?</span>
@@ -546,7 +546,7 @@
         <!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="">
+          <a class="nav-link collapsed" href="{% url 'contact_us' %}">
             <i class="bi bi-envelope"></i>
             <span>Contact</span>
           </a>
@@ -606,8 +606,11 @@
 
       {% block saving_account %}
       {% endblock %}
-     
+      
     </main>
+
+    {% block contact %}
+    {% endblock %}
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->

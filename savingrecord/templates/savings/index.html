@@ -86,7 +86,7 @@
           </button>
         </form>
       </div>
-      <!-- End Search Bar -->
+      <!-- End Search Bar -->   
 
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -223,7 +223,7 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
+                  href=""
                 >
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
@@ -236,7 +236,7 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
-                  href="pages-faq.html"
+                  href="{% url 'contact_us' %}"
                 >
                   <i class="bi bi-question-circle"></i>
                   <span>Need Help?</span>
@@ -457,7 +457,7 @@
         <!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="">
+          <a class="nav-link collapsed" href="{% url 'contact_us' %}">
             <i class="bi bi-envelope"></i>
             <span>Contact</span>
           </a>
@@ -514,7 +514,7 @@
       <section>
         <div class="card-body">
           {% if quote %}
-          <h4>{{quote}}</h4>
+          <h4 class="alert alert-success">{{quote}}</h4>
           {% else %}
           {% endif %}
         </div>
@@ -778,7 +778,7 @@
                 </h5>
 
                 <div class="activity">
-                  {% for obj in statemest %}
+                  {% for obj in statement2 %}
                   <div class="activity-item spacing_cap d-flex mb-3">
                     <div class="activite-label">{{obj.transaction_date|date:'Y-m-d'}}</div>
                       {% if obj.transaction_type == "deposit"%}
@@ -897,6 +897,9 @@
                       td {
                           padding: 10px; /* Adjust the padding value as needed */
                       }
+                      .current-day {
+                        background-color: blue; /* Adjust the background color as desired */
+                    }
                   </style>
               </head>
               <body>
@@ -915,20 +918,20 @@
                           </tr>
                       </thead>
                       <tbody>
-                          {% for week in calendar %}
-                          <tr>
-                              {% for day in week %}
-                              <td>
-                                  {% if day == 0 %}
-                                      &nbsp;
-                                  {% else %}
-                                      {{ day }}
-                                  {% endif %}
-                              </td>
-                              {% endfor %}
-                          </tr>
-                          {% endfor %}
-                      </tbody>
+                        {% for week in calendar %}
+                        <tr>
+                            {% for day in week %}
+                            <td {% if day == current_day %} class="current-day"{%endif%}>
+                                {% if day == 0 %}
+                                    &nbsp;
+                                {% else %}
+                                    {{ day }}
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                   </table>
               </body>
               </div>

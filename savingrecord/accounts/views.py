@@ -25,17 +25,32 @@ def contact_us(request):
 
 	if request.method == "POST":
 		form = ContactForm(request.POST)
-		if forms.is_valid():
+		if form.is_valid():
+			print("form is valid")
 			name = form.cleaned_data['name']
 			email = form.cleaned_data["email"]
 			subject = form.cleaned_data["subject"]
 			message = form.cleaned_data["message"]
 
 			email_message = f"Name: {name}\nEmail: {email}\nSubject: {subject}\n\n{message}"
-	else:
-		form = ContactForm()
-		
 
+			print(name)
+			print(email)
+			print(subject)
+			print(message)
+
+			send_mail(
+			subject = "New contact form submission",
+			message = email_message,
+			from_email = email,
+			recipient_list=['dennismusembi2@gmail', 'dennissoftware3@gmail.com', ],
+			fail_silently=False,
+			)
+			messages.success(request, "Your message was send successfully. We will get in tourch soon")
+			return redirect("contact_us")
+	else:
+			form = ContactForm()
+		
 	return render(request, "accounts/pages-contact.html", {})
 
 def register(request):

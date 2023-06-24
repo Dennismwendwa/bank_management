@@ -14,7 +14,11 @@
     </ol>
   </nav>
 </div>
+{% for message in messages %}
+<h4 class="alert alert-info">{{message}}</h4>
+{% endfor %}
 <!-- End Page Title -->
+{% if count_acc %}
 <section class="section">
     <div class="row">
       <div class="card">
@@ -22,10 +26,9 @@
           <h5 class="card-title">Saving Deposit form</h5>
           <p>
           </p>
-           {% for message in messages %}
-           <h4>{{message}}</h4>
-           {% endfor %}
+          
           <!-- Custom Styled Validation with Tooltips -->
+          
           <form action="{% url 'saving_deposit' %}" method="POST" class="row g-3 needs-validation" novalidate>
               {% csrf_token %}
             
@@ -64,11 +67,14 @@
               <button class="btn btn-primary" type="submit">Deposit Amount</button>
             </div>
           </form>
+          
           <!-- End Custom Styled Validation with Tooltips -->
         </div>
       </div>
     </div>
   </section>
+  {% else %}
+  {% endif %}
 
 <section class="section">
   <div class="row">
@@ -77,9 +83,7 @@
         <h5 class="card-title">Saving Account form</h5>
         <p>
         </p>
-         {% for message in messages %}
-         <h4>{{message}}</h4>
-         {% endfor %}
+         
         <!-- Custom Styled Validation with Tooltips -->
         <form action="{% url 'saving_account' %}" method="POST" class="row g-3 needs-validation" novalidate>
             {% csrf_token %}

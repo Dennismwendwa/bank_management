@@ -18,13 +18,13 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi'
-#SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 SITE_ID = 1
 
@@ -141,18 +141,13 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 #settings for sending emails
-DEBUG = True
+#DEBUG = True
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_USE_TLS =os.environ.get("EMAIL_USE_TLS")
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND")
-
-
-
-
 
 
