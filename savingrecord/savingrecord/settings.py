@@ -19,7 +19,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi'
-#SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = os.environ.get("SECRET_KEY")  https://saving.up.railway.app
+CSRF_TRUSTED_ORIGINS = ["https://saving.up.railway.app"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
