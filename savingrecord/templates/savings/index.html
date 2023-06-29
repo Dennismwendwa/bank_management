@@ -70,21 +70,7 @@
       <!-- End Logo -->
 
       <div class="search-bar">
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#"
-        >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword"
-          />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
+        
       </div>
       <!-- End Search Bar -->   
 
@@ -97,84 +83,7 @@
           </li>
           <!-- End Search Icon-->
 
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a
-            ><!-- End Notification Icon -->
-
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-            >
-              <li class="dropdown-header">
-                You have 4 new notifications
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>Atque rerum nesciunt</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>1 hr. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-check-circle text-success"></i>
-                <div>
-                  <h4>Sit rerum fuga</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>2 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-info-circle text-primary"></i>
-                <div>
-                  <h4>Dicta reprehenderit</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
-              </li>
-            </ul>
-            <!-- End Notification Dropdown Items -->
-          </li>
+          
           <!-- End Notification Nav -->
 
           
@@ -531,11 +440,11 @@
                  
 
                   <div class="card-body">
-                    <h5 class="card-title">Saving Accounts <span></span></h5>
+                    <h5 class="card-title">Saving Accounts </h5>
                     
 
                     {% for saving in acc_saving %}
-                    <h5 class="card-title">{{saving.account_number}} <span></span></h5>
+                    <h5 class="card-title">{{saving.account_number}} </h5>
                     <div class="d-flex align-items-center">
                       <div
                         class="card-icon rounded-circle d-flex align-items-center justify-content-center"
@@ -544,8 +453,7 @@
                       </div>
                       <div class="ps-3">
                         <h6>{{saving.account_balance|floatformat:2}}</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span>
-                        <span class="text-muted small pt-2 ps-1">increase</span>
+                        
                       </div>
                     </div>
                     {% endfor %}
@@ -555,45 +463,19 @@
               </div>
               <!-- End Sales Card -->
 
-              <!-- Top cards -->
-              <!--<div class="col-xxl-4 col-md-6">
-                <div class="card info-card revenue-card">
-                 
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      Balance <span></span>
-                    </h5>
-
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-currency-dollar"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>$3,264</h6>
-                        <span class="text-success small pt-1 fw-bold">8%</span>
-                        <span class="text-muted small pt-2 ps-1">increase</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>-->
-              <!-- End Revenue Card -->
               
               <!-- Customers Card -->
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">
                   <h5 class="card-title">
-                    Simba Accounts <span></span>
+                    Simba Accounts
                   </h5>
 
                   {% for account in acc_detail %}
                   <div class="card-body">
                     
                     <h5 class="card-title">
-                      {{account.account_name}} | <span>{{account.account_number}}</span>
+                      <span>{{account.account_number}}</span>
                     </h5>
 
                     <div class="d-flex align-items-center">

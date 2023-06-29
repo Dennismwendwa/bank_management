@@ -1,5 +1,5 @@
 from .models import Account, Target_saving_record, Statements, Saving_account
-from .models import Saving_account_statements
+from .models import Saving_account_statements #Target_saving_record_statements
 import uuid
 import decimal, calendar
 from datetime import datetime
@@ -184,6 +184,7 @@ def saving_deposit(request, amount, account_no):
 		accounts = Saving_account.objects.filter(user=request.user)
 		account = accounts.filter(account_number=account_no).first()
 		#account = accounts.objects.get(account_number=account_no)
+		print(account)
 		if account:
 			account.account_balance += Decimal(amount)
 			account.transaction_count = int(account.transaction_count) + 1
@@ -193,7 +194,7 @@ def saving_deposit(request, amount, account_no):
 		else:
 			return "failid"
 	except Saving_account.DoesNotExist:
-		return "failed"
+		return "no_account"
 	
 
 
@@ -233,7 +234,14 @@ def calculate_balance(user, amount, project_name):
 		pro_name.balence_amount = int(pro_name.target_amount) - int(pro_name.amount_saved)
 		pro_name.progress  = (int(pro_name.amount_saved) / int(pro_name.target_amount)) * 100
 		pro_name.save()
+#		recording = Target_saving_record_statements(
+#		project_name = pro_name,
+#		amount_saved = amount,
+#		date_saved = timezone.now()
+#		)
+#		recording.save()
 		instance = Target_account_st.record_keeper(project_name, amount)
+		print(instance.stats(project_name, amount))
 		return "seccuss"
 
 

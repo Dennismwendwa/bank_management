@@ -8,7 +8,7 @@ from .classes import get_transaction_history, get_account_details, saving_deposi
 from .classes import get_transaction_percentage, get_saving_record_history
 from .classes import get_calender
 from .models import Account, accounts_number, Saving_record, Target_saving_record, Statements
-from .models import Saving_account, Saving_account_statements
+from .models import Saving_account, Saving_account_statements #Target_saving_record_statements
 from django.contrib import messages
 from django.utils import timezone
 from .forms import Saving_RecordForm, Target_SavingForm
@@ -101,7 +101,6 @@ def saving_account(request):
 	acc_saving = Saving_account.objects.filter(user=user)
 	count_acc = acc_saving.count()
 	saving_hist = get_saving_record_history(user)
-	print(saving_hist)
 
 	if request.method == "POST":
 		
@@ -130,27 +129,35 @@ def saving_account(request):
 
 def deposit_saving_account(request):
 	
+	user = User.objects.get(username=request.user.username)
+	acc_saving = Saving_account.objects.filter(user=user)
+	count_acc = acc_saving.count()
+	
 	if request.method == "POST":
 		account_number = request.POST["account_number"]
 		deposit = int(request.POST["deposit"])
 
-		print(account_number)
-		print(deposit)
-
 		status = saving_deposit(request, deposit, account_number)
+		
 		if status == "success":
-			messages.success(request, f"Your deposit of {deposit}")
-			return redirect("savings")
+			messages.success(request, f"You deposited {deposit}")
+			return redirect("saving_deposit")
 
 		elif status == "failid":
 			messages.error(request, "something went wrong try again.")
+			return redirect("saving_deposit")
+
+		elif status == "no_account":
+			messages.error(request, "Wrong account number.")
 			return redirect("saving_deposit")
 
 		elif status == "negative":
 			messages.error(request, "Amount can not be zero or less than zero.")
 			return redirect("saving_deposit")
 
-	return render(request, "savings/saving_account.html", {})
+	return render(request, "savings/saving_account.html", {
+	"count_acc": count_acc,
+	})
 
 def accounts_operations(request):
 
@@ -306,6 +313,8 @@ def target_saving(request):
 	
 	user = request.user
 	target_item = Target_saving_record.objects.filter(user=user)
+#target_stats = Target_saving_record_statements.objects.all()
+
 	month_name, year, calendar, current_day = get_calender()
 
 	if request.method == "POST":
@@ -336,6 +345,7 @@ def target_saving(request):
 	return render(request, "savings/target_saving.html", {
 			"form": form,
 			"target_item": target_item,
+#			"target_stats": target_stats,
 
 			"month_name": month_name,
 			"year": year,
