@@ -43,7 +43,7 @@ def contact_us(request):
 			subject = "New contact form submission",
 			message = email_message,
 			from_email = email,
-			recipient_list=['dennismusembi2@gmail', 'dennissoftware3@gmail.com', ],
+			recipient_list=['dennismusembi2@gmail.com', 'dennissoftware3@gmail.com', ],
 			fail_silently=False,
 			)
 			messages.success(request, "Your message was send successfully. We will get in tourch soon")
