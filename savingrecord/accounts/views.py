@@ -34,11 +34,6 @@ def contact_us(request):
 
 			email_message = f"Name: {name}\nEmail: {email}\nSubject: {subject}\n\n{message}"
 
-			print(name)
-			print(email)
-			print(subject)
-			print(message)
-
 			send_mail(
 			subject = "New contact form submission",
 			message = email_message,

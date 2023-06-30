@@ -29,8 +29,6 @@ def savings(request):
 	month_name, year, calendar, current_day = get_calender()
 	percent_acc, percent_withdral, percent_deposit, percent_transfer = get_transaction_percentage(user)
 
-	if quote is None:
-		raise TypeError("Qoute can not be None")
 
 	return render(request, "savings/index.html", {
 		"user": user,

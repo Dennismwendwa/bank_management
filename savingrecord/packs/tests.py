@@ -3,7 +3,7 @@ from unittest.mock import patch
 from io import StringIO
 import random
 
-from . quotes import money_quotes
+from .quotes import money_quotes
 
 
 class MoneyQuotesTest(unittest.TestCase):
