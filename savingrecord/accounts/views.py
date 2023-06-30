@@ -26,7 +26,6 @@ def contact_us(request):
 	if request.method == "POST":
 		form = ContactForm(request.POST)
 		if form.is_valid():
-			print("form is valid")
 			name = form.cleaned_data['name']
 			email = form.cleaned_data["email"]
 			subject = form.cleaned_data["subject"]
