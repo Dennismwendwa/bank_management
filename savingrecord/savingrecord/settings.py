@@ -2,14 +2,15 @@
 import os
 from pathlib import Path
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+import dj_database_url
 from os.path import join, dirname
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -19,7 +20,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi'
-#SECRET_KEY = os.environ.get("SECRET_KEY")  https://saving.up.railway.app
+#SECRET_KEY = os.environ.get("SECRET_KEY")
 CSRF_TRUSTED_ORIGINS = ["https://saving.up.railway.app"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -62,8 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-		BASE_DIR / "templates"
-	],
+		BASE_DIR / "templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +85,13 @@ WSGI_APPLICATION = 'savingrecord.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASE_URL = "postgresql://postgres:a5d9ereK7VhzZVrlFk8r@containers-us-west-168.railway.app:6227/railway"
+
+DATABASES = {
+	"default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+}
+"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -92,7 +99,7 @@ DATABASES = {
     }
 }
 
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -130,16 +137,21 @@ USE_TZ = True
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR / "static")]
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
+
+from whitenoise.storage import CompressedManifestStaticFilesStorage
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 
 #settings for sending emails
@@ -152,3 +164,37 @@ EMAIL_USE_TLS =os.environ.get("EMAIL_USE_TLS")
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND")
 
 
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            "datefmt": "%d/%b/%Y %H:%M:%S",
+        },
+        "simple": {"format": "%(levelname)s %(message)s"},
+    },
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "mysite.log",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "propagate": True,
+            "level": "ERROR",  # from debug
+        },
+        "MYAPP": {
+            "handlers": ["file"],
+            "level": "ERROR",  # from debug
+        },
+    },
+}

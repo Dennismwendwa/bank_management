@@ -3,6 +3,7 @@ import random
 
 def money_quotes():
     result = str(random.randint(1, 50))
+    print("This is quote no", result)
 
     match result:
         case "1":
@@ -131,6 +132,7 @@ def money_quotes():
 
         case "35":
             quote = """"Dogs have no money. Isn't that amazing? They're broke their entire lives. But they get through. You know why dogs have no money? .. No Pockets." ~ Jerry Seinfeld"""
+            return quote
 
         case "36":
             quote = """"Money is a strange business. People who haven't got it aim it strongly. People who have are full of troubles." ~ Ayrton Senna"""

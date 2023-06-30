@@ -22,9 +22,11 @@ class BankAccountViewTest(TestCase):
 
         self.assertEqual(response.status_code, 302)  # Expecting a redirect
         self.assertRedirects(response, reverse('bank_account'))
+
         response = self.client.get(reverse('bank_account'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Account.objects.count(), 1)
+
         account = Account.objects.first()
         self.assertEqual(account.account_balance, 1000)
         self.assertEqual(account.account_type, 'Savings')

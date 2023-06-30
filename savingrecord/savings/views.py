@@ -25,11 +25,12 @@ def savings(request):
 	statement2 = get_transaction_history(user)[:10]
 	quote = money_quotes()
 	acc_saving = Saving_account.objects.filter(user=user)
-	month_name, year, calendar, current_day = get_calender()
 
+	month_name, year, calendar, current_day = get_calender()
 	percent_acc, percent_withdral, percent_deposit, percent_transfer = get_transaction_percentage(user)
+
 	if quote is None:
-		print("Qoute is None")
+		raise TypeError("Qoute can not be None")
 
 	return render(request, "savings/index.html", {
 		"user": user,
@@ -103,24 +104,29 @@ def saving_account(request):
 	saving_hist = get_saving_record_history(user)
 
 	if request.method == "POST":
+		if count_acc < 4:
+
 		
-		deposit = int(request.POST["deposit"])
-		account_name = request.POST["account_name"]
+			deposit = int(request.POST["deposit"])
+			account_name = request.POST["account_name"]
 
-		account_number = accounts_number(user.id)
-		current_datetime = timezone.now()
+			account_number = accounts_number(user.id)
+			current_datetime = timezone.now()
 
-		saving = Saving_account.objects.create(
-			user = user,
-			account_name = account_name,
-			account_number = account_number,
-			deposit = deposit,
-			account_balance = deposit,
-			account_type = "Saving",
-			opening_date = current_datetime
-		)
-		messages.success(request, "Your saving Acount was created success")
-		return redirect("saving_account")
+			saving = Saving_account.objects.create(
+				user = user,
+				account_name = account_name,
+				account_number = account_number,
+				deposit = deposit,
+				account_balance = deposit,
+				account_type = "Saving",
+				opening_date = current_datetime
+			)
+			messages.success(request, "Your saving Acount was created success")
+			return redirect("saving_account")
+		else:
+			messages.error(request, "You can Only have a maximum of Three(3) accounts")
+			return redirect("saving_account")
 	
 	return render(request, "savings/saving_account.html", {
 	"acc_saving": acc_saving,
@@ -276,7 +282,7 @@ def savings_record(request):
 	for items in record_data:
 		total += int(items.amount)
 
-	items_per_page = 3
+	items_per_page = 5
 
 	page_number = request.GET.get("page")
 
@@ -397,11 +403,5 @@ def calender_view(request):
 	"calendar": calendar,
 	"current_day": current_day,
 	})
-
-
-
-
-
-
 
 

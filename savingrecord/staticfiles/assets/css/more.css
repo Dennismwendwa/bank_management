@@ -1,0 +1,16 @@
+.container_pagi {
+    display: flex;
+    justify-content: center;
+}
+
+.pagi_btn {
+    margin-left: 10px;
+}
+
+.spacing_cap {
+    margin-right: 50px;
+}
+
+.custom-margin {
+    margin-bottom: 20px;
+  }
