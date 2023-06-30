@@ -9,10 +9,6 @@
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
-
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -62,7 +58,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
         <a href="{% url 'savings' %}" class="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="" />
+    
           <span class="d-none d-lg-block">Saving</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -70,23 +66,7 @@
       <!-- End Logo -->
 
       <div class="search-bar">
-        <!--
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#"
-        >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword"
-          />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      -->
+    
       </div>
       <!-- End Search Bar -->
 
@@ -407,11 +387,6 @@
                 </a>
               </li>
              
-              <li>
-                <a href="">
-                  <i class="bi bi-circle"></i><span>Tooltips</span>
-                </a>
-              </li>
             </ul>
           </li>
           <!-- End Components Nav -->
@@ -439,11 +414,6 @@
               <li>
                 <a href="">
                   <i class="bi bi-circle"></i><span>Saving Account</span>
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <i class="bi bi-circle"></i><span>Target Saving Account</span>
                 </a>
               </li>
             
@@ -479,56 +449,6 @@
             </ul>
           </li>
           <!-- End Tables Nav -->
-  
-          <!--<li class="nav-item">
-            <a
-              class="nav-link collapsed"
-              data-bs-target="#charts-nav"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="bi bi-bar-chart"></i><span>Charts</span
-              ><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul
-              id="charts-nav"
-              class="nav-content collapse"
-              data-bs-parent="#sidebar-nav"
-            >
-              <li>
-                <a href="charts-chartjs.html">
-                  <i class="bi bi-circle"></i><span>Chart.js</span>
-                </a>
-              </li>
-            
-            </ul>
-          </li>-->
-          <!-- End Charts Nav -->
-          <!--
-          <li class="nav-item">
-            <a
-              class="nav-link collapsed"
-              data-bs-target="#icons-nav"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="bi bi-gem"></i><span>Icons</span
-              ><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul
-              id="icons-nav"
-              class="nav-content collapse"
-              data-bs-parent="#sidebar-nav"
-            >
-              <li>
-                <a href="icons-bootstrap.html">
-                  <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                </a>
-              </li>
-         
-            </ul>
-          </li>-->
-          <!-- End Icons Nav -->
   
           <li class="nav-heading">Pages</li>
   
@@ -574,7 +494,6 @@
           </li>
           <!-- End Error 404 Page Nav -->
 
-          <!-- End Blank Page Nav -->
         </ul>
       </aside>
       <!-- End Sidebar--> 
@@ -701,12 +620,7 @@
                   </tbody>
                 </table>
               </div>
-              <!-- End Sales Card -->
-
-           
-              <!-- End Revenue Card -->
-              
-              <!-- Customers Card -->
+            
               <div class="col-xxl-4 col-xl-6">
                 <div class="card info-card customers-card">
                 
@@ -832,121 +746,7 @@
   </div>
 </section>
 
-              <!-- Top Selling -->
-              <!--<div class="col-12">
-                <div class="card top-selling overflow-auto">
-                
-
-                  <div class="card-body pb-0">
-                    <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                    <table class="table table-borderless">
-                      <thead>
-                        <tr>
-                          <th scope="col">Preview</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Sold</th>
-                          <th scope="col">Revenue</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-1.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Ut inventore ipsa voluptas nulla</a
-                            >
-                          </td>
-                          <td>$64</td>
-                          <td class="fw-bold">124</td>
-                          <td>$5,828</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-2.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Exercitationem similique doloremque</a
-                            >
-                          </td>
-                          <td>$46</td>
-                          <td class="fw-bold">98</td>
-                          <td>$4,508</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-3.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Doloribus nisi exercitationem</a
-                            >
-                          </td>
-                          <td>$59</td>
-                          <td class="fw-bold">74</td>
-                          <td>$4,366</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-4.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Officiis quaerat sint rerum error</a
-                            >
-                          </td>
-                          <td>$32</td>
-                          <td class="fw-bold">63</td>
-                          <td>$2,016</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img
-                                src="{% static 'assets/img/product-5.jpg' %}"
-                                alt=""
-                              />
-                            </a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Sit unde debitis delectus repellendus</a
-                            >
-                          </td>
-                          <td>$79</td>
-                          <td class="fw-bold">41</td>
-                          <td>$3,239</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>-->
-              <!-- End Top Selling -->
+          
             </div>
           </div>
           <!-- End Left side columns -->
