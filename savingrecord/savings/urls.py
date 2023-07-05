@@ -14,4 +14,5 @@ urlpatterns = [
 	path("saving-account", views.saving_account, name="saving_account"),
 	path("saving-deposit", views.deposit_saving_account, name="saving_deposit"),
 	path("calendar/<int:year>/<int:month>", views.calender_view, name ="calendar_view"),
+	path("paybills", views.paybills, name="paybills")
 ]

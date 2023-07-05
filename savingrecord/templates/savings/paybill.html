@@ -1,0 +1,90 @@
+{% extends "savings/forms_layout.html" %}
+{% load static %}
+{% block title %}
+{% endblock %}
+
+{% block paybills %}
+
+<div class="pagetitle">
+    <h1>Saving Record</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'savings' %}">Home</a></li>
+        <li class="breadcrumb-item">Forms</li>
+        <li class="breadcrumb-item active">Paybills</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+  
+  <section class="section">
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Paybills</h5>
+          <p></p>
+          {% for message in messages %}
+          <h4 class="alert alert-info">{{message}}</h4>
+          {% endfor %}
+  
+          <!-- Custom Styled Validation with Tooltips -->
+          <form
+            action="{% url 'paybills' %}"
+            method="POST"
+            class="row g-3 needs-validation"
+            novalidate
+          >
+            {% csrf_token %}
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip01" class="form-label"
+                >Amount to pay</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip01"
+                name="amount_to_pay"
+                required
+              />
+              <div class="valid-tooltip">Looks good!</div>
+            </div>
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip02" class="form-label">Account number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip02"
+                name="account_number"
+                required
+              />
+              <div class="valid-tooltip">Looks good!</div>
+            </div>
+            <br /><br />
+            <div class="col-md-4 position-relative">
+              <label for="validationTooltip01" class="form-label"
+                >Account to pay to</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip01"
+                name="account_to_pay_to"
+                required
+              />
+              <div class="valid-tooltip">Looks good!</div>
+            </div>
+  
+            <br />
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Pay bill</button>
+            </div>
+          </form>
+        
+          <!-- End Custom Styled Validation with Tooltips -->
+        </div>
+     
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

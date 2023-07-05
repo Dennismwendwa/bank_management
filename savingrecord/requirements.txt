@@ -1,11 +1,14 @@
 asgiref==3.7.2
+cffi==1.15.1
 crispy-bootstrap4==2022.1
+cryptography==41.0.1
 dj-database-url==2.0.0
 Django
 django-crispy-forms==2.0
 gunicorn==20.1.0
 Pillow==9.5.0
 psycopg2-binary==2.9.6
+pycparser==2.21
 python-dotenv
 sqlparse==0.4.4
 typing_extensions==4.6.3

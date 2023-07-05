@@ -257,6 +257,7 @@
           
           </ul>
         </li>
+        
         <!-- End Forms Nav -->
 
         <li class="nav-item">
@@ -284,6 +285,36 @@
                 <i class="bi bi-circle"></i><span>Target Record</span>
               </a>
             </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#components-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-menu-button-wide"></i><span>Paybills</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="components-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+           
+            <li>
+              <a href="{% url 'paybills' %}">
+                <i class="bi bi-circle"></i><span>Bussines number</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="bi bi-circle"></i><span>Till numbers</span>
+              </a>
+            </li>
+      
           </ul>
         </li>
         
@@ -462,6 +493,10 @@
                               },
                               {
                                 name: "Transfer",
+                                data: [15, 11, 32, 18, 9, 24, 11],
+                              },
+                              {
+                                name: "Paybills",
                                 data: [15, 11, 32, 18, 9, 24, 11],
                               },
                             ],
@@ -678,6 +713,10 @@
                               {
                                 value: {{percent_transfer}},
                                 name: "Transfar",
+                              },
+                              {
+                                value: {{percent_paybill}},
+                                name: "Paybill",
                               },
                              
                             ],

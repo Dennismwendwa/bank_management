@@ -56,3 +56,1056 @@ Traceback (most recent call last):
     raise self.error(token, msg)
 django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 55: 'block'. Looking for one of: endblock.
 [30/Jun/2023 15:13:41] ERROR [django.server:212] "GET /accounts/login/ HTTP/1.1" 500 193199
+[05/Jul/2023 08:27:28] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encode_account_number(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 25, in encode_account_number
+    mgf=padding.MGF1(algorith=hashes.SHA256()),
+NameError: name 'hashes' is not defined
+[05/Jul/2023 08:27:28] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 145
+[05/Jul/2023 08:30:18] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encode_account_number(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 25, in encode_account_number
+    mgf=padding.MGF1(algorith=hashes.SHA256()),
+NameError: name 'hashes' is not defined
+[05/Jul/2023 08:30:18] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 145
+[05/Jul/2023 08:30:52] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encode_account_number(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 25, in encode_account_number
+    mgf=padding.MGF1(algorith=hashes.SHA256()),
+NameError: name 'hashes' is not defined
+[05/Jul/2023 08:30:52] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 80509
+[05/Jul/2023 08:34:05] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encode_account_number(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 26, in encode_account_number
+    mgf=padding.MGF1(algorith=hashes.SHA256()),
+TypeError: MGF1.__init__() got an unexpected keyword argument 'algorith'
+[05/Jul/2023 08:34:05] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 80641
+[05/Jul/2023 08:35:45] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.StringDataRightTruncation: value too long for type character varying(50)
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 71, in bank_account
+    account = Account.objects.create(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: value too long for type character varying(50)
+
+[05/Jul/2023 08:35:45] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 175689
+[05/Jul/2023 08:41:17] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.StringDataRightTruncation: value too long for type character varying(50)
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 71, in bank_account
+    account = Account.objects.create(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: value too long for type character varying(50)
+
+[05/Jul/2023 08:41:17] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 175341
+[05/Jul/2023 09:30:38] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 313, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 48, in decode_account_number
+    base64.b64decode(ciphertext),
+NameError: name 'base64' is not defined
+[05/Jul/2023 09:30:38] ERROR [django.server:212] "GET / HTTP/1.1" 500 85311
+[05/Jul/2023 09:36:24] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 313, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 09:36:24] ERROR [django.server:212] "GET / HTTP/1.1" 500 90703
+[05/Jul/2023 09:44:44] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 313, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 09:44:44] ERROR [django.server:212] "GET / HTTP/1.1" 500 90703
+[05/Jul/2023 09:45:40] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 313, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 09:45:40] ERROR [django.server:212] "GET / HTTP/1.1" 500 90709
+[05/Jul/2023 09:47:23] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 313, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 09:47:23] ERROR [django.server:212] "GET / HTTP/1.1" 500 90870
+[05/Jul/2023 09:50:17] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 09:50:17] ERROR [django.server:212] "GET / HTTP/1.1" 500 90756
+[05/Jul/2023 10:02:05] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 317, in get_account_details
+    return details, account_number_plain
+NameError: name 'account_number_plain' is not defined
+[05/Jul/2023 10:02:05] ERROR [django.server:212] "GET / HTTP/1.1" 500 80393
+[05/Jul/2023 10:02:06] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 317, in get_account_details
+    return details, account_number_plain
+NameError: name 'account_number_plain' is not defined
+[05/Jul/2023 10:02:06] ERROR [django.server:212] "GET / HTTP/1.1" 500 80119
+[05/Jul/2023 10:02:08] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 317, in get_account_details
+    return details, account_number_plain
+NameError: name 'account_number_plain' is not defined
+[05/Jul/2023 10:02:08] ERROR [django.server:212] "GET / HTTP/1.1" 500 80256
+[05/Jul/2023 10:15:53] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 10:15:53] ERROR [django.server:212] "GET / HTTP/1.1" 500 91701
+[05/Jul/2023 12:55:12] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 12:55:12] ERROR [django.server:212] "GET / HTTP/1.1" 500 91805
+[05/Jul/2023 12:56:12] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decode_account_number(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/encrypt.py", line 47, in decode_account_number
+    plaintext = private_key.decrypt(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/rsa.py", line 444, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+[05/Jul/2023 12:56:12] ERROR [django.server:212] "GET / HTTP/1.1" 500 91531
+[05/Jul/2023 12:59:15] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 25, in encrypt
+    key = get_aes_key()
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 18, in get_aes_key
+    with open(key_path, "rb") as key_file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/dennis/projects/saving_record/savingrecord/aes_key.bin'
+[05/Jul/2023 12:59:15] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 84524
+[05/Jul/2023 13:14:58] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 31, in encrypt
+    key = get_aes_key()
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 24, in get_aes_key
+    with open(key_path, "rb") as key_file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/dennis/projects/saving_record/savingrecord/aes_key.bin'
+[05/Jul/2023 13:14:58] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 84534
+[05/Jul/2023 13:16:54] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 36, in encrypt
+    key = get_aes_key()
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 25, in get_aes_key
+    generate_and_save_key()
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 76, in generate_and_save_key
+    key = rsa.generate_private_key(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/asymmetric/rsa.py", line 138, in generate_private_key
+    _verify_rsa_parameters(public_exponent, key_size)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/asymmetric/rsa.py", line 150, in _verify_rsa_parameters
+    raise ValueError("key_size must be at least 512-bits.")
+ValueError: key_size must be at least 512-bits.
+[05/Jul/2023 13:16:54] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 95218
+[05/Jul/2023 13:19:14] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 39, in encrypt
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backebd=default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 13:19:14] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 93161
+[05/Jul/2023 13:32:37] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 48, in encrypt
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backebd=default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 13:32:37] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 93164
+[05/Jul/2023 13:36:08] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 49, in encrypt
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backebd=default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 13:36:08] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 93152
+[05/Jul/2023 13:39:54] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 50, in encrypt
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backebd=default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 13:39:54] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 93170
+[05/Jul/2023 13:45:31] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 51, in encrypt
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backebd=default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 13:45:31] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 93161
+[05/Jul/2023 13:53:04] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 51, in encrypt
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 13:53:04] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 93160
+[05/Jul/2023 13:56:02] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 68, in bank_account
+    account_number = accounts_number(user.id)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 109, in accounts_number
+    ciphertext = encrypt(bank_account_number.upper())
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 59, in encrypt
+    encryptor = cipher.update()
+AttributeError: 'Cipher' object has no attribute 'update'
+[05/Jul/2023 13:56:02] ERROR [django.server:212] "POST /bank_account HTTP/1.1" 500 82659
+[05/Jul/2023 14:04:35] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+NameError: name 'decrypt_eas' is not defined
+[05/Jul/2023 14:04:35] ERROR [django.server:212] "GET / HTTP/1.1" 500 78388
+[05/Jul/2023 14:07:58] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 74, in decrypt_eas
+    cipher =Cipher(algorithms.AES(key), modes.CBC(iv), backend = default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 35, in __init__
+    self.key = _verify_key_size(self, key)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py", line 20, in _verify_key_size
+    raise ValueError(
+ValueError: Invalid key size (2768) for AES.
+[05/Jul/2023 14:07:58] ERROR [django.server:212] "GET / HTTP/1.1" 500 94049
+[05/Jul/2023 14:11:25] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/utils.py", line 36, in _check_byteslike
+    memoryview(value)
+TypeError: memoryview: a bytes-like object is required, not 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 74, in decrypt_eas
+    cipher =Cipher(algorithms.AES(key), modes.CBC(iv), backend = default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/modes.py", line 117, in __init__
+    utils._check_byteslike("initialization_vector", initialization_vector)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/utils.py", line 38, in _check_byteslike
+    raise TypeError(f"{name} must be bytes-like")
+TypeError: initialization_vector must be bytes-like
+[05/Jul/2023 14:11:25] ERROR [django.server:212] "GET / HTTP/1.1" 500 94595
+[05/Jul/2023 14:15:28] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 79, in decrypt_eas
+    decryptor = cipher.decryptor.update(ciphertext) + decryptor.finalize()
+AttributeError: 'function' object has no attribute 'update'
+[05/Jul/2023 14:15:28] ERROR [django.server:212] "GET / HTTP/1.1" 500 83267
+[05/Jul/2023 14:18:28] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 80, in decrypt_eas
+    plaintext = decryptor.update(ciphertext) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 176, in update
+    return self._ctx.update(data)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 145, in update
+    n = self.update_into(data, buf)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 160, in update_into
+    baseinbuf = self._backend._ffi.from_buffer(data)
+TypeError: from_buffer() cannot return the address of a unicode object
+[05/Jul/2023 14:18:28] ERROR [django.server:212] "GET / HTTP/1.1" 500 98175
+[05/Jul/2023 14:21:15] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 176, in update
+    return self._ctx.update(data)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 145, in update
+    n = self.update_into(data, buf)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 160, in update_into
+    baseinbuf = self._backend._ffi.from_buffer(data)
+TypeError: from_buffer() cannot return the address of a unicode object
+[05/Jul/2023 14:21:15] ERROR [django.server:212] "GET / HTTP/1.1" 500 98490
+[05/Jul/2023 14:23:55] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 176, in update
+    return self._ctx.update(data)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 145, in update
+    n = self.update_into(data, buf)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 160, in update_into
+    baseinbuf = self._backend._ffi.from_buffer(data)
+TypeError: from_buffer() cannot return the address of a unicode object
+[05/Jul/2023 14:23:55] ERROR [django.server:212] "GET / HTTP/1.1" 500 98482
+[05/Jul/2023 14:27:17] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 186, in finalize
+    data = self._ctx.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 222, in finalize
+    raise ValueError(
+ValueError: The length of the provided data is not a multiple of the block length.
+[05/Jul/2023 14:27:17] ERROR [django.server:212] "GET / HTTP/1.1" 500 92377
+[05/Jul/2023 14:34:45] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 186, in finalize
+    data = self._ctx.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 222, in finalize
+    raise ValueError(
+ValueError: The length of the provided data is not a multiple of the block length.
+[05/Jul/2023 14:34:45] ERROR [django.server:212] "GET / HTTP/1.1" 500 92373
+[05/Jul/2023 14:40:50] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 186, in finalize
+    data = self._ctx.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 222, in finalize
+    raise ValueError(
+ValueError: The length of the provided data is not a multiple of the block length.
+[05/Jul/2023 14:40:50] ERROR [django.server:212] "GET / HTTP/1.1" 500 92532
+[05/Jul/2023 14:40:53] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 186, in finalize
+    data = self._ctx.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 222, in finalize
+    raise ValueError(
+ValueError: The length of the provided data is not a multiple of the block length.
+[05/Jul/2023 14:40:53] ERROR [django.server:212] "GET / HTTP/1.1" 500 92369
+[05/Jul/2023 14:43:52] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 186, in finalize
+    data = self._ctx.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 222, in finalize
+    raise ValueError(
+ValueError: The length of the provided data is not a multiple of the block length.
+[05/Jul/2023 14:43:52] ERROR [django.server:212] "GET / HTTP/1.1" 500 92391
+[05/Jul/2023 14:48:00] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/utils.py", line 36, in _check_byteslike
+    memoryview(value)
+TypeError: memoryview: a bytes-like object is required, not 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 77, in decrypt_eas
+    cipher =Cipher(algorithms.AES(key), modes.CBC(iv_bytes), backend = default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/modes.py", line 117, in __init__
+    utils._check_byteslike("initialization_vector", initialization_vector)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/utils.py", line 38, in _check_byteslike
+    raise TypeError(f"{name} must be bytes-like")
+TypeError: initialization_vector must be bytes-like
+[05/Jul/2023 14:48:00] ERROR [django.server:212] "GET / HTTP/1.1" 500 95082
+[05/Jul/2023 14:49:47] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/utils.py", line 36, in _check_byteslike
+    memoryview(value)
+TypeError: memoryview: a bytes-like object is required, not 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 77, in decrypt_eas
+    cipher =Cipher(algorithms.AES(key), modes.CBC(iv_bytes), backend = default_backend())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/modes.py", line 117, in __init__
+    utils._check_byteslike("initialization_vector", initialization_vector)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/utils.py", line 38, in _check_byteslike
+    raise TypeError(f"{name} must be bytes-like")
+TypeError: initialization_vector must be bytes-like
+[05/Jul/2023 14:49:47] ERROR [django.server:212] "GET / HTTP/1.1" 500 95126
+[05/Jul/2023 14:53:17] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 73, in decrypt_eas
+    iv_bytes = bytes(iv)
+TypeError: string argument without an encoding
+[05/Jul/2023 14:53:17] ERROR [django.server:212] "GET / HTTP/1.1" 500 82549
+[05/Jul/2023 14:55:21] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    acc_detail = get_account_details(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 315, in get_account_details
+    account_number_plain = decrypt_eas(ciphertext)
+  File "/home/dennis/projects/saving_record/savingrecord/packs/enryptAES.py", line 81, in decrypt_eas
+    plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/primitives/ciphers/base.py", line 186, in finalize
+    data = self._ctx.finalize()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/cryptography/hazmat/backends/openssl/ciphers.py", line 222, in finalize
+    raise ValueError(
+ValueError: The length of the provided data is not a multiple of the block length.
+[05/Jul/2023 14:55:21] ERROR [django.server:212] "GET / HTTP/1.1" 500 92376
+[05/Jul/2023 16:09:58] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 417, in paybills
+    return render(request, "savings/paybill.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: savings/paybill.html
+[05/Jul/2023 16:09:58] ERROR [django.server:212] "GET /paybills HTTP/1.1" 500 83511
+[05/Jul/2023 16:16:05] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'stattic'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 417, in paybills
+    return render(request, "savings/paybill.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'stattic' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+crispy_forms_field
+crispy_forms_filters
+crispy_forms_tags
+crispy_forms_utils
+i18n
+l10n
+log
+static
+tz
+[05/Jul/2023 16:16:05] ERROR [django.server:212] "GET /paybills HTTP/1.1" 500 197784
+[05/Jul/2023 16:42:40] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 417, in paybills
+    return render(request, "savings/paybill.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'saving' not found. 'saving' is not a valid view function or pattern name.
+[05/Jul/2023 16:42:40] ERROR [django.server:212] "GET /paybills HTTP/1.1" 500 168653
+[05/Jul/2023 16:43:24] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 415, in paybills
+    status = pay_biils(amount_to_pay, account_number, account_to_pay_to, user)
+NameError: name 'pay_biils' is not defined
+[05/Jul/2023 16:43:24] ERROR [django.server:212] "POST /paybills HTTP/1.1" 500 70228
+[05/Jul/2023 16:50:00] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 416, in paybills
+    status = pay_bills(amount_to_pay, account_number, account_to_pay_to, user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/paybills.py", line 24, in pay_bills
+    account = Accounts.objects.filter(user=user)
+NameError: name 'Accounts' is not defined
+[05/Jul/2023 16:50:00] ERROR [django.server:212] "POST /paybills HTTP/1.1" 500 75130
+[05/Jul/2023 17:13:36] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 416, in paybills
+    status = pay_bills(amount_to_pay, account_number, account_to_pay_to, user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/paybills.py", line 42, in pay_bills
+    register_history(account, amount, transaction_type, current_datetime, account_type)
+NameError: name 'amount' is not defined
+[05/Jul/2023 17:13:36] ERROR [django.server:212] "POST /paybills HTTP/1.1" 500 75770
+[05/Jul/2023 17:27:41] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 416, in paybills
+    status = pay_bills(amount_to_pay, account_number, account_to_pay_to, user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/paybills.py", line 31, in pay_bills
+    if amount_to_pay > account.account_balance:
+AttributeError: 'QuerySet' object has no attribute 'account_balance'
+[05/Jul/2023 17:27:41] ERROR [django.server:212] "POST /paybills HTTP/1.1" 500 76312
+[05/Jul/2023 17:30:57] ERROR [django.request:241] Internal Server Error: /paybills
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 416, in paybills
+    status = pay_bills(amount_to_pay, account_number, account_to_pay_to, user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/paybills.py", line 31, in pay_bills
+    if amount_to_pay > account.account_balance:
+AttributeError: 'QuerySet' object has no attribute 'account_balance'
+[05/Jul/2023 17:30:57] ERROR [django.server:212] "POST /paybills HTTP/1.1" 500 76600

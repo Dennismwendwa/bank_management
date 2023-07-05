@@ -15,6 +15,7 @@ from .forms import Saving_RecordForm, Target_SavingForm
 from django.core.paginator import Paginator
 import datetime
 from packs.quotes import money_quotes
+from .paybills import pay_bills
 
 @login_required
 def savings(request):
@@ -27,7 +28,7 @@ def savings(request):
 	acc_saving = Saving_account.objects.filter(user=user)
 
 	month_name, year, calendar, current_day = get_calender()
-	percent_acc, percent_withdral, percent_deposit, percent_transfer = get_transaction_percentage(user)
+	percent_acc, percent_withdral, percent_deposit, percent_transfer, percent_paybill = get_transaction_percentage(user)
 
 
 	return render(request, "savings/index.html", {
@@ -42,6 +43,7 @@ def savings(request):
 		"percent_withdral": percent_withdral,
 		"percent_deposit": percent_deposit,
 		"percent_transfer": percent_transfer,
+		"percent_paybill": percent_paybill,
 
 		"month_name": month_name,
 		"year": year,
@@ -401,5 +403,31 @@ def calender_view(request):
 	"calendar": calendar,
 	"current_day": current_day,
 	})
+
+
+def paybills(request):
+	
+	user = request.user
+
+	if request.method == "POST":
+		amount_to_pay = request.POST["amount_to_pay"]
+		account_number = request.POST["account_number"]
+		account_to_pay_to = request.POST["account_to_pay_to"]
+
+		status = pay_bills(amount_to_pay, account_number, account_to_pay_to, user)
+
+		if status == "no_account":
+			messages.error(request, "That account number does not exist.")
+			return redirect("paybills")
+		elif status == "less_amount":
+			account_t = Account.objects.get(account_number=account_number)
+			balance_amount = account_t.account_balance
+			messages.error(request, f"""Insufficient funds, Your Balance is\
+			{balance_amount}""")
+			return redirect("paybills")
+		elif status == "success":
+			messages.success(request, f"Your payment of {amount_to_pay} was successfull")
+
+	return render(request, "savings/paybill.html", {})
 
 

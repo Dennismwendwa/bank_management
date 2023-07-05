@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-tzd0v!6l8mda4@3b3m3+ej!0j-#(290yr+wr7qf9xpn6(t20fi
 CSRF_TRUSTED_ORIGINS = ["https://saving.up.railway.app"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -85,6 +85,7 @@ WSGI_APPLICATION = 'savingrecord.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+"""
 DATABASE_URL = "postgresql://postgres:a5d9ereK7VhzZVrlFk8r@containers-us-west-168.railway.app:6227/railway"
 
 DATABASES = {
@@ -99,7 +100,6 @@ DATABASES = {
     }
 }
 
-"""
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

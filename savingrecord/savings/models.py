@@ -4,13 +4,14 @@ from django.db.models import Max
 from datetime import datetime
 import random, uuid
 import string
+from packs.enryptAES import encrypt
 
 
 # Create your models here.
 class Account(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	account_name = models.CharField(max_length=100)
-	account_number = models.CharField(max_length=50, unique=True)
+	account_number = models.CharField(max_length=200, unique=True)
 	account_balance = models.DecimalField(max_digits=12, decimal_places=4)
 	account_type = models.CharField(max_length=50)
 	account_status = models.CharField(max_length=50, default="active")
@@ -21,6 +22,7 @@ class Account(models.Model):
 	total_withdraw = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 	total_deposit = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 	total_transfar = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+	total_paybil = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 	total_trans_amount = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 
 
@@ -105,13 +107,15 @@ def accounts_number(user_id):
 
 	bank_account_number = string_part + uuid_part + user_num
 
-	return bank_account_number.upper()
+	ciphertext = bank_account_number.upper()
+
+	return ciphertext
 
 
 class Saving_account(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	account_name = models.CharField(max_length=50, default="saving")
-	account_number = models.CharField(max_length=50, unique=True)
+	account_number = models.CharField(max_length=1000, unique=True)
 	deposit = models.DecimalField(max_digits=12, decimal_places=4)
 	account_balance = models.DecimalField(max_digits=12, decimal_places=4)
 	last_transaction_date = models.DateTimeField(null=True)

@@ -6,6 +6,7 @@ from datetime import datetime
 from decimal import Decimal
 from django .contrib.auth.models import User
 from django.utils import timezone
+from packs.enryptAES import decrypt_eas
 
 class BankAccount:
 
@@ -241,7 +242,6 @@ def calculate_balance(user, amount, project_name):
 #		)
 #		recording.save()
 		instance = Target_account_st.record_keeper(project_name, amount)
-		print(instance.stats(project_name, amount))
 		return "seccuss"
 
 
@@ -331,11 +331,16 @@ def get_transaction_percentage(user):
 				percent_transfer = round((account.total_transfar / account.total_trans_amount) * 100, 1)
 			except decimal.InvalidOperation as e:
 				percent_transfer = 0
+
+			try:
+				percent_paybill = round((account.total_paybil / account.total_trans_amount) * 100, 1)
+			except decimal.InvalidOperation as e:
+				percent_paybill = 0
 		
-			return account.account_number, percent_withdral, percent_deposit, percent_transfer
+			return account.account_number, percent_withdral, percent_deposit, percent_transfer, percent_paybill
 		else:
-			account, percent_withdral, percent_deposit, percent_transfer = 0, 0, 0, 0
-			return account, percent_withdral, percent_deposit, percent_transfer
+			account, percent_withdral, percent_deposit, percent_transfer, percent_paybill = 0, 0, 0, 0, 0
+			return account, percent_withdral, percent_deposit, percent_transfer, percent_paybill
 
 
 def get_calender():
