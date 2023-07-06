@@ -7,7 +7,6 @@ import string
 from packs.enryptAES import encrypt
 
 
-# Create your models here.
 class Account(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	account_name = models.CharField(max_length=100)
@@ -93,7 +92,6 @@ class Statements(models.Model):
     
 
 def accounts_number(user_id):
-
 	
 	string_part = "ACC"
 
@@ -103,7 +101,6 @@ def accounts_number(user_id):
 	user_num = str(int(user_id) - sum(ord(char) for char in str(user_id))).replace("-", "")
 	user_num = int(user_num)
 	user_num = str(user_num - randd)
-
 
 	bank_account_number = string_part + uuid_part + user_num
 
@@ -136,3 +133,31 @@ class Saving_account_statements(models.Model):
 	def __str__(self):
 		return f"""{self.account_number.account_number} - 
 		{self.transaction_date} - {self.transaction_type}"""
+
+class Dealers(models.Model):
+	first_name = models.CharField(max_length=50)
+	last_name = models.CharField(max_length=50)
+	id_number = models.CharField(max_length=50, unique=True)
+	dealer_id = models.CharField(max_length=50, unique=True)
+	contact_number = models.CharField(max_length=50)
+	address = models.CharField(max_length=50)
+	registered_on = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return f"{self.first_name} {self.last_name} {self.dealer_id}"
+
+class Agents(models.Model):
+	first_name = models.CharField(max_length=50)
+	last_name = models.CharField(max_length=50)
+	id_number = models.CharField(max_length=50, unique=True)
+	dealer_id = models.CharField(max_length=50, blank=True, null=True)
+	contact_number = models.CharField(max_length=50)
+	address = models.CharField(max_length=50)
+	status = models.BooleanField(default=False)
+	agent_number = models.CharField(max_length=50, null=True, blank=True)
+	registered_on = models.DateField(auto_now_add=True)
+
+	def __str__(self):
+		return f"{self.first_name} {self.last_name} {self.agent_number} {self.status}"
+
+

@@ -289,21 +289,16 @@
         </li>
 
         <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#components-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-menu-button-wide"></i><span>Paybills</span
-            ><i class="bi bi-chevron-down ms-auto"></i>
+          <a class="nav-link collapsed"
+          data-bs-target="#charts-nav"
+          data-bs-toggle="collapse"
+          href="#">
+            
+            <i class="bi bi-menu-button-wide"></i><span>Paybills</span>
+            <i class="bi bi-chevron-down ms-auto"></i>
           </a>
-          <ul
-            id="components-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-           
+          <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            
             <li>
               <a href="{% url 'paybills' %}">
                 <i class="bi bi-circle"></i><span>Bussines number</span>
@@ -314,9 +309,9 @@
                 <i class="bi bi-circle"></i><span>Till numbers</span>
               </a>
             </li>
-      
           </ul>
         </li>
+
         
         <li class="nav-heading">Pages</li>
 
@@ -393,11 +388,9 @@
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">
                  
-
                   <div class="card-body">
                     <h5 class="card-title">Saving Accounts </h5>
-                    
-
+                    {% if acc_saving %}
                     {% for saving in acc_saving %}
                     <h5 class="card-title">{{saving.account_number}} </h5>
                     <div class="d-flex align-items-center">
@@ -408,10 +401,14 @@
                       </div>
                       <div class="ps-3">
                         <h6>{{saving.account_balance|floatformat:2}}</h6>
-                        
                       </div>
                     </div>
                     {% endfor %}
+                    {% else%}
+                    <p>You have no account</p>
+                    <strong><p>Create one</p></strong>
+                    {% endif %}
+
 
                   </div>
                 </div>
@@ -425,7 +422,7 @@
                   <h5 class="card-title">
                     Simba Accounts
                   </h5>
-
+                  {% if acc_detail %}
                   {% for account in acc_detail %}
                   <div class="card-body">
                     
@@ -444,12 +441,15 @@
                         <span>Balance</span>
                         <h6>{{account.account_balance|floatformat:2}}</h6>
                         {% if account.account_number == percent_acc %}
-                        {% if percent_withdral > percent_deposit and percent_withdral > percent_transfer%}
+                        {% if percent_withdral > percent_deposit and percent_withdral > percent_transfer and percent_withdral > percent_paybill%}
                         <span class="text-danger small pt-1 fw-bold">{{percent_withdral}}%</span>
                         <span class="text-muted small pt-2 ps-1">withdraw</span>
-                        {% elif  percent_deposit > percent_withdral and percent_deposit > percent_transfer %}
+                        {% elif  percent_deposit > percent_withdral and percent_deposit > percent_transfer and percent_deposit > percent_paybill%}
                         <span class="text-danger small pt-1 fw-bold">{{percent_deposit}}%</span>
                         <span class="text-muted small pt-2 ps-1">deposit</span>
+                        {% elif percent_paybill > percent_withdral and percent_paybill > percent_deposit and percent_paybill > percent_transfer%}
+                        <span class="text-danger small pt-1 fw-bold">{{percent_paybill}}%</span>
+                        <span class="text-muted small pt-2 ps-1">bills paid</span>
                         {% else %}
                         <span class="text-danger small pt-1 fw-bold">{{percent_transfer}}%</span>
                         <span class="text-muted small pt-2 ps-1">transfer</span>
@@ -461,6 +461,37 @@
                     </div>
                   </div>
                   {% endfor %}
+                  {% else %}
+                  <p>You have no account</p>
+                  <strong><p>Create one</p></strong>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">
+                 
+                  <div class="card-body">
+                    <h5 class="card-title">Shotcuts </h5>
+                  
+                    <div class="ps-3">
+                      <a href="{% url 'create_agents' %}">
+                      <h6>Agents</h6></a>
+                    </div>
+                    <br>
+
+                    <div class="ps-3">
+                      <a href="">
+                      <h6>Till number</h6></a>
+                    </div>
+                    <br>
+
+                    <div class="ps-3">
+                      <a href="" >
+                      <h6>Business number</h6></a>
+                    </div>
+              
+                  </div>
                 </div>
               </div>
               

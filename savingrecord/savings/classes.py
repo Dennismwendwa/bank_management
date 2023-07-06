@@ -3,6 +3,7 @@ from .models import Saving_account_statements #Target_saving_record_statements
 import uuid
 import decimal, calendar
 from datetime import datetime
+from decimal import Decimal, InvalidOperation
 from decimal import Decimal
 from django .contrib.auth.models import User
 from django.utils import timezone
@@ -88,7 +89,9 @@ def make_deposit(request, amount, account_no):
 			try:
 				account.account_balance += Decimal(amount)
 				amount = Decimal(amount)
-			except decimal.InvalidOperation:
+			except InvalidOperation as e:
+			#except decimal.ConversionSyntax as e:
+				print(e)
 				return "wrong_type"
 
 			status = not_negative(amount)

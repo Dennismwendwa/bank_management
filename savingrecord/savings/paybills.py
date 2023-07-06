@@ -1,7 +1,7 @@
 from .models import Account
 from .classes import register_history, not_negative
 from django.utils import timezone
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 
 
@@ -13,7 +13,7 @@ def pay_bills(amount_to_pay, account_number, account_to_pay_to, user):
 
     try:
         amount_to_pay = Decimal(amount_to_pay)
-    except decimal.InvalidOperation:
+    except InvalidOperation:
         return "wrong_type"
 
     status = not_negative(amount_to_pay)

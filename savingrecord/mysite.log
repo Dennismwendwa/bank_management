@@ -1109,3 +1109,415 @@ Traceback (most recent call last):
     if amount_to_pay > account.account_balance:
 AttributeError: 'QuerySet' object has no attribute 'account_balance'
 [05/Jul/2023 17:30:57] ERROR [django.server:212] "POST /paybills HTTP/1.1" 500 76600
+[06/Jul/2023 14:14:06] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 10, in create_agents
+    return redirect(request, "savings.create_agents.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/create-agents'>' not found. '<WSGIRequest: GET '/create-agents'>' is not a valid view function or pattern name.
+[06/Jul/2023 14:14:06] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 86193
+[06/Jul/2023 14:16:31] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 10, in create_agents
+    return redirect(request, "savings.create_agents.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/create-agents'>' not found. '<WSGIRequest: GET '/create-agents'>' is not a valid view function or pattern name.
+[06/Jul/2023 14:16:31] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 86330
+[06/Jul/2023 14:18:17] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 10, in create_agents
+    return render(request, "savings.create_agents.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: savings.create_agents.html
+[06/Jul/2023 14:18:17] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 83141
+[06/Jul/2023 14:25:27] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 10, in create_agents
+    return render(request, "savings.create_agents.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: savings.create_agents.html
+[06/Jul/2023 14:25:27] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 83141
+[06/Jul/2023 14:25:28] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 10, in create_agents
+    return render(request, "savings.create_agents.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: savings.create_agents.html
+[06/Jul/2023 14:25:28] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 83141
+[06/Jul/2023 16:53:33] ERROR [django.request:241] Internal Server Error: /admin/savings/agents/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_agents.dealer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_agents.dealer_id
+[06/Jul/2023 16:53:33] ERROR [django.server:212] "GET /admin/savings/agents/ HTTP/1.1" 500 164692
+[06/Jul/2023 16:53:41] ERROR [django.request:241] Internal Server Error: /admin/savings/agents/1/change/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_agents.dealer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1767, in _changeform_view
+    obj = self.get_object(request, unquote(object_id), to_field)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 866, in get_object
+    return queryset.get(**{field.name: object_id})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_agents.dealer_id
+[06/Jul/2023 16:53:41] ERROR [django.server:212] "GET /admin/savings/agents/1/change/ HTTP/1.1" 500 181757
+[06/Jul/2023 17:14:41] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dealer_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 15, in create_agents
+    dealer_id = request.POST["dealer_id"]
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dealer_id'
+[06/Jul/2023 17:14:41] ERROR [django.server:212] "POST /create-agents HTTP/1.1" 500 79443
+[06/Jul/2023 17:20:43] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 16, in create_agents
+    if dealers.objects.get(dealer_id=dealer_id).exist():
+NameError: name 'dealers' is not defined
+[06/Jul/2023 17:20:43] ERROR [django.server:212] "POST /create-agents HTTP/1.1" 500 70846
+[06/Jul/2023 17:22:23] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 16, in create_agents
+    if Dealers.objects.get(dealer_id=dealer_id).exist():
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+savings.models.Dealers.DoesNotExist: Dealers matching query does not exist.
+[06/Jul/2023 17:22:23] ERROR [django.server:212] "POST /create-agents HTTP/1.1" 500 79580
+[06/Jul/2023 17:23:42] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 16, in create_agents
+    if Dealers.objects.filter(dealer_id=dealer_id).exist():
+AttributeError: 'QuerySet' object has no attribute 'exist'
+[06/Jul/2023 17:23:42] ERROR [django.server:212] "POST /create-agents HTTP/1.1" 500 70974
+[06/Jul/2023 17:24:23] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 44, in create_agents
+    return redirect("create_agent")
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_agent' not found. 'create_agent' is not a valid view function or pattern name.
+[06/Jul/2023 17:24:23] ERROR [django.server:212] "POST /create-agents HTTP/1.1" 500 89471
+[06/Jul/2023 18:23:31] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 13, in create_agents
+    current_time = datetime.now().time()
+AttributeError: module 'datetime' has no attribute 'now'
+[06/Jul/2023 18:23:31] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 68743
+[06/Jul/2023 18:24:25] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 15, in create_agents
+    target_time = datetime.time(hour=18, minute=34)
+TypeError: unbound method datetime.time() needs an argument
+[06/Jul/2023 18:24:25] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 69028
+[06/Jul/2023 18:28:47] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 17, in create_agents
+    create_agent_number()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 13, in create_agent_number
+    time = datetime.now().time()
+AttributeError: module 'datetime' has no attribute 'now'
+[06/Jul/2023 18:28:47] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 72102
+[06/Jul/2023 19:16:13] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 17, in create_agents
+    create_agent_number()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 12, in create_agent_number
+    agents = Agents.objects.filter(status=True and agent_number is None)
+NameError: name 'agent_number' is not defined
+[06/Jul/2023 19:16:13] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 72131
+[06/Jul/2023 19:26:42] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 17, in create_agents
+    create_agent_number()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 24, in create_agent_number
+    agent.agent_number = uniq
+NameError: name 'agent' is not defined
+[06/Jul/2023 19:26:42] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 73305
+[06/Jul/2023 19:27:42] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 17, in create_agents
+    create_agent_number()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 25, in create_agent_number
+    agents.save()
+AttributeError: 'QuerySet' object has no attribute 'save'
+[06/Jul/2023 19:27:42] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 73118
+[06/Jul/2023 19:51:12] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 59, in bank_account
+    user =  get_user()    # User.objects.get(username=request.user.username)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 56, in get_user
+    user = User.objects.get(username=request.user.username)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+[06/Jul/2023 19:52:13] ERROR [django.request:241] Internal Server Error: /bank_account
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 59, in bank_account
+    user =  get_user()    # User.objects.get(username=request.user.username)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 56, in get_user
+    user = User.objects.get(username=request.user.username)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+[06/Jul/2023 20:38:25] ERROR [django.request:241] Internal Server Error: /deposit
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 217, in deposit_view
+    status = make_deposit(request, deposit_amount, account_no)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 95, in make_deposit
+    status = not_negative(amount)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 72, in not_negative
+    if int(amount) > 0:
+ValueError: invalid literal for int() with base 10: 'teb'
+[06/Jul/2023 20:38:25] ERROR [django.server:212] "POST /deposit HTTP/1.1" 500 78650
+[06/Jul/2023 20:45:18] ERROR [django.request:241] Internal Server Error: /deposit
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 217, in deposit_view
+    status = make_deposit(request, deposit_amount, account_no)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 89, in make_deposit
+    account.account_balance += Decimal(amount)
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+[06/Jul/2023 20:45:18] ERROR [django.server:212] "POST /deposit HTTP/1.1" 500 75328
+[06/Jul/2023 20:48:44] ERROR [django.request:241] Internal Server Error: /deposit
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 89, in make_deposit
+    account.account_balance += Decimal(amount)
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 217, in deposit_view
+    status = make_deposit(request, deposit_amount, account_no)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 91, in make_deposit
+    except InvalidOperation as e:
+NameError: name 'InvalidOperation' is not defined
+[06/Jul/2023 20:48:44] ERROR [django.server:212] "POST /deposit HTTP/1.1" 500 80564
