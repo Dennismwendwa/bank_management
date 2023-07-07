@@ -43,8 +43,6 @@ def create_agents(request):
                 id_number_errors = form.errors.get('id_number')
                 error_message = id_number_errors[0]
                 messages.error(request, f"{error_message}")
-                print()
-                print(error_message)
                 return redirect("create_agents")
         else:
             messages.error(request, f"No Authorized dealer with that id.")

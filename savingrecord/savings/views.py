@@ -64,7 +64,7 @@ def bank_account(request):
 		if count < 3:
 			current_datetime = timezone.now()
 			account_balance = int(request.POST["account_balance"])
-			account_type = request.POST["account_type"]
+			account_type = request.POST["account_type"] #update required
 			first_name = request.POST["first_name"]
 			last_name  = request.POST["last_name"]
 			account_number = accounts_number(user.id)
