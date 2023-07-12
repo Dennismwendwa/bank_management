@@ -18,4 +18,10 @@ urlpatterns = [
 	path("paybills", views.paybills, name="paybills"),
 
     path("create-agents", more_views.create_agents, name="create_agents"),
+    path("create-dealer", more_views.create_dealers, name="create_dealers"),
+    path("dealer-own-agents", more_views.display_dealers_and_own_agents,
+        name="dealer-own-agents"),
+    path("company", more_views.company, name="company"),
+    path("display_companies", more_views.display_companies, name="display_companies"),
+
 ]

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Account, Saving_record, Target_saving_record, Agents
+from .models import Dealers, Company
 
 class BankAccountForm(forms.ModelForm):
     class Meta:
@@ -32,3 +33,15 @@ class AgentForm(forms.ModelForm):
                 "contact_number", "address"]
 
 
+class DealersForm(forms.ModelForm):
+    class Meta:
+
+        model = Dealers
+        fields = ["first_name", "last_name", "id_number",
+                "contact_number", "address"]
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+
+        model = Company
+        fields = ["name", "email", "contact", "address", "country"]

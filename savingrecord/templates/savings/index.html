@@ -481,14 +481,26 @@
                     <br>
 
                     <div class="ps-3">
-                      <a href="">
-                      <h6>Till number</h6></a>
+                      <a href="{% url 'display_companies' %}">
+                      <h6>All companies</h6></a>
                     </div>
                     <br>
 
                     <div class="ps-3">
-                      <a href="" >
+                      <a href="{% url 'company' %}" >
                       <h6>Business number</h6></a>
+                    </div>
+                    <br>
+
+                    <div class="ps-3">
+                      <a href="{% url 'create_dealers' %}" >
+                      <h6>Create new dealer</h6></a>
+                    </div>
+                    <br>
+
+                    <div class="ps-3">
+                      <a href="{% url 'dealer-own-agents' %}" >
+                      <h6>dealer own agents</h6></a>
                     </div>
               
                   </div>

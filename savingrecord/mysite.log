@@ -1521,3 +1521,1405 @@ Traceback (most recent call last):
     except InvalidOperation as e:
 NameError: name 'InvalidOperation' is not defined
 [06/Jul/2023 20:48:44] ERROR [django.server:212] "POST /deposit HTTP/1.1" 500 80564
+[08/Jul/2023 15:10:43] ERROR [django.request:241] Internal Server Error: /create-dealer
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dealer_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 64, in create_dealers
+    dealer_id = request.POST["dealer_id"]
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dealer_id'
+[08/Jul/2023 15:10:43] ERROR [django.server:212] "POST /create-dealer HTTP/1.1" 500 79346
+[08/Jul/2023 15:13:42] ERROR [django.request:241] Internal Server Error: /create-dealer
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 91, in create_dealers
+    error_message = id_number_errors[0]
+TypeError: 'NoneType' object is not subscriptable
+[08/Jul/2023 15:13:42] ERROR [django.server:212] "POST /create-dealer HTTP/1.1" 500 70677
+[08/Jul/2023 16:47:06] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 100, in display_dealers_and_own_agents
+    agents = Agents.objects.all(status=True)
+TypeError: BaseManager.all() got an unexpected keyword argument 'status'
+[08/Jul/2023 16:47:06] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 69340
+[08/Jul/2023 16:56:11] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 115, in display_dealers_and_own_agents
+    return render(request, "savings/display_dealers_and_own_agents.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 52: 'endfor', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+[08/Jul/2023 16:56:11] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 225233
+[08/Jul/2023 16:57:03] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: '{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 115, in display_dealers_and_own_agents
+    return render(request, "savings/display_dealers_and_own_agents.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 52: '{%', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+[08/Jul/2023 16:57:03] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 227212
+[08/Jul/2023 16:57:32] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: '{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 115, in display_dealers_and_own_agents
+    return render(request, "savings/display_dealers_and_own_agents.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 967, in do_if
+    nodelist = parser.parse(("endif",))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 53: '{%', expected 'endif'. Did you forget to register or load this tag?
+[08/Jul/2023 16:57:32] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 226746
+[08/Jul/2023 17:26:53] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 115, in display_dealers_and_own_agents
+    return render(request, "savings/display_dealers_and_own_agents.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 94: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+[08/Jul/2023 17:26:53] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 194342
+[08/Jul/2023 18:39:52] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'enfif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 115, in display_dealers_and_own_agents
+    return render(request, "savings/display_dealers_and_own_agents.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 62: 'enfif', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+[08/Jul/2023 18:39:52] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 235009
+[12/Jul/2023 12:12:19] ERROR [django.request:241] Internal Server Error: /admin/savings/till_number/add/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1886, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1804, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 926, in log_addition
+    object_repr=str(obj),
+  File "/home/dennis/projects/saving_record/savingrecord/savings/models.py", line 153, in __str__
+    return self.till_number
+AttributeError: 'Till_number' object has no attribute 'till_number'
+[12/Jul/2023 12:12:19] ERROR [django.server:212] "POST /admin/savings/till_number/add/ HTTP/1.1" 500 119022
+[12/Jul/2023 13:39:32] ERROR [django.request:241] Internal Server Error: /admin/savings/till_number/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_till_number.number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_till_number.number
+[12/Jul/2023 13:39:32] ERROR [django.server:212] "GET /admin/savings/till_number/ HTTP/1.1" 500 160676
+[12/Jul/2023 13:59:10] ERROR [django.request:241] Internal Server Error: /admin/savings/till_number/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_till_number.number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_till_number.number
+[12/Jul/2023 13:59:10] ERROR [django.server:212] "GET /admin/savings/till_number/ HTTP/1.1" 500 161278
+[12/Jul/2023 13:59:33] ERROR [django.request:241] Internal Server Error: /admin/savings/till_number/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_till_number.number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_till_number.number
+[12/Jul/2023 13:59:33] ERROR [django.server:212] "GET /admin/savings/till_number/ HTTP/1.1" 500 161288
+[12/Jul/2023 14:05:28] ERROR [django.request:241] Internal Server Error: /admin/savings/till_number/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_till_number.number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_till_number.number
+[12/Jul/2023 14:05:28] ERROR [django.server:212] "GET /admin/savings/till_number/ HTTP/1.1" 500 161288
+[12/Jul/2023 14:41:38] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 18, in create_agents
+    create_agent_number()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 22, in create_agent_number
+    Till_number.objects.create(agent=agnts, number=till_number)
+NameError: name 'Till_number' is not defined
+[12/Jul/2023 14:41:38] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 73024
+[12/Jul/2023 16:37:54] ERROR [django.request:241] Internal Server Error: /company
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 146, in company
+    return render(request, "savings/company.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 568, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2: 'static'. Did you forget to register or load this tag?
+[12/Jul/2023 16:37:54] ERROR [django.server:212] "GET /company HTTP/1.1" 500 168840
+[12/Jul/2023 16:38:18] ERROR [django.request:241] Internal Server Error: /company
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 146, in company
+    return render(request, "savings/company.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 568, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 121: 'endblock'. Did you forget to register or load this tag?
+[12/Jul/2023 16:38:18] ERROR [django.server:212] "GET /company HTTP/1.1" 500 164354
+[12/Jul/2023 16:40:00] ERROR [django.request:241] Internal Server Error: /company
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 123, in company
+    country = form.cleaned_data.POST["country"]
+AttributeError: 'dict' object has no attribute 'POST'
+[12/Jul/2023 16:40:00] ERROR [django.server:212] "POST /company HTTP/1.1" 500 71222
+[12/Jul/2023 17:41:26] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 34, in generate_business_numbers
+    company = Company.objects.filter(approved=True, businessnumber__number=None)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1534, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1415, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1225, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'businessnumber' into field. Choices are: address, approved, contact, country, email, id, name
+[12/Jul/2023 17:41:26] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 117617
+[12/Jul/2023 17:55:46] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 34, in generate_business_numbers
+    company = Company.objects.filter(approved=True, business_numbers__number=None)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1534, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1415, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1225, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'business_numbers' into field. Choices are: address, approved, contact, country, email, id, name
+[12/Jul/2023 17:55:46] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 117657
+[12/Jul/2023 18:06:51] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 42, in generate_business_numbers
+    BusinessNumber.objects.create(company=company, number=bus_number)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Company: Kenya5 0712930893 dennidfssmusembi2@gmail.com>": "BusinessNumber.company" must be a "Agents" instance.
+[12/Jul/2023 18:06:51] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 91978
+[12/Jul/2023 18:13:39] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 42, in generate_business_numbers
+    BusinessNumber.objects.create(company=company, number=bus_number)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Company: Kenya5 0712930893 dennidfssmusembi2@gmail.com>": "BusinessNumber.company" must be a "Agents" instance.
+[12/Jul/2023 18:13:39] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 92155
+[12/Jul/2023 18:15:49] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 42, in generate_business_numbers
+    BusinessNumbe.objects.create(company=company, buss_number=bus_number)
+NameError: name 'BusinessNumbe' is not defined
+[12/Jul/2023 18:15:49] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 72788
+[12/Jul/2023 18:16:37] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 42, in generate_business_numbers
+    BusinessNumber.objects.create(company=company, buss_number=bus_number)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Company: Kenya8 0712930893 densdfgnismusembi2@gmail.com>": "BusinessNumber.company" must be a "Agents" instance.
+[12/Jul/2023 18:16:37] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 92088
+[12/Jul/2023 18:20:04] ERROR [django.request:241] Internal Server Error: /create-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 19, in create_agents
+    generate_business_numbers()
+  File "/home/dennis/projects/saving_record/savingrecord/savings/logic.py", line 42, in generate_business_numbers
+    BusinessNumber.objects.create(company=company, buss_number=bus_number)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Company: Kenya8 0712930893 densdfgnismusembi2@gmail.com>": "BusinessNumber.company" must be a "Agents" instance.
+[12/Jul/2023 18:20:04] ERROR [django.server:212] "GET /create-agents HTTP/1.1" 500 92088
+[12/Jul/2023 18:53:05] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", companies)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 57, in render
+    context = make_context(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/context.py", line 278, in make_context
+    raise TypeError(
+TypeError: context must be a dict rather than QuerySet.
+[12/Jul/2023 18:53:05] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 85385
+[12/Jul/2023 18:54:13] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", companies)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 57, in render
+    context = make_context(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/context.py", line 278, in make_context
+    raise TypeError(
+TypeError: context must be a dict rather than QuerySet.
+[12/Jul/2023 18:54:13] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 85523
+[12/Jul/2023 18:54:14] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", companies)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 57, in render
+    context = make_context(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/context.py", line 278, in make_context
+    raise TypeError(
+TypeError: context must be a dict rather than QuerySet.
+[12/Jul/2023 18:54:14] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 85523
+[12/Jul/2023 18:59:14] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_company.registered_on
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_company.registered_on
+[12/Jul/2023 18:59:14] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948
+[12/Jul/2023 19:00:12] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_company.registered_on
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_company.registered_on
+[12/Jul/2023 19:00:12] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948
+[12/Jul/2023 19:00:13] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_company.registered_on
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_company.registered_on
+[12/Jul/2023 19:00:13] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948
+[12/Jul/2023 19:00:14] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_company.registered_on
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_company.registered_on
+[12/Jul/2023 19:00:14] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948
+[12/Jul/2023 19:00:16] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_company.registered_on
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_company.registered_on
+[12/Jul/2023 19:00:16] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948
+[12/Jul/2023 19:00:17] ERROR [django.request:241] Internal Server Error: /display_companies
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: savings_company.registered_on
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 159, in display_companies
+    return render(request, "savings/display_companies.html", context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: savings_company.registered_on
+[12/Jul/2023 19:00:17] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948

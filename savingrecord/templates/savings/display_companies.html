@@ -1,0 +1,66 @@
+{% extends "savings/forms_layout.html" %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block display_companies %}
+
+<table class="table table-striped">
+    <thead>
+        <tr class="table-primary">
+            <th>Company Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>country</th>
+            <th>Registrion date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for company in companies %}
+
+        <tr class="table-primary">
+            <td>
+              <div class="d-flex align-items-center">
+                <img
+                    src="{{ company.image.url}}"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{company.name}}</p>
+                 
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="text-normal mb-0">{{company.email}}</p>
+              
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{company.contact}}</p>
+              
+            </td>
+            <td>
+                <p class="text-muted mb-0"> {{company.address}}</p>
+            </td>
+            <td>
+                <p class="text-muted mb-0">{{company.country}}</p>
+            </td>
+            <td>
+                <p class="text-muted mb-0">{{company.registered_on}}</p>
+            </td>
+        </tr>
+
+        {% endfor %}
+        <br>
+    
+    </tbody>
+  </table>
+  
+  
+
+{% endblock %}

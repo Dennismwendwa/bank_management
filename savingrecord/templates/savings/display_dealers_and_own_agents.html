@@ -1,0 +1,110 @@
+{% extends "savings/forms_layout.html" %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block dealers_own_agents %}
+{% for dealer in dealers %}
+
+<table class="table table-striped">
+    <thead>
+        <tr class="table-primary">
+            <th>Dealer Name</th>
+            <th>Agent till number
+            <th>Contact</th>
+            <th>ID number</th>
+            <th>Address</th>
+            <th>Registrion date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="table-primary">
+            <td>
+              <div class="d-flex align-items-center">
+                <img
+                    src="{{ dealer.image.url}}"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{dealer.first_name}} {{dealer.last_name}}</p>
+                 
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="text-normal mb-0">{{agent.tillnumber.number}}</p>
+              
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{dealer.contact_number}}</p>
+              
+            </td>
+            <td>
+                <p class="text-muted mb-0"> {{dealer.id_number}}</p>
+            </td>
+            <td>
+                <p class="text-muted mb-0">{{dealer.address}}</p>
+            </td>
+            <td>
+                <p class="text-muted mb-0">{{dealer.registered_on}}</p>
+            </td>
+        </tr>
+        <br>
+     
+        
+
+        {%  for agent in agents %}
+
+
+        {% if dealer.dealer_id == agent.dealer_id%}
+        <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <img
+                    src="{{ agent.image.url }}"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{agent.first_name}} {{agent.last_name}}</p>
+                 
+                </div>
+              
+              </div>
+            </td>
+            <td>
+              <p class="text-normal mb-0">{{agent.number}}</p>
+              
+            </td>
+           
+            <td>
+              <p class="fw-normal mb-1">{{agent.contact_number}}</p>
+              
+            </td>
+            <td>
+                <p class="text-muted mb-0"> {{agent.id_number}}</p>
+            </td>
+            <td>
+                <p class="text-muted mb-0">{{agent.address}}</p>
+            </td>
+            <td>
+                <p class="text-muted mb-0">{{agent.registered_on}}</p>
+            </td>
+        </tr>
+        
+        {% else %}
+        {% endif %}
+        
+        {% endfor %}
+        <hr><hr>
+    </tbody>
+  </table>
+  
+  {% endfor %}
+
+{% endblock %}

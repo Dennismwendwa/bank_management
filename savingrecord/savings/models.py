@@ -142,6 +142,7 @@ class Dealers(models.Model):
 	contact_number = models.CharField(max_length=50)
 	address = models.CharField(max_length=50)
 	registered_on = models.DateTimeField(auto_now_add=True)
+	image = models.ImageField(default="default.jpg", upload_to="dealer_pics")
 
 	def __str__(self):
 		return f"{self.first_name} {self.last_name} {self.dealer_id}"
@@ -156,8 +157,39 @@ class Agents(models.Model):
 	status = models.BooleanField(default=False)
 	agent_number = models.CharField(max_length=50, null=True, blank=True)
 	registered_on = models.DateField(auto_now_add=True)
+	image = models.ImageField(default="default.jpg", upload_to="agents_pics")
 
 	def __str__(self):
 		return f"{self.first_name} {self.last_name} {self.agent_number} {self.status}"
+
+
+class TillNumber(models.Model):
+	number = models.CharField(max_length=10)
+	agent = models.ForeignKey(Agents, on_delete=models.CASCADE, related_name='till_numbers')
+
+
+	def __str__(self):
+		return self.number
+
+class Company(models.Model):
+	name = models.CharField(max_length=50, unique=True)
+	email = models.EmailField(unique=True)
+	contact = models.CharField(max_length=50)
+	address = models.CharField(max_length=50)
+	country = models.CharField(max_length=50)
+	approved = models.BooleanField(default=False)
+	admin_review = models.BooleanField(default=False)
+	registered_on = models.DateField(auto_now_add=True)
+
+	def __str__ (self):
+		return f"{self.name} {self.contact} {self.email} {self.approved}"
+
+class BusinessNumber(models.Model):
+	buss_number = models.CharField(max_length=50)
+	company = models.ForeignKey(Company, on_delete=models.CASCADE,
+		related_name='business_numbers')
+
+	def __str__(self):
+		return self.buss_number
 
 
