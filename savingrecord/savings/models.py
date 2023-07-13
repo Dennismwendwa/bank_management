@@ -1,14 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from django.conf import settings
 from django.db.models import Max
 from datetime import datetime
 import random, uuid
 import string
 from packs.enryptAES import encrypt
 
+"""
+The auth.User has be changed to the custom User hence updating the
+User fields relationships from auth.User to the custom user. "settings.AUTH_USER_MODEL"
+and imported setting to access the user.
+"""
 
 class Account(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	account_name = models.CharField(max_length=100)
 	account_number = models.CharField(max_length=200, unique=True)
 	account_balance = models.DecimalField(max_digits=12, decimal_places=4)
@@ -47,7 +53,7 @@ class Account(models.Model):
 
 
 class Saving_record(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	amount = models.CharField(max_length=100)
 	date_saved = models.DateTimeField()
 	account_number = models.CharField(max_length=100)
@@ -57,7 +63,7 @@ class Saving_record(models.Model):
 
 
 class Target_saving_record(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	saving_for = models.CharField(max_length=100)
 	target_amount = models.CharField(max_length=100)
 	amount_saved = models.CharField(max_length=100, default=0)
@@ -110,7 +116,7 @@ def accounts_number(user_id):
 
 
 class Saving_account(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	account_name = models.CharField(max_length=50, default="saving")
 	account_number = models.CharField(max_length=1000, unique=True)
 	deposit = models.DecimalField(max_digits=12, decimal_places=4)

@@ -20,6 +20,8 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.auth import get_user_model
 
+from django.contrib.auth.models import Group
+
 
 def contact_us(request):
 
@@ -56,6 +58,7 @@ def register(request):
 		email      = request.POST["email"]
 		password1  = request.POST["password1"]
 		password2  = request.POST["password2"]
+		role = request.POST["role"]
 
 		
 		if password1 == password2 and len(password1) > 7:
@@ -69,7 +72,21 @@ def register(request):
 				user = User.objects.create_user(first_name=first_name,
 				last_name=last_name, username=username, 
 			        email=email, password=password1)
+
+				#assign user role on selected option
+				if role == "admin":
+					user.is_account_staff = True
+				elif role == "customer":
+					user.is_customer = True
+				elif role == "employee":
+					user.is_employee = True
+
 				user.save()
+
+				#adding the user to the corresponding group
+				group = Group.objects.get(name=role)
+				group.user_set.add(user)
+
 				return redirect("savings")
 		elif len(password1) < 8:
 			messages.info(request, "The Password Must be 8 or more characters!")

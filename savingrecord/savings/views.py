@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import path
-from django .contrib.auth.models import User
+#from django .contrib.auth.models import User
+from accounts.models import User
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from .classes import make_deposit, make_withdraw, make_transfer, calculate_balance, BankAccount
@@ -19,7 +21,6 @@ from .paybills import pay_bills
 
 @login_required
 def savings(request):
-
 	user = User.objects.get(username=request.user.username)
 	acc_detail = get_account_details(user)
 	statemest = get_transaction_history(user)

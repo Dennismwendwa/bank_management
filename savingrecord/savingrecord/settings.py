@@ -164,6 +164,8 @@ EMAIL_USE_TLS =os.environ.get("EMAIL_USE_TLS")
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND")
 
 
+AUTH_USER_MODEL = "accounts.User"
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

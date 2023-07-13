@@ -1,12 +1,19 @@
 from django.db import models
-from django .contrib.auth.models import User
+#from django .contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 from PIL import Image
 import os
 
+class User(AbstractUser):
+	is_admin = models.BooleanField("Is account_staff", default=False)
+	is_customer = models.BooleanField("Is customer", default=False)
+	is_employee = models.BooleanField("is employee", default=False)
 
-# Create your models here.
+
+# This User is the custom user not the auth.User.
 class Profile(models.Model):
-	user             = models.OneToOneField(User, on_delete=models.CASCADE)
+	user             = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	image            = models.ImageField(default="default.jpg", upload_to="profile_pics")
 	about            = models.TextField()
 	company          = models.CharField(max_length=100, blank=True, null=True)

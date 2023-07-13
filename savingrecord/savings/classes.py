@@ -5,9 +5,14 @@ import decimal, calendar
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from decimal import Decimal
-from django .contrib.auth.models import User
+#from django .contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 from packs.enryptAES import decrypt_eas
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class BankAccount:
 
@@ -292,13 +297,15 @@ def register_history(account_number, amount, transaction_type, transaction_date,
 
 
 def get_transaction_history(user):
+	
 	accounts = user.account_set.all()#Account.objects.filter(user=user)
 	transactions = Statements.objects.filter(account_number__in=accounts).order_by("-transaction_date")
 
 	return transactions
 
 def get_saving_record_history(user):
-
+	
+	
 	accounts = user.saving_account_set.all()
 	saving_record = Saving_account_statements.objects.filter(account_number__in=accounts)
 

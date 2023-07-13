@@ -2923,3 +2923,450 @@ Traceback (most recent call last):
     return super().execute(query, params)
 django.db.utils.OperationalError: no such column: savings_company.registered_on
 [12/Jul/2023 19:00:17] ERROR [django.server:212] "GET /display_companies HTTP/1.1" 500 221948
+[13/Jul/2023 13:52:34] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 23, in savings
+    user = User.objects.get(username=request.user.username)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 196, in __get__
+    raise AttributeError(
+AttributeError: Manager isn't available; 'auth.User' has been swapped for 'accounts.User'
+[13/Jul/2023 13:52:34] ERROR [django.server:212] "GET / HTTP/1.1" 500 78019
+[13/Jul/2023 13:57:44] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 296, in get_transaction_history
+    accounts = user.accounts.all()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/functional.py", line 268, in inner
+    return func(_wrapped, *args)
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 13:57:44] ERROR [django.server:212] "GET / HTTP/1.1" 500 81927
+[13/Jul/2023 14:03:47] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 296, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:03:47] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:34] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:34] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:35] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:35] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:36] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:36] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:36] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:36] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:36] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:36] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:37] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:37] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:37] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:37] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:37] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:37] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:37] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:37] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:37] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:37] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:38] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:38] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:38] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:38] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:14:39] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:14:39] ERROR [django.server:212] "GET / HTTP/1.1" 500 77887
+[13/Jul/2023 14:21:36] ERROR [django.request:241] Internal Server Error: /admin/savings/account/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: savings_account
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/options.py", line 836, in get_changelist_instance
+    return ChangeList(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 123, in __init__
+    self.get_results(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 279, in get_results
+    result_count = paginator.count
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/paginator.py", line 93, in count
+    return c()
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 557, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/query.py", line 543, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: savings_account
+[13/Jul/2023 14:21:36] ERROR [django.server:212] "GET /admin/savings/account/ HTTP/1.1" 500 183853
+[13/Jul/2023 14:24:07] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:24:07] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:24:14] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:24:14] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:24:15] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:24:15] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:25:42] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:25:42] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:25:43] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:25:43] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:25:43] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:25:43] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:25:43] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:25:43] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:25:44] ERROR [django.request:241] Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/views.py", line 26, in savings
+    statemest = get_transaction_history(user)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/classes.py", line 300, in get_transaction_history
+    accounts = user.accounts.all()
+AttributeError: 'User' object has no attribute 'accounts'
+[13/Jul/2023 14:25:44] ERROR [django.server:212] "GET / HTTP/1.1" 500 77837
+[13/Jul/2023 14:38:14] ERROR [django.request:241] Internal Server Error: /accounts/userprofile
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/accounts/views.py", line 214, in userprofile
+    p_form = ProfileUpdateForm(instance=request.user.profile)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/functional.py", line 268, in inner
+    return func(_wrapped, *args)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 492, in __get__
+    raise self.RelatedObjectDoesNotExist(
+accounts.models.User.profile.RelatedObjectDoesNotExist: User has no profile.
+[13/Jul/2023 14:38:14] ERROR [django.server:212] "GET /accounts/userprofile HTTP/1.1" 500 82764
+[13/Jul/2023 14:41:53] ERROR [django.request:241] Internal Server Error: /accounts/userprofile
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/accounts/views.py", line 214, in userprofile
+    p_form = ProfileUpdateForm(instance=request.user.profile)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/functional.py", line 268, in inner
+    return func(_wrapped, *args)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 492, in __get__
+    raise self.RelatedObjectDoesNotExist(
+accounts.models.User.profile.RelatedObjectDoesNotExist: User has no profile.
+[13/Jul/2023 14:41:53] ERROR [django.server:212] "GET /accounts/userprofile HTTP/1.1" 500 82764
+[13/Jul/2023 15:28:50] ERROR [django.request:241] Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/accounts/views.py", line 87, in register
+    group = Group.objects.get(name=role)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+django.contrib.auth.models.Group.DoesNotExist: Group matching query does not exist.
+[13/Jul/2023 15:28:50] ERROR [django.server:212] "POST /accounts/register/ HTTP/1.1" 500 80638
