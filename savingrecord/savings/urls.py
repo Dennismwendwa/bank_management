@@ -23,5 +23,5 @@ urlpatterns = [
         name="dealer-own-agents"),
     path("company", more_views.company, name="company"),
     path("display_companies", more_views.display_companies, name="display_companies"),
-
+    path("staff", more_views.staff_home, name="staff_home"),
 ]

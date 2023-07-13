@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+				"savingrecord.context_processors.common_variables", #added new
             ],
 	    "builtins":[
 		    "crispy_forms.templatetags.crispy_forms_tags",

@@ -6,9 +6,9 @@ from PIL import Image
 import os
 
 class User(AbstractUser):
-	is_admin = models.BooleanField("Is account_staff", default=False)
+	is_account_staff = models.BooleanField("Is account_staff", default=False)
 	is_customer = models.BooleanField("Is customer", default=False)
-	is_employee = models.BooleanField("is employee", default=False)
+	is_employee = models.BooleanField("Is employee", default=False)
 
 
 # This User is the custom user not the auth.User.

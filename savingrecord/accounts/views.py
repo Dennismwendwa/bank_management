@@ -72,7 +72,7 @@ def register(request):
 				user = User.objects.create_user(first_name=first_name,
 				last_name=last_name, username=username, 
 			        email=email, password=password1)
-
+				
 				#assign user role on selected option
 				if role == "admin":
 					user.is_account_staff = True
@@ -105,15 +105,21 @@ def login(request):
 		username = request.POST["username"]
 		password = request.POST["password"]
 
-		
+		if not username or not password:
+			messages.error(request, "Please enter both username and password.")
+			return redirect("login")
 
 		user = auth.authenticate(username=username, password=password)
 
 		if user is not None:
-			auth.login(request, user)
-			return redirect("savings")
+			if user.is_account_staff:
+				auth.login(request, user)
+				return redirect("staff_home")
+			else:
+				auth.login(request, user)
+				return redirect("savings")
 		else:
-			messages.info(request, "Invalid credentials")
+			messages.info(request, "Invalid username or password.")
 			return redirect("login")
 
 	return render(request, "accounts/login.html", {})

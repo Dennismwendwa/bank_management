@@ -3370,3 +3370,104 @@ Traceback (most recent call last):
     raise self.model.DoesNotExist(
 django.contrib.auth.models.Group.DoesNotExist: Group matching query does not exist.
 [13/Jul/2023 15:28:50] ERROR [django.server:212] "POST /accounts/register/ HTTP/1.1" 500 80638
+[13/Jul/2023 16:16:29] ERROR [django.request:241] Internal Server Error: /dealer-own-agents
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 103, in display_dealers_and_own_agents
+    till = TillNumber.objects.get(id=2)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+savings.models.TillNumber.DoesNotExist: TillNumber matching query does not exist.
+[13/Jul/2023 16:16:29] ERROR [django.server:212] "GET /dealer-own-agents HTTP/1.1" 500 77887
+[13/Jul/2023 17:37:18] ERROR [django.request:241] Internal Server Error: /staff
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 164, in staff_home
+    return render(request, "savings/staffs.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 173, in render
+    with context.bind_template(self):
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/context.py", line 251, in bind_template
+    processors = template.engine.template_context_processors + self._processors
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 116, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 116, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/dennis/projects/saving_record/savingrecord/savingrecord/context_processors.py", line 27
+    	return {
+    	        ^
+IndentationError: unindent does not match any outer indentation level
+[13/Jul/2023 17:37:18] ERROR [django.server:212] "GET /staff HTTP/1.1" 500 142182
+[13/Jul/2023 17:40:16] ERROR [django.request:241] Internal Server Error: /staff
+Traceback (most recent call last):
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/dennis/projects/saving_record/savingrecord/savings/more_views.py", line 164, in staff_home
+    return render(request, "savings/staffs.html", {})
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/base.py", line 173, in render
+    with context.bind_template(self):
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/context.py", line 251, in bind_template
+    processors = template.engine.template_context_processors + self._processors
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 116, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/template/engine.py", line 116, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+  File "/home/dennis/projects/saving_record/saving/lib/python3.10/site-packages/django/utils/module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/dennis/projects/saving_record/savingrecord/savingrecord/context_processors.py", line 8, in <module>
+    from .classes import get_transaction_history, get_account_details
+ModuleNotFoundError: No module named 'savingrecord.classes'
+[13/Jul/2023 17:40:16] ERROR [django.server:212] "GET /staff HTTP/1.1" 500 155217

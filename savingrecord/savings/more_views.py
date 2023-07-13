@@ -15,7 +15,7 @@ def create_agents(request):
     target_time = datetime.time(hour=14, minute=39)
 
     if current_time >= target_time:
-        #create_agent_number()
+        create_agent_number()
         generate_business_numbers()
 
     if request.method == "POST":
@@ -100,8 +100,8 @@ def display_dealers_and_own_agents(request):
     dealers = Dealers.objects.all()
     agents = Agents.objects.filter(status=True)
 
-    till = TillNumber.objects.get(id=2)
-    print(till)
+   # till = TillNumber.objects.get(id=2)
+    #print(till)
 
     context = {
             "dealers": dealers,
@@ -157,3 +157,8 @@ def display_companies(request):
             }
 
     return render(request, "savings/display_companies.html", context)
+
+
+def staff_home(request):
+
+    return render(request, "savings/staffs.html", {})
