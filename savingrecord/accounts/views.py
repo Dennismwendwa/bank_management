@@ -82,12 +82,19 @@ def register(request):
 					user.is_employee = True
 
 				user.save()
+				password=password1
 
 				#adding the user to the corresponding group
 				group = Group.objects.get(name=role)
 				group.user_set.add(user)
 
-				return redirect("savings")
+				status = login_helper(request, username, password)
+				
+				if status == "success":
+					return redirect("savings")
+				elif status == "staff":
+					return redirect("staff_home")
+
 		elif len(password1) < 8:
 			messages.info(request, "The Password Must be 8 or more characters!")
 			return redirect("register")
@@ -98,6 +105,21 @@ def register(request):
 
 	return render(request, "accounts/register.html", {})
 
+def login_helper(request, username, password):
+	user = auth.authenticate(username=username, password=password)
+	
+	if user is not None:
+		if user.is_account_staff:
+			auth.login(request, user)
+			return "staff" #redirect("staff_home")
+		else:
+			auth.login(request, user)
+			print("WE are here")
+			return "success" #redirect("savings")
+	else:
+		messages.info(request, "Invalid username or password.")
+		return redirect("login")
+		
 
 def login(request):
 
@@ -109,20 +131,16 @@ def login(request):
 			messages.error(request, "Please enter both username and password.")
 			return redirect("login")
 
-		user = auth.authenticate(username=username, password=password)
+		status = login_helper(request, username, password)
 
-		if user is not None:
-			if user.is_account_staff:
-				auth.login(request, user)
-				return redirect("staff_home")
-			else:
-				auth.login(request, user)
-				return redirect("savings")
-		else:
-			messages.info(request, "Invalid username or password.")
-			return redirect("login")
+		if status == "success":
+			return redirect("savings")
+		elif status == "staff":
+			return redirect("staff_home")
 
 	return render(request, "accounts/login.html", {})
+
+
 
 def logout(request):
 	auth.logout(request)
@@ -202,8 +220,9 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 
 			#save the password for the user
 			user = form.save(commit=False)
-			print(f"this is password chenged {password1}")		
+			password1 = form.cleaned_data["password1"]
 			user.set_password(form.cleaned_data["password1"])
+			print(f"this is password chenged {password1}")
 			user.save()
 		
 			return redirect(self.success_url)

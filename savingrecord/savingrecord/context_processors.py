@@ -11,36 +11,44 @@ from savings.models import Saving_account
 
 
 def common_variables(request):
-	
-		
-	user = User.objects.get(username=request.user.username)
-	acc_detail = get_account_details(user)
-	statemest = get_transaction_history(user)
-	statement2 = get_transaction_history(user)[:10]
-	quote = money_quotes()
-	acc_saving = Saving_account.objects.filter(user=user)
+    
+    user_info = None
 
-	month_name, year, calendar, current_day = get_calender()
-	percent_acc, percent_withdral, percent_deposit, percent_transfer, percent_paybill = get_transaction_percentage(user)
-		
+    if request.user.is_authenticated:
+        try:
+            user = User.objects.get(username=request.user.username)
+            acc_detail = get_account_details(user)
+            statemest = get_transaction_history(user)
+            statement2 = get_transaction_history(user)[:10]
+            quote = money_quotes()
+            acc_saving = Saving_account.objects.filter(user=user)
 
-		
-	return {
-	"user": user,
-	"acc_detail": acc_detail,
-	"statemest": statemest,
-	"statement2": statement2,
-	"quote": quote,
-	"acc_saving": acc_saving,
+            month_name, year, calendar, current_day = get_calender()
+            percent_acc, percent_withdral, percent_deposit, percent_transfer, percent_paybill = get_transaction_percentage(user)
 
-	"percent_acc": percent_acc,
-	"percent_withdral": percent_withdral,
-	"percent_deposit": percent_deposit,
-	"percent_transfer": percent_transfer,
-	"percent_paybill": percent_paybill,
+            return {
+                    "user": user,
+                    "acc_detail": acc_detail,
+                    "statemest": statemest,
+                    "statement2": statement2,
+                    "quote": quote,
+                    "acc_saving": acc_saving,
 
-	"month_name": month_name,
-	"year": year,
-	"calendar": calendar,
-	"current_day": current_day,
-	}
+                    "percent_acc": percent_acc,
+                    "percent_withdral": percent_withdral,
+                    "percent_deposit": percent_deposit,
+                    "percent_transfer": percent_transfer,
+                    "percent_paybill": percent_paybill,
+                    
+                    "month_name": month_name,
+                    "year": year,
+                    "calendar": calendar,
+                    "current_day": current_day,
+                    }
+        except User.DoesNotExist:
+            print()
+            print("no user at database")
+            print()
+    return {
+            "user_info": user_info,
+            }

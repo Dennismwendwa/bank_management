@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from accounts.models import User
 from django.urls import reverse
 from .models import Account, Agents, Dealers
 from .views import withdraw_view

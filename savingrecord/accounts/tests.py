@@ -1,5 +1,7 @@
 from django.test import TestCase, Client
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from accounts.models import User
+from django.contrib.auth.models import Group
 from django.shortcuts import reverse
 from accounts.models import Profile
 from django.contrib import messages
@@ -9,6 +11,9 @@ from accounts.forms import UserUpdateForm, ProfileUpdateForm
 class AccountViewsTestCase(TestCase):
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(username="milly", password="frontend")
+        self.group = Group.objects.create(name="customer")
+        self.group.user_set.add(self.user)
 
 #   Test1
     def test_register_view_invalid_password(self):
@@ -19,6 +24,7 @@ class AccountViewsTestCase(TestCase):
             'email': 'millicent@example.com',
             'password1': '1234567',  # Less than 8 characters
             'password2': '1234567',
+            'role': 'customer'
         }, follow=True)  # Add the follow=True parameter
 
 #      assert that registration was unsessessful and user not redirected
@@ -41,10 +47,11 @@ class AccountViewsTestCase(TestCase):
             'email': 'millicent@example.com',
             'password1': 'password123',
             'password2': 'password123',
+            'role': 'customer',
         }, follow=True)
 
-#       assert that registration was successful and user redirected
-        self.assertRedirects(response, "/accounts/login/?next=/")
+#       assert that registration was successful and user login success
+        self.assertRedirects(response, "/")
 
 #       check if user was created in database
         self.assertTrue(User.objects.filter(username="millicent").exists())
@@ -58,6 +65,7 @@ class AccountViewsTestCase(TestCase):
 	    'email': 'millicent@example.com',
 	    'password1': 'password123',
 	    'password2': 'password555',
+        'role': 'customer',
         }, follow=True)
 
 #       assert password not matching
@@ -70,12 +78,12 @@ class AccountViewsTestCase(TestCase):
 
 
 #       chack user was not created in the database
-        self.assertFalse(User.objects.filter(username="milly1").exists())
+        self.assertFalse(User.objects.filter(username="millicent").exists())
 
 
-    def setUp(self):
-        self.client = Client()
-        self.user = User.objects.create_user(username="milly", password="frontend")
+  #  def setUp(self):
+ #       self.client = Client()
+#        self.user = User.objects.create_user(username="milly", password="frontend")
 
 #   Test 4
     def test_login_view_valid_credentials(self):
@@ -85,7 +93,7 @@ class AccountViewsTestCase(TestCase):
         }, follow=True)
 
 #     assert that login was successfull and user redirected
-        self.assertRedirects(response, reverse("savings"))
+        self.assertRedirects(response, reverse("savings")) #reverse("savings")
 
 #     assert that user is authenticated
         self.assertTrue(response.context["user"].is_authenticated)
@@ -105,7 +113,7 @@ class AccountViewsTestCase(TestCase):
 #       assert form validation error message is displayed
         messages = [m.message for m in response.context["messages"]]
         self.assertEqual(len(messages), 1)
-        self.assertEqual(messages[0], "Invalid credentials")
+        self.assertEqual(messages[0], "Invalid username or password.")
 
 #       assert that user is not authenticated
         self.assertFalse(response.context["user"].is_authenticated)
