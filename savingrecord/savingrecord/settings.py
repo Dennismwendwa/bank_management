@@ -33,10 +33,11 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+	"userdata",
     "savings",
     "accounts.apps.AccountsConfig",
     'django.contrib.admin',
-    'django.contrib.sites', #for password reset
+    'django.contrib.sites', #
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 				"savingrecord.context_processors.common_variables", #added new
+                "django.template.context_processors.request", #to format deates
             ],
 	    "builtins":[
 		    "crispy_forms.templatetags.crispy_forms_tags",

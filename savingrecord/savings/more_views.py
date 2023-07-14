@@ -4,10 +4,13 @@ from django .contrib.auth.models import User
 from django.contrib import messages
 from django.utils import timezone
 import datetime
+
 from .models import Agents, Dealers, TillNumber, Company
+from .models import Account, Saving_account
 from .forms import AgentForm, DealersForm, CompanyForm
 from .logic import create_agent_number
 from .logic import generate_unique_number, generate_business_numbers
+from django.contrib.auth.decorators import permission_required
 
 def create_agents(request):
 
@@ -100,9 +103,6 @@ def display_dealers_and_own_agents(request):
     dealers = Dealers.objects.all()
     agents = Agents.objects.filter(status=True)
 
-   # till = TillNumber.objects.get(id=2)
-    #print(till)
-
     context = {
             "dealers": dealers,
             "agents": agents,
@@ -133,7 +133,6 @@ def company(request):
 
         except Exception as e:
             messages.error(request, f"EXX Something went wrong. try again")
-            print(e)
             return redirect("company")
 
         else:
@@ -158,7 +157,15 @@ def display_companies(request):
 
     return render(request, "savings/display_companies.html", context)
 
-
+@permission_required("accounts.change_user")
 def staff_home(request):
 
-    return render(request, "savings/staffs.html", {})
+    all_accounts = Account.objects.all()
+    all_saving_acc = Saving_account.objects.all()
+    
+    context = {
+            "all_accounts": all_accounts,
+            "all_saving_acc": all_saving_acc,
+            }
+    
+    return render(request, "savings/staffs.html", context)

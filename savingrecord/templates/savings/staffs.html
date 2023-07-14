@@ -77,13 +77,7 @@
               <i class="bi bi-search"></i>
             </a>
           </li>
-          <!-- End Search Icon-->
-
-          
-          <!-- End Notification Nav -->
-
-          
-          <!-- End Messages Nav -->
+      
 
           <li class="nav-item dropdown pe-3">
             <a
@@ -370,137 +364,69 @@
         </nav>
       </div>
       <!-- End Page Title -->
-      <section>
-        <div class="card-body">
-          {% if quote %}
-          <h4 class="alert alert-success">{{quote}}</h4>
-          {% else %}
-          {% endif %}
-        </div>
-      </section>
 
       <section class="section dashboard">
         <div class="row">
           <!-- Left side columns -->
-          <div class="col-lg-8">
+          <div class="col-lg-9">
             <div class="row">
-              <!-- Sales Card -->
               <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">
                  
                   <div class="card-body">
-                    <h5 class="card-title">Saving Accounts </h5>
-                    {% if acc_saving %}
-                    {% for saving in acc_saving %}
-                    <h5 class="card-title">{{saving.account_number}} </h5>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-cart"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>{{saving.account_balance|floatformat:2}}</h6>
-                      </div>
-                    </div>
-                    {% endfor %}
-                    {% else%}
-                    <p>You have no account</p>
-                    <strong><p>Create one</p></strong>
-                    {% endif %}
-
-
-                  </div>
-                </div>
-              </div>
-              <!-- End Sales Card -->
-
-              
-              <!-- Customers Card -->
-              <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
-                  <h5 class="card-title">
-                    Simba Accounts
-                  </h5>
-                  {% if acc_detail %}
-                  {% for account in acc_detail %}
-                  <div class="card-body">
-                    
-                    <h5 class="card-title">
-                      <span>{{account.account_number}}</span>
-                    </h5>
-
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-currency-dollar"></i>
-                      </div>
-                      
-                      <div class="ps-3">
-                        <span>Balance</span>
-                        <h6>{{account.account_balance|floatformat:2}}</h6>
-                        {% if account.account_number == percent_acc %}
-                        {% if percent_withdral > percent_deposit and percent_withdral > percent_transfer and percent_withdral > percent_paybill%}
-                        <span class="text-danger small pt-1 fw-bold">{{percent_withdral}}%</span>
-                        <span class="text-muted small pt-2 ps-1">withdraw</span>
-                        {% elif  percent_deposit > percent_withdral and percent_deposit > percent_transfer and percent_deposit > percent_paybill%}
-                        <span class="text-danger small pt-1 fw-bold">{{percent_deposit}}%</span>
-                        <span class="text-muted small pt-2 ps-1">deposit</span>
-                        {% elif percent_paybill > percent_withdral and percent_paybill > percent_deposit and percent_paybill > percent_transfer%}
-                        <span class="text-danger small pt-1 fw-bold">{{percent_paybill}}%</span>
-                        <span class="text-muted small pt-2 ps-1">bills paid</span>
-                        {% else %}
-                        <span class="text-danger small pt-1 fw-bold">{{percent_transfer}}%</span>
-                        <span class="text-muted small pt-2 ps-1">transfer</span>
-                        {% endif %}
-                        {% else %}
-                        {% endif%}
-                      </div>
-                     
-                    </div>
-                  </div>
-                  {% endfor %}
-                  {% else %}
-                  <p>You have no account</p>
-                  <strong><p>Create one</p></strong>
-                  {% endif %}
-                </div>
-              </div>
-
-              <div class="col-xxl-4 col-md-6">
-                <div class="card info-card sales-card">
-                 
-                  <div class="card-body">
-                    <h5 class="card-title">Shotcuts </h5>
+                    <h5 class="card-title">Approval </h5>
                   
                     <div class="ps-3">
                       <a href="{% url 'create_agents' %}">
-                      <h6>Agents</h6></a>
-                    </div>
-                    <br>
-
-                    <div class="ps-3">
-                      <a href="{% url 'display_companies' %}">
-                      <h6>All companies</h6></a>
-                    </div>
-                    <br>
-
-                    <div class="ps-3">
-                      <a href="{% url 'company' %}" >
-                      <h6>Business number</h6></a>
+                      <h6>New Agents</h6></a>
                     </div>
                     <br>
 
                     <div class="ps-3">
                       <a href="{% url 'create_dealers' %}" >
-                      <h6>Create new dealer</h6></a>
+                      <h6>New Dealer</h6></a>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">
+                 
+                  <div class="card-body">
+                    <h5 class="card-title">Approval </h5>
+
+                    <div class="ps-3">
+                      <a href="{% url 'display_companies' %}">
+                      <h6>New Companies</h6></a>
                     </div>
                     <br>
 
                     <div class="ps-3">
+                      <a href="{% url 'company' %}" >
+                      <h6>New Business number</h6></a>
+                    </div>
+                    <br>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">
+                 
+                  <div class="card-body">
+                    <h5 class="card-title">All Dealers & Agents </h5>
+
+                    <div class="ps-3">
                       <a href="{% url 'dealer-own-agents' %}" >
-                      <h6>dealer own agents</h6></a>
+                      <h6>Dealers own agents</h6></a>
+                    </div>
+                    <br>
+                    <div class="ps-3">
+                      <a href="{% url 'display_companies' %}">
+                      <h6>Companies</h6></a>
                     </div>
               
                   </div>
@@ -509,93 +435,44 @@
               
               <!-- End Customers Card -->
 
-              <!-- Reports -->
-              <div class="col-12">
-                <div class="card">
-                 
+              <table class="table caption-top">
+                
+                <thead>
+                  <caption>Simba Accounts</caption>
+                  <caption>List of Customer</caption>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Customer name</th>
+                    <th scope="col">Account name</th>
+                    <th scope="col">Account number</th>
+                    <th scope="col">Account balance</th>
+                    <th scope="col">Last transaction date</th>
+                    <th scope="col">Account status</th>
+                    <th scope="col">Total transactions/ month</th>  
+                    <th scope="col">Start date</th>
+                    
+                  </tr>
+                </thead>
+                
+                {% for acc in all_accounts %}
+                <tbody>
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{acc.first_name}} {{acc.last_name}}</td>
+                    <td>{{acc.account_name}}</td>
+                    <td>{{acc.account_number}}</td>
+                    <td>{{acc.account_balance|floatformat:2}}</td>
+                    <td>{{acc.last_transaction_date|date:"Y-m-d"}}</td>
+                    <td>{{acc.account_status}}</td>
+                    <td>{{acc.total_trans_amount}}</td>
+                    <td>{{acc.opening_date|date:"F j, Y"}}</td>
+                    <th scope="col"><a href="{% url 'userdata:edit_user_data' user_id=acc.pk %}"  >Edit</a></th>
+                   
+                  </tr>
+                </tbody>
+                {% endfor %}
 
-                  <div class="card-body">
-                    <h5 class="card-title">Transactions <span></span></h5>
-
-                    <!-- Line Chart -->
-                    <div id="reportsChart"></div>
-
-                    <script>
-                      document.addEventListener("DOMContentLoaded", () => {
-                        new ApexCharts(
-                          document.querySelector("#reportsChart"),
-                          {
-                            series: [
-                              {
-                                name: "Withdraw",
-                                data: [31, 40, 28, 51, 42, 82, 56],
-                              },
-                              {
-                                name: "Deposit",
-                                data: [11, 32, 45, 32, 34, 52, 41],
-                              },
-                              {
-                                name: "Transfer",
-                                data: [15, 11, 32, 18, 9, 24, 11],
-                              },
-                              {
-                                name: "Paybills",
-                                data: [15, 11, 32, 18, 9, 24, 11],
-                              },
-                            ],
-                            chart: {
-                              height: 350,
-                              type: "area",
-                              toolbar: {
-                                show: false,
-                              },
-                            },
-                            markers: {
-                              size: 4,
-                            },
-                            colors: ["#4154f1", "#2eca6a", "#ff771d"],
-                            fill: {
-                              type: "gradient",
-                              gradient: {
-                                shadeIntensity: 1,
-                                opacityFrom: 0.3,
-                                opacityTo: 0.4,
-                                stops: [0, 90, 100],
-                              },
-                            },
-                            dataLabels: {
-                              enabled: false,
-                            },
-                            stroke: {
-                              curve: "smooth",
-                              width: 2,
-                            },
-                            xaxis: {
-                              type: "datetime",
-                              categories: [
-                                "2018-09-19T00:00:00.000Z",
-                                "2018-09-19T01:30:00.000Z",
-                                "2018-09-19T02:30:00.000Z",
-                                "2018-09-19T03:30:00.000Z",
-                                "2018-09-19T04:30:00.000Z",
-                                "2018-09-19T05:30:00.000Z",
-                                "2018-09-19T06:30:00.000Z",
-                              ],
-                            },
-                            tooltip: {
-                              x: {
-                                format: "dd/MM/yy HH:mm",
-                              },
-                            },
-                          }
-                        ).render();
-                      });
-                    </script>
-                    <!-- End Line Chart -->
-                  </div>
-                </div>
-              </div>
-              <!-- End Reports -->
+              </table>
 
               <!-- Recent Sales -->
               <div class="col-12">
@@ -604,7 +481,7 @@
 
                   <div class="card-body">
                     <h5 class="card-title">
-                      All transactions <span></span>
+                      Saving Accounts <span></span>
                     </h5>
 
                     <table class="table table-borderless datatable">
@@ -612,27 +489,29 @@
                       <thead>
                         <tr>
                           <th scope="col">$</th>
-                          <th scope="col">Transaction Date</th>
+                          <th scope="col">Account name</th>
                           <th scope="col">Account number</th>
-                          <th scope="col">Transaction_type</th>
-                          <th scope="col">Amount</th>
+                          <th scope="col">Account balance</th>
+                          <th scope="col">Last transaction date</th>
+                          <th scope="col">start dat</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for obj in statemest %}
+                        {% for obj in all_saving_acc %}
 
                         <tr>
-                          <th scope="row"><a href="#">1</a></th>
-                          <td>{{obj.transaction_date}}</td>
+                          <th scope="row">{{forloop.counter}}</th>
+                          <td>{{obj.user.first_name}}  {{obj.user.last_name}}</td>
                           <td>
                             <p class="text-primary"
                               >{{obj.account_number}}</p
                             >
                           </td>
-                          <td>{{obj.transaction_type}}</td>
+                          <td>{{obj.account_balance}}</td>
                           <td>
-                            <span class="badge bg-success">{{obj.amount}}</span>
+                            <span class="badge bg-success">{{obj.last_transaction_date|date:"F j, Y"}}</span>
                           </td>
+                          <th scope="col"><a href=""  >Edit</a></th>
                         </tr>
                         {% endfor %}
 
@@ -650,9 +529,65 @@
           </div>
           <!-- End Left side columns -->
 
-          <!-- Right side columns -->
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <!-- Recent Activity -->
+            
+            <!-- End Recent Activity -->
+
+            <div>
+              <div>
+                <head>
+                  <title>Calendar</title>
+                  <style>
+                      table {
+                          border-collapse: separate;
+                          border-spacing: 10px; /* Adjust the spacing value as needed */
+                      }
+              
+                      td {
+                          padding: 10px; /* Adjust the padding value as needed */
+                      }
+                      .current-day {
+                        background-color: blue; /* Adjust the background color as desired */
+                    }
+                  </style>
+              </head>
+              <body>
+                  <h1>{{ month_name }} {{ year }}</h1>
+                  
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Mo</th>
+                              <th>Tu</th>
+                              <th>We</th>
+                              <th>Th</th>
+                              <th>Fr</th>
+                              <th>Sa</th>
+                              <th>Su</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for week in calendar %}
+                        <tr>
+                            {% for day in week %}
+                            <td {% if day == current_day %} class="current-day"{%endif%}>
+                                {% if day == 0 %}
+                                    &nbsp;
+                                {% else %}
+                                    {{ day }}
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+              </body>
+              </div>
+            
+            </div>
+
             <div class="card">
              
 
@@ -696,22 +631,19 @@
                 </div>
               </div>
             </div>
-            <!-- End Recent Activity -->
 
-
-            <!-- Transactions summary -->
             <div class="card">
              
 
               <div class="card-body pb-0">
                 <h5 class="card-title">Transactions summary <span></span></h5>
-
+            
                 <div
                   id="trafficChart"
                   style="min-height: 400px"
                   class="echart"
                 ></div>
-
+            
                 <script>
                   document.addEventListener("DOMContentLoaded", () => {
                     echarts
@@ -770,66 +702,9 @@
                 </script>
               </div>
             </div>
-            <!-- End Website Traffic -->
-
-            <div>
-              <div>
-                <head>
-                  <title>Calendar</title>
-                  <style>
-                      table {
-                          border-collapse: separate;
-                          border-spacing: 10px; /* Adjust the spacing value as needed */
-                      }
-              
-                      td {
-                          padding: 10px; /* Adjust the padding value as needed */
-                      }
-                      .current-day {
-                        background-color: blue; /* Adjust the background color as desired */
-                    }
-                  </style>
-              </head>
-              <body>
-                  <h1>{{ month_name }} {{ year }}</h1>
-                  
-                  <table>
-                      <thead>
-                          <tr>
-                              <th>Mo</th>
-                              <th>Tu</th>
-                              <th>We</th>
-                              <th>Th</th>
-                              <th>Fr</th>
-                              <th>Sa</th>
-                              <th>Su</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        {% for week in calendar %}
-                        <tr>
-                            {% for day in week %}
-                            <td {% if day == current_day %} class="current-day"{%endif%}>
-                                {% if day == 0 %}
-                                    &nbsp;
-                                {% else %}
-                                    {{ day }}
-                                {% endif %}
-                            </td>
-                            {% endfor %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                  </table>
-              </body>
-              </div>
-
-            </div>
-
             
-            <!-- End News & Updates -->
           </div>
-          <!-- End Right side columns -->
+  
         </div>
       </section>
     </main>

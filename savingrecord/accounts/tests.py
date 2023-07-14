@@ -80,11 +80,6 @@ class AccountViewsTestCase(TestCase):
 #       chack user was not created in the database
         self.assertFalse(User.objects.filter(username="millicent").exists())
 
-
-  #  def setUp(self):
- #       self.client = Client()
-#        self.user = User.objects.create_user(username="milly", password="frontend")
-
 #   Test 4
     def test_login_view_valid_credentials(self):
         response = self.client.post(reverse("login"), {

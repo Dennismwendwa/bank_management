@@ -114,8 +114,7 @@ def login_helper(request, username, password):
 			return "staff" #redirect("staff_home")
 		else:
 			auth.login(request, user)
-			print("WE are here")
-			return "success" #redirect("savings")
+			return "success" #redirect narmal user("savings")
 	else:
 		messages.info(request, "Invalid username or password.")
 		return redirect("login")
@@ -139,8 +138,6 @@ def login(request):
 			return redirect("staff_home")
 
 	return render(request, "accounts/login.html", {})
-
-
 
 def logout(request):
 	auth.logout(request)
