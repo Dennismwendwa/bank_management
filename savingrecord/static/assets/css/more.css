@@ -14,3 +14,19 @@
 .custom-margin {
     margin-bottom: 20px;
   }
+
+.red-bg {
+    background-color: red;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+td {
+    padding: 10px;
+}
+.current-day {
+  background-color: green;
+}

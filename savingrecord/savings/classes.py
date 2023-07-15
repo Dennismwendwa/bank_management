@@ -4,7 +4,6 @@ import uuid
 import decimal, calendar
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
-from decimal import Decimal
 #from django .contrib.auth.models import User
 from django.conf import settings
 from django.utils import timezone
@@ -30,11 +29,6 @@ class BankAccount:
 		self.accounts.append(account)
 		return account
 
-	def print_acc():
-		for acc in accounts:
-			print()
-			print(acc)
-			print()
 	
 	def update_status(self, amount, account_no, transaction_type):
 		current_acc = None
@@ -74,7 +68,6 @@ class BankAccount:
 		transaction = self.transaction_history
 
 def not_negative(amount):
-	
 	if int(amount) > 0:
 		return amount
 	else:
@@ -95,8 +88,7 @@ def make_deposit(request, amount, account_no):
 				account.account_balance += Decimal(amount)
 				amount = Decimal(amount)
 			except InvalidOperation as e:
-			#except decimal.ConversionSyntax as e:
-				print(e)
+
 				return "wrong_type"
 
 			status = not_negative(amount)
@@ -192,8 +184,7 @@ def saving_deposit(request, amount, account_no):
 	try:
 		accounts = Saving_account.objects.filter(user=request.user)
 		account = accounts.filter(account_number=account_no).first()
-		#account = accounts.objects.get(account_number=account_no)
-		print(account)
+
 		if account:
 			account.account_balance += Decimal(amount)
 			account.transaction_count = int(account.transaction_count) + 1
@@ -243,12 +234,6 @@ def calculate_balance(user, amount, project_name):
 		pro_name.balence_amount = int(pro_name.target_amount) - int(pro_name.amount_saved)
 		pro_name.progress  = (int(pro_name.amount_saved) / int(pro_name.target_amount)) * 100
 		pro_name.save()
-#		recording = Target_saving_record_statements(
-#		project_name = pro_name,
-#		amount_saved = amount,
-#		date_saved = timezone.now()
-#		)
-#		recording.save()
 		instance = Target_account_st.record_keeper(project_name, amount)
 		return "seccuss"
 

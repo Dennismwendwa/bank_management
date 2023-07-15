@@ -21,36 +21,8 @@ from .paybills import pay_bills
 
 @login_required
 def savings(request):
-	user = User.objects.get(username=request.user.username)
-	acc_detail = get_account_details(user)
-	statemest = get_transaction_history(user)
-	statement2 = get_transaction_history(user)[:10]
-	quote = money_quotes()
-	acc_saving = Saving_account.objects.filter(user=user)
 
-	month_name, year, calendar, current_day = get_calender()
-	percent_acc, percent_withdral, percent_deposit, percent_transfer, percent_paybill = get_transaction_percentage(user)
-
-
-	return render(request, "savings/index.html", {
-		"user": user,
-		"acc_detail": acc_detail,
-		"statemest": statemest,
-		"statement2": statement2,
-        "quote": quote,
-		"acc_saving": acc_saving,
-
-		"percent_acc": percent_acc,
-		"percent_withdral": percent_withdral,
-		"percent_deposit": percent_deposit,
-		"percent_transfer": percent_transfer,
-		"percent_paybill": percent_paybill,
-
-		"month_name": month_name,
-		"year": year,
-		"calendar": calendar,
-		"current_day": current_day,
-		})
+	return render(request, "savings/index.html", {})
 
 def bank_account(request):
 	def get_user():
@@ -320,7 +292,10 @@ def target_saving(request):
 	
 	user = request.user
 	target_item = Target_saving_record.objects.filter(user=user)
-#target_stats = Target_saving_record_statements.objects.all()
+	for item in target_item:
+		item.progress = float(item.progress)
+		item.target_amount = float(item.target_amount)
+		item.balence_amount = float(item.balence_amount)
 
 	month_name, year, calendar, current_day = get_calender()
 
@@ -341,7 +316,7 @@ def target_saving(request):
 			else:
 				target = Target_saving_record.objects.create(user=user, saving_for=saving_for,
 						target_amount=target_amount, saving_par_time=saving_par_time,
-						start_date=start_date, end_date=end_date)
+						start_date=start_date, end_date=end_date, balence_amount=target_amount)
 				target.save()
 			messages.info(request, "Your saving target was successfully set.")
 			return redirect("target_saving")
@@ -352,7 +327,7 @@ def target_saving(request):
 	return render(request, "savings/target_saving.html", {
 			"form": form,
 			"target_item": target_item,
-#			"target_stats": target_stats,
+
 
 			"month_name": month_name,
 			"year": year,
