@@ -387,6 +387,17 @@
                       <h6>New Dealer</h6></a>
                     </div>
                     <br>
+
+                    <div class="ps-3">
+                      <a href="{% url 'userdata:till_number_approval' %}" >
+                      <h6>Approve agents</h6></a>
+                    </div>
+                    <br>
+
+
+
+
+                    
                   </div>
                 </div>
               </div>
@@ -406,6 +417,12 @@
                     <div class="ps-3">
                       <a href="{% url 'company' %}" >
                       <h6>New Business number</h6></a>
+                    </div>
+                    <br>
+
+                    <div class="ps-3">
+                      <a href="{% url 'userdata:business_number_approval' %}" >
+                      <h6>Edit Business number</h6></a>
                     </div>
                     <br>
 
@@ -586,50 +603,6 @@
               </body>
               </div>
             
-            </div>
-
-            <div class="card">
-             
-
-              <div class="card-body">
-                <h5 class="card-title">
-                  Recent Activity<span></span>
-                </h5>
-
-                <div class="activity">
-                  {% for obj in statement2 %}
-                  <div class="activity-item spacing_cap d-flex mb-3">
-                    <div class="activite-label">{{obj.transaction_date|date:'Y-m-d'}}</div>
-                      {% if obj.transaction_type == "deposit"%}
-                    <i
-                      class="bi bi-circle-fill activity-badge text-success align-self-start"
-                    ></i>
-                    {% elif obj.transaction_type == "withdraw"%}
-                    <i
-                    class="bi bi-circle-fill activity-badge text-danger align-self-start"
-                  ></i>
-                  {% else %}
-                  <i
-                  class="bi bi-circle-fill activity-badge text-warning align-self-start"
-                ></i>
-                  {% endif %}
-
-                    <div class="activity-content">
-                      {{obj.account_number|stringformat:"s"|slice:"12:22" }}...
-                     
-                      <a href="#" class="fw-bold text-dark"
-                        > {{obj.transaction_type}}</a
-                      >
-                      {{obj.amount|floatformat:2 }}
-                    </div>
-                  </div>
-                  {% endfor %}
-                  <!-- End activity item-->
-
-                 
-
-                </div>
-              </div>
             </div>
 
             <div class="card">

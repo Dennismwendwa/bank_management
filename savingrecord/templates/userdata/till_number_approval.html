@@ -1,0 +1,57 @@
+{% extends "savings/forms_layout.html" %}
+{% load static %}
+
+{% block approve_agents %}
+
+
+<div class="pagetitle">
+  <h1>Till numbers</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'staff_home' %}">Home</a></li>
+      <li class="breadcrumb-item">Forms</li>
+      <li class="breadcrumb-item active">Agents approval</li>
+    </ol>
+  </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">agents and till number </h5>
+        
+        <p> </p>
+         {% for message in messages %}
+         <h4 class="col-lg-6 alert alert-info">{{message}}</h4>
+         {% endfor %}
+
+        <!-- Custom Styled Validation with Tooltips -->
+        {% if till_form %}
+        <form
+        action="{% url 'userdata:till_number_approval' %}"
+        class="row g-3 needs-validation"
+        enctype="multipart/form-data"
+        method="POST"
+        >
+
+          {% csrf_token %} {{till_form|crispy}}
+                
+          <br>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">save</button>
+          </div>
+        </form>
+        {% else %}
+        {% for agent in all_agents %}
+        <h4>{{agent.first_name }}</h4>
+        {% endfor %}
+        {% endif %}
+    
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

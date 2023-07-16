@@ -1,19 +1,25 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from accounts.models import User
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 from decimal import Decimal, InvalidOperation
 import decimal
-
 from django.utils import timezone
 import datetime
 
-from savings.models import Account
+from savings.models import Account, Company, BusinessNumber, TillNumber
+from savings.models import Agents
 from savings.classes import not_negative, register_history
+from savings.logic import generate_business_numbers, create_agent_number
+from .forms import EditBusinessNumberForm, EditCompanyForm, EditAgentsForm
 
+def forbidden_view(request):
 
-@permission_required("accounts.change_user")
+    return render(request, 'userdata/forbidden.html')
+
+#@login_required
+@permission_required("accounts.change_user", raise_exception=True)
 def edit_user_data(request, user_id):
 
     user = get_object_or_404(User, id=user_id)
@@ -24,6 +30,7 @@ def edit_user_data(request, user_id):
     return render(request, "userdata/edit_user_data.html", {})
 
 
+@permission_required("accounts.change_user", raise_exception=True)
 def admin_deposit_simba(request):
 
     if request.method == "POST":
@@ -69,6 +76,7 @@ def admin_deposit_simba(request):
     return render(request, "userdata/admin_deposit_simba.html", {})
 
 
+@permission_required("accounts.change_user", raise_exception=True)
 def admin_widthdraw(request):
 
     if request.method == "POST":
@@ -118,3 +126,75 @@ def admin_widthdraw(request):
             return redirect("userdata:admin_widthdraw")
 
     return render(request, "userdata/admin_withdraw_simba.html", {})
+
+
+@permission_required("accounts.change_user", raise_exception=True)
+def business_number_approval(request):
+
+    bus_num = Company.objects.filter(business_numbers__isnull=True).first()
+    all_com = Company.objects.all()
+    if bus_num is not None:
+
+        if request.method == "POST":
+            c_form = EditCompanyForm(request.POST, instance=bus_num)
+
+            if c_form.is_valid():
+                company = c_form.save(commit=False)
+                business_number = generate_business_numbers()
+
+                BusinessNumber.objects.create(buss_number=business_number,
+                        company=company)
+                company.save()
+                print("company saved")
+            messages.success(request, f"Successfully saved.")
+            return redirect("userdata:business_number_approval")
+
+        else:
+            c_form = EditCompanyForm(instance=bus_num)
+
+        context = {
+                "c_form": c_form,
+                }
+        
+        return render(request, "userdata/business_number_approval.html", context)
+    
+    else:
+        context = {
+                "all_com": all_com,
+                }
+        return render(request, "userdata/business_number_approval.html", context)
+        #return HttpResponse("No company found without a business number.")
+
+def till_number_approval(request):
+
+    till_num = Agents.objects.filter(agent_number__isnull=True, status=False).first()
+    all_agents = Agents.objects.filter(status=True)
+
+    if till_num is not None:
+        if request.method == "POST":
+            till_form = EditAgentsForm(request.POST, instance=till_num)
+            
+            if till_form.is_valid():
+                agent = till_form.save(commit=False)
+                till_number, agent_number = create_agent_number()
+                agent.agent_number = agent_number
+                agent.image = request.FILES['image']
+
+                TillNumber.objects.create(number=till_number, agent=till_num)
+                agent.save()
+
+            messages.success(request, f"Successfully saved.")
+            return redirect("userdata:till_number_approval")
+        else:
+            till_form = EditAgentsForm(instance=till_num)
+
+        context = {
+                "till_form": till_form,
+                }
+        return render(request, "userdata/till_number_approval.html", context)
+    else:
+
+        context = {
+                "all_agents": all_agents,
+                }
+        return render(request, "userdata/till_number_approval.html", context)

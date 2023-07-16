@@ -157,7 +157,7 @@ def display_companies(request):
 
     return render(request, "savings/display_companies.html", context)
 
-@permission_required("accounts.change_user")
+@permission_required("accounts.change_user", raise_exception=True)
 def staff_home(request):
 
     all_accounts = Account.objects.all()

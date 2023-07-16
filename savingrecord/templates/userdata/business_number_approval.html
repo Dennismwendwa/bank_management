@@ -1,0 +1,52 @@
+{% extends "savings/forms_layout.html" %}
+{% load static %}
+
+{% block edit_business_number %}
+
+
+<div class="pagetitle">
+  <h1>Business number</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'staff_home' %}">Home</a></li>
+      <li class="breadcrumb-item">Forms</li>
+      <li class="breadcrumb-item active">Edit business number</li>
+    </ol>
+  </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Company and business number </h5>
+        {% if c_form %}
+        <p> </p>
+         {% for message in messages %}
+         <h4 class="col-lg-6 alert alert-info">{{message}}</h4>
+         {% endfor %}
+
+        <!-- Custom Styled Validation with Tooltips -->
+        <form action="{% url 'userdata:business_number_approval' %}"
+        method="POST" class="row g-3 needs-validation" novalidate>
+
+          {% csrf_token %} {{c_form|crispy}}
+                
+          <br>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">save</button>
+          </div>
+        </form>
+        {% else %}
+        {% for com in all_com %}
+        <h4>{{ com.name }}</h4>
+        {% endfor %}
+        {% endif %}
+    
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

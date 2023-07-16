@@ -10,8 +10,12 @@ target_time = datetime.time(hour=18, minute=34)
 
 def create_agent_number():
     agents = Agents.objects.filter(status=True, agent_number__isnull=True)
-    
-    
+
+    till_number = generate_unique_number()
+    agent_number = generate_unique_number()
+
+    return till_number, agent_number
+"""
     if not agents:
         print("No agent to create account for")
 	
@@ -24,6 +28,7 @@ def create_agent_number():
         agnts.agent_number = uniq
         agnts.save()
         print("Agent number created successfull")
+"""
 
 def generate_unique_number():
     unique_number = str(uuid.uuid4().int)[:5]
@@ -31,16 +36,7 @@ def generate_unique_number():
 
 def generate_business_numbers():
 
-    companies = Company.objects.filter(approved=True, admin_review=False)
-    
-    if not companies:
-        print("no company to create business number for")
-
-    for company in companies:
-        print(company.name)
-        bus_number = str(uuid.uuid4().int)[:10]
-        BusinessNumber.objects.create(company=company, buss_number=bus_number)
-        company.admin_review = True
-        company.save()
-        print("Business number created successfully")
+    bus_number = str(uuid.uuid4().int)[:10]
+    print("Business number created successfully")
+    return bus_number
 
