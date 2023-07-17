@@ -77,13 +77,6 @@ class Target_saving_record(models.Model):
 		return f"""{self.user.first_name} {self.user.last_name}\
 			- {self.target_amount} - {self.progress} - {self.saving_for}"""
 
-#class Target_saving_record_statements(models.Model):
-#	target_saving_record = models.ForeignKey(Target_saving_record, on_delete=models.CASCADE)
-#	amount_saved = models.DecimalField(max_digits=12, decimal_places=4)
-#	date_saved = models.DateTimeField(null=True)
-#
-#	def __str__(self):
-#		return f"{self.target_saving_record.saving_for} {self.date_saved} {self.amount_saved}"
 
 class Statements(models.Model):
 	account_number = models.ForeignKey(Account, on_delete=models.CASCADE)

@@ -152,7 +152,7 @@ def business_number_approval(request):
                 BusinessNumber.objects.create(buss_number=business_number,
                         company=company)
                 company.save()
-                print("company saved")
+
             messages.success(request, f"Successfully saved.")
             data = f"{tran_date}: {admin} updated {bus_num.name} details\n"
             write_to_bus_file(data)
@@ -190,7 +190,6 @@ def till_number_approval(request):
                 till_number, agent_number = create_agent_number()
                 agent.agent_number = agent_number
                 #agent.image = request.FILES['image']
-
                 TillNumber.objects.create(number=till_number, agent=till_num)
                 agent.save()
                 data = f"{tran_date}: {admin} updated {till_num.first_name} details\n"

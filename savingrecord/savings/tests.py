@@ -19,7 +19,7 @@ class BankAccountViewTest(TestCase):
             'account_no': '123456789',
             'account_name': 'Test Account',
             'account_balance': 1000,
-            'account_type': 'Savings',  # Add account_type field
+            'account_type': 'Savings',
             'first_name': 'Test',
             'last_name': 'User'
             })
@@ -29,7 +29,7 @@ class BankAccountViewTest(TestCase):
 
         response = self.client.get(reverse('bank_account'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Account.objects.count(), 3)
+        self.assertEqual(Account.objects.count(), 2)
 
         account = Account.objects.first()
         self.assertEqual(account.account_balance, 1000)
@@ -107,7 +107,6 @@ class Create_agents_view_test(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('create_agents'))
-#        response = self.client.get(reverse('create_agents'))
         self.assertEqual(Agents.objects.count(), 1)
 
     def test_create_agents_no_authorized_dealer(self):

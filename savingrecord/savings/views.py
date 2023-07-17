@@ -34,7 +34,7 @@ def bank_account(request):
 	count = acc_detail.count() #= 0 
 	
 	if request.method == "POST":
-		if count < 3:
+		if count < 2:
 			current_datetime = timezone.now()
 			account_balance = int(request.POST["account_balance"])
 			account_type = request.POST["account_type"] #update required
@@ -60,7 +60,7 @@ def bank_account(request):
 					account_balance, account_type)
 
 		else:
-			messages.error(request, "You can Only have a maximum of Three(3) accounts")
+			messages.error(request, "You can Only have a maximum of Two(2) accounts")
 			return redirect("bank_account")
 		
 		messages.success(request, """We have received your request.\

@@ -132,7 +132,8 @@ def company(request):
             return redirect("company")
 
         except Exception as e:
-            messages.error(request, f"EXX Something went wrong. try again")
+            print(e)
+            messages.error(request, f"Something went wrong. try again")
             return redirect("company")
 
         else:

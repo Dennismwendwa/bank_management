@@ -7,12 +7,12 @@
 {% block create_agents %}
 
 <div class="pagetitle">
-    <h1>Create Agents</h1>
+    <h1>Apply for Agent</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'savings' %}">Home</a></li>
         <li class="breadcrumb-item">Forms</li>
-        <li class="breadcrumb-item active">Create agents</li>
+        <li class="breadcrumb-item active">Apply for agent</li>
       </ol>
     </nav>
   </div>
@@ -22,7 +22,7 @@
     <div class="row">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Create agents</h5>
+          <h5 class="card-title">Apply for agent</h5>
           <p></p>
           {% for message in messages %}
           <h4 class="alert alert-info">{{message}}</h4>
@@ -117,7 +117,7 @@
   
             <br />
             <div class="col-12">
-              <button class="btn btn-primary" type="submit">Create agent</button>
+              <button class="btn btn-primary btn-lg" type="submit">Apply</button>
             </div>
 
           </form>
