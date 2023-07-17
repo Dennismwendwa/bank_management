@@ -13,7 +13,7 @@ from savings.models import Agents
 from savings.classes import not_negative, register_history
 from savings.logic import generate_business_numbers, create_agent_number
 from .forms import EditBusinessNumberForm, EditCompanyForm, EditAgentsForm
-
+from .models import write_to_file, write_to_csv, write_to_bus_file
 def forbidden_view(request):
 
     return render(request, 'userdata/forbidden.html')
@@ -32,7 +32,8 @@ def edit_user_data(request, user_id):
 
 @permission_required("accounts.change_user", raise_exception=True)
 def admin_deposit_simba(request):
-
+    
+    admin = request.user
     if request.method == "POST":
         deposit_amount = request.POST["deposit_amount"]
         account = request.POST["account"]
@@ -67,6 +68,9 @@ def admin_deposit_simba(request):
         d_account.total_deposit += deposit_amount
         d_account.total_trans_amount += deposit_amount
         d_account.save()
+        data = f"{transaction_date}: {admin} deposited {deposit_amount} in account {account}\n"
+        write_to_file(data)
+
         register_history(account, deposit_amount, transaction_type, transaction_date, account_type)
 
         messages.success(request, f"deposit of {deposit_amount} was successfull.")
@@ -83,7 +87,7 @@ def admin_widthdraw(request):
         withdraw_amount = request.POST["withdraw_amount"]
         account = request.POST["account"]
         user_id = request.POST["user_id"]
-
+        admin = request.user
         try:
             withdraw_amount = Decimal(withdraw_amount)
         except InvalidOperation:
@@ -117,6 +121,8 @@ def admin_widthdraw(request):
             w_account.total_withdraw += withdraw_amount
             w_account.total_trans_amount += withdraw_amount
             w_account.save()
+            data = f"{transaction_date}: {admin} withdrow {withdraw_amount} from account {account}\n"
+            write_to_file(data)
             register_history(account, withdraw_amount, transaction_type, transaction_date, account_type)
             messages.success(request, f"withdraw of {withdraw_amount} was successfull.")
             return redirect("userdata:admin_widthdraw")
@@ -133,6 +139,7 @@ def business_number_approval(request):
 
     bus_num = Company.objects.filter(business_numbers__isnull=True).first()
     all_com = Company.objects.all()
+    tran_date = timezone.now()
     if bus_num is not None:
 
         if request.method == "POST":
@@ -147,6 +154,8 @@ def business_number_approval(request):
                 company.save()
                 print("company saved")
             messages.success(request, f"Successfully saved.")
+            data = f"{tran_date}: {admin} updated {bus_num.name} details\n"
+            write_to_bus_file(data)
             return redirect("userdata:business_number_approval")
 
         else:
@@ -165,11 +174,13 @@ def business_number_approval(request):
         return render(request, "userdata/business_number_approval.html", context)
         #return HttpResponse("No company found without a business number.")
 
+@permission_required("savings.change_till_number", raise_exception=True)
 def till_number_approval(request):
 
     till_num = Agents.objects.filter(agent_number__isnull=True, status=False).first()
     all_agents = Agents.objects.filter(status=True)
-
+    tran_date = timezone.now()
+    admin = request.user
     if till_num is not None:
         if request.method == "POST":
             till_form = EditAgentsForm(request.POST, instance=till_num)
@@ -178,11 +189,12 @@ def till_number_approval(request):
                 agent = till_form.save(commit=False)
                 till_number, agent_number = create_agent_number()
                 agent.agent_number = agent_number
-                agent.image = request.FILES['image']
+                #agent.image = request.FILES['image']
 
                 TillNumber.objects.create(number=till_number, agent=till_num)
                 agent.save()
-
+                data = f"{tran_date}: {admin} updated {till_num.first_name} details\n"
+                write_to_bus_file(data)
             messages.success(request, f"Successfully saved.")
             return redirect("userdata:till_number_approval")
         else:
