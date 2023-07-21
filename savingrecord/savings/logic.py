@@ -37,6 +37,6 @@ def generate_unique_number():
 def generate_business_numbers():
 
     bus_number = str(uuid.uuid4().int)[:10]
-    print("Business number created successfully")
+
     return bus_number
 

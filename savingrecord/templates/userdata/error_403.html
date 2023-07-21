@@ -3,16 +3,24 @@
 
 <html>
   <head>
+    <link href="{% static 'assets/css/more.css' %}" rel="stylesheet" />
+
   </head>
   <body>
 
     <div class="container">
-
-        <h1>403</h1>
+        <div class="title" data-content="404">
+            403 - ACCESS DENIED
+        </div>
     
-        <h4>FORBIDDEN. You are not allow to the page you requested for.</h4>
+        <div class="subtitle">
+            Oops, You don't have permission to access this page.
+        </div>
     
+    
+        <div class="buttons">
+            <a class="button" href="">Go to homepage</a>
+        </div>
     </div>
-
   </body>
 </html>

@@ -73,27 +73,29 @@ def admin_deposit_simba(request):
         except Account.DoesNotExist:
             messages.error(request, f"Wrong account number")
             return redirect("userdata:admin_deposit_simba")
+        else:
         
+            transaction_type = "deposit"
+            transaction_date = timezone.now()
+            account_type = "Simba"
 
-        transaction_type = "deposit"
-        transaction_date = timezone.now()
-        account_type = "Simba"
-
-        d_account.account_balance += deposit_amount
+            d_account.account_balance += deposit_amount
         
-        d_account.last_transaction_date = transaction_date
-        d_account.total_deposit += deposit_amount
-        d_account.total_trans_amount += deposit_amount
-        d_account.save()
-        data = f"{transaction_date}: {admin} deposited {deposit_amount} in account {account}\n"
-        write_to_file(data)
+            d_account.last_transaction_date = transaction_date
+            d_account.total_deposit += deposit_amount
+            d_account.total_trans_amount += deposit_amount
+            d_account.save()
+            data = f"{transaction_date}: {admin} deposited {deposit_amount} in account {account}\n"
+            write_to_file(data)
+            
 
-        register_history(account, deposit_amount, transaction_type, transaction_date, account_type)
+            register_history(account, deposit_amount, transaction_type, transaction_date, account_type)
 
-        messages.success(request, f"deposit of {deposit_amount} was successfull.")
-        return redirect("userdata:admin_deposit_simba")
+            messages.success(request, f"deposit of {deposit_amount} was successfull.")
+            return redirect("userdata:admin_deposit_simba")
+    
 
-
+    print("last line")
     return render(request, "userdata/admin_deposit_simba.html", {})
 
 

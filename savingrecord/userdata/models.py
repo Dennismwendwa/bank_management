@@ -20,6 +20,6 @@ def write_to_csv(data):
 
     with open("admin_user_deposits.csv", mode="a", encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.write(data)
+        writer.writerow(data)
 
     print("saved to csv file")

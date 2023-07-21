@@ -168,7 +168,7 @@ EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND")
 
 
 AUTH_USER_MODEL = "accounts.User"
-handler404 = 'savingrecord.views.forbidden_view'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
