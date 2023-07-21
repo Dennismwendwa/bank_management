@@ -23,7 +23,10 @@ def create_agents(request):
 
     if request.method == "POST":
         form = AgentForm(request.POST)
-        
+        sec = request.session
+#        s = get_expiry_date()
+        print(s)
+        print(sec)
         #get the dealer_id from POST
         dealer_id = request.POST["dealer_id"]
         if Dealers.objects.filter(dealer_id=dealer_id).exists():

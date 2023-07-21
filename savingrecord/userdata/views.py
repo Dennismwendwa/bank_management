@@ -14,9 +14,26 @@ from savings.classes import not_negative, register_history
 from savings.logic import generate_business_numbers, create_agent_number
 from .forms import EditBusinessNumberForm, EditCompanyForm, EditAgentsForm
 from .models import write_to_file, write_to_csv, write_to_bus_file
-def forbidden_view(request):
 
-    return render(request, 'userdata/forbidden.html')
+def forbidden_view(request, exception):
+
+    return render(request, 'userdata/forbidden.html', status=404)
+
+def page_not_found(request, exception):
+
+    return render(request, "userdata/error_404.html")
+
+def bad_request_view(request, exception):
+
+    return render(request, "userdata/error_400.html")
+
+def server_error(request):
+
+    return render(request, "userdata/error_500.html")
+
+def permission_denied(request, exception):
+
+    return render(request, "userdata/error_403.html")
 
 #@login_required
 @permission_required("accounts.change_user", raise_exception=True)
