@@ -1,4 +1,11 @@
 ../saving
 savingrecord/.env
 mysite.log
-
+accounts/__pycache__
+accounts/migrations/__pycache__/
+packs/__pycache__/
+savingrecord/__pycache__/
+savings/__pycache__
+savings/migrations/__pycache__
+userdata/__pycache__/
+userdata/migrations/__pycache__
