@@ -3,6 +3,7 @@ from django.contrib.auth.forms import PasswordResetForm
 from .models import Profile
 from django.contrib.auth.models import User
 
+
 class EmailForm(forms.Form):
 	email = forms.EmailField()
 
@@ -11,6 +12,7 @@ class EmailForm(forms.Form):
 		form = PasswordResetForm(data={"email": email})
 		if form.is_valid():
 			form.save()
+
 
 #User update form
 class UserUpdateForm(forms.ModelForm):
@@ -22,6 +24,7 @@ class UserUpdateForm(forms.ModelForm):
 		model = User
 		#not updating username currently
 		fields = ["email", "first_name", "last_name"]
+
 
 #User profile update form
 class ProfileUpdateForm(forms.ModelForm):

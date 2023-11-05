@@ -2,10 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
-from .forms import EmailForm, UserUpdateForm, ProfileUpdateForm
-from .forms import ContactForm
 from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -19,8 +16,10 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.auth import get_user_model
-
 from django.contrib.auth.models import Group
+
+from .forms import EmailForm, UserUpdateForm, ProfileUpdateForm
+from .forms import ContactForm
 
 
 def contact_us(request):
@@ -85,8 +84,15 @@ def register(request):
 				password=password1
 
 				#adding the user to the corresponding group
-				group = Group.objects.get(name=role)
-				group.user_set.add(user)
+				if role:
+					try:
+						role = role.capitalize()
+						group = Group.objects.get(name=role)
+                    
+					except Group.DoesNotExist:
+						group = Group.objects.create(name=role)
+						
+					group.user_set.add(user)
 
 				status = login_helper(request, username, password)
 				

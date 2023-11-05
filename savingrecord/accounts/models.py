@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from PIL import Image
 import os
 
+
 class User(AbstractUser):
 	is_account_staff = models.BooleanField("Is account_staff", default=False)
 	is_customer = models.BooleanField("Is customer", default=False)

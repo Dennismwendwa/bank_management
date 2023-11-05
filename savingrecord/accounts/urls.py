@@ -13,6 +13,5 @@ urlpatterns = [
 	path("confirm_password_reset", views.password_confirm_request, name="password_confirm_request"),
 	path("userprofile", views.userprofile, name="userprofile"),
 	path("changepassword", views.changepassword, name="changepassword"),
-
 	path("contact-us", views.contact_us, name="contact_us"),
 ]
