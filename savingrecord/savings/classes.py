@@ -46,22 +46,21 @@ class BankAccount:
 			return "Account not found"
 
 		transaction_id = str(uuid.uuid4())
-		
-		match transaction_type:
-			case 'deposit':
-				current_acc.account_balance += amount
-				current_acc.transaction_history.append({'transaction_id': transaction_id, 
-					'type': 'deposit', 'amount': amount})
 
-			case "withdraw":
-				current_acc.account_balance -= amount
-				current_acc.transaction_history.append({'transaction_id': transaction_id,
-					'type': 'withdraw', 'amount': amount})
+		if transaction_type == 'deposit':
+			current_acc.account_balance += amount
+			current_acc.transaction_history.append({'transaction_id': transaction_id, 
+				'type': 'deposit', 'amount': amount})
 
-			case "transfer":
-				current_acc.account_balance -= amount
-				current_acc.transaction_history.append({'transaction_id': transaction_id,
-					'type': 'withdraw', 'amount': amount})
+		elif transaction_type == "withdraw":
+			current_acc.account_balance -= amount
+			current_acc.transaction_history.append({'transaction_id': transaction_id,
+				'type': 'withdraw', 'amount': amount})
+
+		elif transaction_type == "transfer":
+			current_acc.account_balance -= amount
+			current_acc.transaction_history.append({'transaction_id': transaction_id,
+				'type': 'withdraw', 'amount': amount})
 
 
 	def print_transaction_history(self):
